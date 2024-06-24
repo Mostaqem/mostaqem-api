@@ -6,11 +6,11 @@ import { Response } from 'express';
 export class AudioController {
   constructor(private readonly audioService: AudioService) {}
 
-  @Get('')
+  @Get()
   async testRoute(@Res() res: Response) {
     const audioBytes = await this.audioService.getAudioStream();
     res.set({
-      'Content-Type': 'audio/mpeg',
+      'Content-Type': 'audio/mp3',
       'Content-Disposition': 'inline',
     });
 

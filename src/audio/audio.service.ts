@@ -1,5 +1,7 @@
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
-import axios from 'axios';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+// import axios from 'axios';
+import { createReadStream } from 'node:fs';
+import * as path from 'node:path';
 import { Readable } from 'stream';
 
 const TEST_LINK =
@@ -8,16 +10,19 @@ const TEST_LINK =
 export class AudioService {
   async getAudioStream(): Promise<Readable> {
     try {
-      const response = await axios.get(TEST_LINK, {
-        responseType: 'stream',
-      });
       Logger.log('STREAM STARTED');
-      return response.data;
-    } catch (error) {
-      throw new HttpException(
-        'Failed to fetch audio data',
-        HttpStatus.BAD_REQUEST,
+
+      const readStream = createReadStream(
+        path.join(__dirname, '..', '..', 'assets', '1.mp3'),
       );
+      //buffer
+      // const buffer = fs.readFileSync(
+      //   path.join(__dirname, '..', '..', 'assets', '2.mp3'),
+      // );
+      Logger.log('STREAM END');
+      return readStream;
+    } catch (error) {
+      throw new BadRequestException(error);
     }
   }
 }
