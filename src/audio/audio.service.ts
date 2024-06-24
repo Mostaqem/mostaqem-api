@@ -16,6 +16,7 @@ export class AudioService {
       Logger.log('STREAM END');
       return response.data;
     } catch (error) {
+      console.log(error);
       throw new BadRequestException(error);
     }
   }
