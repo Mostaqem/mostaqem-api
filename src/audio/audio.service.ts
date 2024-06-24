@@ -11,6 +11,7 @@ export class AudioService {
 
       const response = await axios.get(url, {
         responseType: 'stream',
+        maxRedirects: 5,
       });
 
       Logger.log('STREAM END');
