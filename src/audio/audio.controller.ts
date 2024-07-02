@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, Res } from '@nestjs/common';
+import { Controller, Get, Query, Res } from '@nestjs/common';
 import { AudioService } from './audio.service';
 import { Response } from 'express';
 
@@ -18,5 +18,17 @@ export class AudioController {
     });
 
     audioBytes.pipe(res);
+  }
+
+  @Get('/fetch')
+  async testFetch() {
+    const req = fetch('https://www.thunderclient.com/welcome', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return (await req).json();
   }
 }
