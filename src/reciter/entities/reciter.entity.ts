@@ -25,7 +25,7 @@ export class Reciter {
   image: string;
 
   @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.reciter, {
-    cascade: true,
+    onDelete: 'CASCADE',
   })
   reciterSurah: ReciterSurah[];
 }

@@ -36,6 +36,8 @@ export class Surah {
   @OneToMany(() => Verse, (verse) => verse.surah)
   verses: Verse[];
 
-  @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.surah)
+  @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.surah, {
+    onDelete: 'CASCADE',
+  })
   reciterSurah: ReciterSurah[];
 }
