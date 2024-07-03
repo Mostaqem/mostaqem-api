@@ -1,7 +1,8 @@
 import { Verse } from 'src/verse/entities/verse.entity';
-import { Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, OneToMany } from 'typeorm';
 import { Column } from 'typeorm/decorator/columns/Column';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn';
+import { ReciterSurah } from './reciter-surah.entity';
 
 @Entity()
 export class Surah {
@@ -34,4 +35,7 @@ export class Surah {
 
   @OneToMany(() => Verse, (verse) => verse.surah)
   verses: Verse[];
+
+  @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.surah)
+  reciterSurah: ReciterSurah[];
 }

@@ -1,24 +1,32 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import axios from 'axios';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ReciterSurah } from 'src/surah/entities/reciter-surah.entity';
+import { Repository } from 'typeorm';
+import { CreateAudioDto } from './dto/create-audio.dto';
+import { FilterAudioDto } from './dto/filter-audio.dto';
 // import axios from 'axios';
-import { Readable } from 'stream';
 
 @Injectable()
 export class AudioService {
-  async getAudioStream(url: string): Promise<Readable> {
-    try {
-      Logger.log('STREAM STARTED');
+  constructor(
+    @InjectRepository(ReciterSurah)
+    private readonly reciterSurahRepo: Repository<ReciterSurah>,
+  ) {}
 
-      const response = await axios.get(url, {
-        responseType: 'stream',
-        maxRedirects: 5,
-      });
+  create(createAudioDto: CreateAudioDto) {
+    const audio = this.reciterSurahRepo.create(createAudioDto);
 
-      Logger.log('STREAM END');
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      throw new BadRequestException(error);
+    return this.reciterSurahRepo.save(audio);
+  }
+
+  async getAudio(paginatedFilter: FilterAudioDto) {
+    const { surah_id, reciter_id } = paginatedFilter;
+    const audio = await this.reciterSurahRepo.findOne({
+      where: { surah_id, reciter_id },
+    });
+    if (!audio) {
+      throw new NotFoundException('Audio not found');
     }
+    return audio;
   }
 }
