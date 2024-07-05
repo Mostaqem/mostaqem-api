@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  Headers,
+} from '@nestjs/common';
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
@@ -13,8 +21,8 @@ export class ReciterController {
   }
 
   @Get()
-  findAll() {
-    return this.reciterService.findAll();
+  findAll(@Headers('Accept-Language') lang: 'eng' | 'ar') {
+    return this.reciterService.findAll(lang);
   }
 
   @Get(':id')

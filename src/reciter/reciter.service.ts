@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateReciterDto } from './dto/create-reciter.dto';
-import { UpdateReciterDto } from './dto/update-reciter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reciter } from './entities/reciter.entity';
 import { Repository } from 'typeorm';
@@ -16,8 +15,17 @@ export class ReciterService {
     return this.reciterRepository.save(reciter);
   }
 
-  findAll() {
-    return this.reciterRepository.find();
+  findAll(orderBy: 'eng' | 'ar') {
+    const orderOptions: { name_english?: 'ASC'; name_arabic?: 'ASC' } = {};
+
+    if (orderBy === 'eng') {
+      orderOptions.name_english = 'ASC';
+    } else if (orderBy === 'ar') {
+      orderOptions.name_arabic = 'ASC';
+    }
+    return this.reciterRepository.find({
+      order: orderOptions,
+    });
   }
 
   async findOne(id: number) {
