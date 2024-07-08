@@ -22,6 +22,8 @@ import { AudioModule } from './audio/audio.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: true,
+      connectTimeout: 60000,
+      retryDelay: 6000,
     }),
     SurahModule,
     VerseModule,

@@ -34,8 +34,6 @@ export class SurahService {
     return surah;
   }
 
-  // TODO:add route to upload sura photo
-
   async updateSurahImage(id: number, image: string) {
     const surah = await this.surahRepository.findOneBy({ id });
     if (!surah) throw new NotFoundException('Surah Not Found');

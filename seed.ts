@@ -177,7 +177,7 @@ async function createAudio(obj: any) {
   });
   const allList = await list.json();
 
-  const existList = allList['reciters'].filter((rec) => rec.id == 5);
+  const existList = allList['reciters'].filter((rec) => rec.id == 92);
 
   const listObj = [];
   existList.forEach((element) => {
@@ -192,7 +192,7 @@ async function createAudio(obj: any) {
     for (let i = 1; i <= listOfLinks.length; i++) {
       const surahFileNumber = i.toString().padStart(3, '0');
       listObj.push({
-        reciter_id: 14,
+        reciter_id: 15,
         surah_id: i,
         url: audioLink + `${surahFileNumber}.mp3`,
       } as never);
