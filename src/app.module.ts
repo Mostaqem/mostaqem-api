@@ -6,6 +6,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
 import { VerseModule } from './verse/verse.module';
 import { ReciterModule } from './reciter/reciter.module';
 import { AudioModule } from './audio/audio.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { AudioModule } from './audio/audio.module';
     VerseModule,
     ReciterModule,
     AudioModule,
+    ImageModule,
   ],
 })
 export class AppModule {
