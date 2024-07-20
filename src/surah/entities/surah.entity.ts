@@ -1,10 +1,18 @@
 import { Verse } from 'src/verse/entities/verse.entity';
-import { Entity, OneToMany } from 'typeorm';
+import { Entity, Index, OneToMany } from 'typeorm';
 import { Column } from 'typeorm/decorator/columns/Column';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn';
 import { ReciterSurah } from './reciter-surah.entity';
 
 @Entity()
+@Index('IDX_SURAH', [
+  'id',
+  'name_arabic',
+  'name_complex',
+  'verses_count',
+  'revelation_place',
+  'image',
+])
 export class Surah {
   @PrimaryGeneratedColumn()
   id: number;
