@@ -17,4 +17,4 @@ Once the server is up and running, you can access the API endpoints using the fo
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the [GNU-V3](LICENSE) © OMAR SABRA - see the LICENSE.md file for details
