@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, IsInt, Min, MaxLength } from 'class-validator';
 
 export class CreateVerseDto {
-  id: number;
+  id?: number;
 
   @IsString()
   @IsNotEmpty()

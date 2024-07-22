@@ -7,6 +7,8 @@ import { VerseModule } from './verse/verse.module';
 import { ReciterModule } from './reciter/reciter.module';
 import { AudioModule } from './audio/audio.module';
 import { ImageModule } from './image/image.module';
+import { SurahService } from './surah/surah.service';
+import { VerseService } from './verse/verse.service';
 
 @Module({
   imports: [
@@ -34,7 +36,17 @@ import { ImageModule } from './image/image.module';
   ],
 })
 export class AppModule {
+  constructor(
+    private readonly surahService: SurahService,
+    private readonly verseService: VerseService,
+  ) {}
+
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+
+  async onModuleInit() {
+    await this.surahService.initializeSurah();
+    this.verseService.initialVerses();
   }
 }
