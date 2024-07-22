@@ -9,12 +9,16 @@ import { AudioModule } from './audio/audio.module';
 import { ImageModule } from './image/image.module';
 import { SurahService } from './surah/surah.service';
 import { VerseService } from './verse/verse.service';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: false,
+    }),
+    CacheModule.register({
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',

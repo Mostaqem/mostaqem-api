@@ -38,7 +38,6 @@ export class VerseService {
   async initialVerses() {
     const verses = await this.verseSRepository.find();
     const data = await require('../../quran.json');
-    console.log(verses.length == 0);
     if (verses.length === 0) {
       for (let i = 0; i < data.length; i++) {
         const surah = data[i];
