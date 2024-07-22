@@ -8,5 +8,6 @@ import { Surah } from './entities/surah.entity';
   imports: [TypeOrmModule.forFeature([Surah])],
   controllers: [SurahController],
   providers: [SurahService],
+  exports: [SurahService],
 })
 export class SurahModule {}

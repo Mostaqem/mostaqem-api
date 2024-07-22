@@ -6,9 +6,10 @@ export class LoggerMiddleware implements NestMiddleware {
 
   use(req: Request, res: Response, next: NextFunction) {
     const startAt = process.hrtime();
-    const { ip, method, originalUrl } = req;
+    const { method, originalUrl } = req;
 
     const userAgent = req.get('user-agent') || '';
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
     res.on('finish', () => {
       const { statusCode } = res;
