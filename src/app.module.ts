@@ -28,7 +28,7 @@ import { CacheModule } from '@nestjs/cache-manager';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: process.env.NODE_ENV == 'development',
       connectTimeout: 60000,
       retryDelay: 6000,
     }),

@@ -18,5 +18,5 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src/**/*", "test", "seed.ts"]
+  "include": ["src/**/*", "test", "seed.ts","typeorm.config.ts"]
 }
