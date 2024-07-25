@@ -17,7 +17,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./jest-e2e.json --detectOpenHandles",
+    "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli",
+    "typeorm:generate-migration": "npm run typeorm -- -d ./typeorm.config.ts migration:generate ./migrations/$npm_config_name", 
+    "typeorm:migrate": "npm run typeorm -- -d ./typeorm.config.ts migration:run"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.2.2",
@@ -33,6 +36,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
     "mysql2": "^3.10.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",

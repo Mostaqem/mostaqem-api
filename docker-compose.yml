@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mostaqem_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 'db_password'
+      MYSQL_DATABASE: 'mostaqem_db'
+  api_v1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
+    env_file:
+      - .env.docker
+    volumes:
+      - ./src:/app/src
+    links:
+      - db
