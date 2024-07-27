@@ -5,7 +5,7 @@ export class CreateAudioDto {
   surah_id: number;
 
   @IsNumber()
-  reciter_id: number;
+  tilawa_id: number;
 
   @IsUrl()
   url: string;
