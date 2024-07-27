@@ -51,6 +51,5 @@ export class AppModule {
 
   async onModuleInit() {
     await this.surahService.initializeSurah();
-    this.verseService.initialVerses();
   }
 }

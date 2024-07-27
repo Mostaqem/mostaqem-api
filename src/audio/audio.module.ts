@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { AudioService } from './audio.service';
 import { AudioController } from './audio.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ReciterSurah } from 'src/surah/entities/reciter-surah.entity';
+import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
+import { ReciterModule } from 'src/reciter/reciter.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ReciterSurah])],
+  imports: [TypeOrmModule.forFeature([TilawaSurah]), ReciterModule],
   controllers: [AudioController],
   providers: [AudioService],
 })

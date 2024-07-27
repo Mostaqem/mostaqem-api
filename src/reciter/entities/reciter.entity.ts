@@ -1,5 +1,5 @@
-import { ReciterSurah } from 'src/surah/entities/reciter-surah.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Tilawa } from './tilawa.entity';
 
 @Entity()
 export class Reciter {
@@ -24,8 +24,8 @@ export class Reciter {
   })
   image: string;
 
-  @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.reciter, {
+  @OneToMany(() => Tilawa, (telawaa) => telawaa.reciter, {
     onDelete: 'CASCADE',
   })
-  reciterSurah: ReciterSurah[];
+  tilawa: Tilawa[];
 }

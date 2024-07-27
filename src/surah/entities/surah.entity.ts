@@ -2,7 +2,7 @@ import { Verse } from 'src/verse/entities/verse.entity';
 import { Entity, Index, OneToMany } from 'typeorm';
 import { Column } from 'typeorm/decorator/columns/Column';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn';
-import { ReciterSurah } from './reciter-surah.entity';
+import { TilawaSurah } from './tilawa-surah.entity';
 
 @Entity()
 @Index('IDX_SURAH', [
@@ -44,8 +44,8 @@ export class Surah {
   @OneToMany(() => Verse, (verse) => verse.surah)
   verses: Verse[];
 
-  @OneToMany(() => ReciterSurah, (reciterSurah) => reciterSurah.surah, {
+  @OneToMany(() => TilawaSurah, (reciterSurah) => reciterSurah.surah, {
     onDelete: 'CASCADE',
   })
-  reciterSurah: ReciterSurah[];
+  reciterSurah: TilawaSurah[];
 }
