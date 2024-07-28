@@ -1,4 +1,5 @@
 import {
+  Inject,
   Injectable,
   InternalServerErrorException,
   Logger,
@@ -8,13 +9,16 @@ import { CreateSurahDto } from './dto/create-surah.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
+import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
 
 @Injectable()
 export class SurahService {
   constructor(
     @InjectRepository(Surah)
     private readonly surahRepository: Repository<Surah>,
-  ) { }
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
+
 
   async create(createSurahDto: CreateSurahDto) {
     const surah = this.surahRepository.create(createSurahDto);
@@ -25,8 +29,20 @@ export class SurahService {
     }
   }
 
-  findAll() {
-    return this.surahRepository.find();
+  async findAll() {
+    const surahCached = await this.cacheManager.get('surah');
+
+    if (surahCached) {
+      return surahCached;
+    }
+
+    const surah = await this.surahRepository.find();
+
+    const ttl = 12 * 60 * 60 * 1000; // 12 hours
+
+    await this.cacheManager.set('surah', surah, ttl);
+
+    return surah;
   }
 
   async findOne(id: number) {

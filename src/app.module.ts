@@ -9,12 +9,16 @@ import { AudioModule } from './audio/audio.module';
 import { ImageModule } from './image/image.module';
 import { SurahService } from './surah/surah.service';
 import { VerseService } from './verse/verse.service';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: false,
+    }),
+    CacheModule.register({
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -24,7 +28,7 @@ import { VerseService } from './verse/verse.service';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: process.env.NODE_ENV == 'development',
       connectTimeout: 60000,
       retryDelay: 6000,
     }),
@@ -47,6 +51,5 @@ export class AppModule {
 
   async onModuleInit() {
     await this.surahService.initializeSurah();
-    this.verseService.initialVerses();
   }
 }

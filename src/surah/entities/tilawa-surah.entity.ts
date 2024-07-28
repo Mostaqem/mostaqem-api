@@ -1,11 +1,11 @@
-import { Reciter } from 'src/reciter/entities/reciter.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Surah } from './surah.entity';
+import { Tilawa } from 'src/reciter/entities/tilawa.entity';
 
 @Entity()
-export class ReciterSurah {
+export class TilawaSurah {
   @PrimaryColumn('integer')
-  reciter_id: number;
+  tilawa_id: number;
 
   @PrimaryColumn('integer')
   surah_id: number;
@@ -15,9 +15,9 @@ export class ReciterSurah {
   })
   url: string;
 
-  @ManyToOne(() => Reciter, (reciter) => reciter.reciterSurah)
-  @JoinColumn({ name: 'reciter_id' })
-  reciter: Reciter;
+  @ManyToOne(() => Tilawa, (tilawa) => tilawa.tilawaSurah)
+  @JoinColumn({ name: 'tilawa_id' })
+  tilawa: Tilawa;
 
   @ManyToOne(() => Surah, (surah) => surah.reciterSurah)
   @JoinColumn({ name: 'surah_id' })

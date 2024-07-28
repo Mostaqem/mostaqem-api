@@ -10,6 +10,7 @@ import {
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
+import { AddTilawaDto } from './dto/add-tilawa.dto';
 
 @Controller('reciter')
 export class ReciterController {
@@ -23,6 +24,19 @@ export class ReciterController {
   @Get()
   findAll(@Headers('Accept-Language') lang: 'eng' | 'ar') {
     return this.reciterService.findAll(lang);
+  }
+
+  @Post('/:id/tilawa')
+  addReciterTilawa(
+    @Param('id') id: number,
+    @Body() addTilawaDto: AddTilawaDto,
+  ) {
+    return this.reciterService.addReciterTilawa(id, addTilawaDto);
+  }
+
+  @Get('/:id/tilawa')
+  getReciterTilawa(@Param('id') id: number) {
+    return this.reciterService.getReciterTilawa(id);
   }
 
   @Get(':id')
