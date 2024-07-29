@@ -20,9 +20,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to Droplet
+      - name: Debug SSH Connection
         run: |
-          ssh -vvv -o "UseDNS=no" -o ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}
+          ssh -vvv -o "UseDNS=no" -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}
 
       - name: Test we are connect to the server
         run: mkdir generate_with_github_actions
