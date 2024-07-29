@@ -20,8 +20,17 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Make SSH directory
+      - name: update ENV vars;
         run: |
-         ssh -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          mkdir  generateByGithubActions
-         EOF
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+             cd ${{ secrets.SERVER_PATH }}
+             rm -f .env 
+             echo ${{ secrets.ENV_FILE }} > .env
+          EOF
+
+      - name: run deploy script
+        run: |
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+             chmod +x deploy.sh
+             ./deploy.sh
+          EOF
