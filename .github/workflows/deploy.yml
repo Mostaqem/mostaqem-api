@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to Droplet
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}
+          ssh -vvv -o "UseDNS=no" -o ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}
 
       - name: Test we are connect to the server
         run: mkdir generate_with_github_actions
