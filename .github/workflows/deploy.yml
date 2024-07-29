@@ -20,8 +20,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name : Test secrets 
-        run: echo ${{ secrets.SERVER_USER }}
- 
-      - name: Test we are connect to the server
-        run: mkdir generate_with_github_actions
+      - name: Make SSH directory
+        run: |
+         ssh -o "UseDNS=no" -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          mkdir  generateByGithubActions
+         EOF
