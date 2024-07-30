@@ -12,25 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install SSH client
-        run: sudo apt-get install openssh-client -y
-
-      - name: Add SSH key
-        uses: webfactory/ssh-agent@v0.5.0
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: update ENV vars;
-        run: |
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-             cd ${{ secrets.SERVER_PATH }}
-             rm -f .env 
-             echo ${{ secrets.ENV_FILE }} > .env
-          EOF
-
-      - name: run deploy script
-        run: |
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-             chmod +x deploy.sh
-             ./deploy.sh
-          EOF
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.SERVER_PATH }}
+            git pull origin main
+            pnpm install --lockfile
+            pnpm run build
+            pm2 restart ${{ secrets.PM2_PROCESS_NAME }} --silent
+            echo "Deployment successful"
