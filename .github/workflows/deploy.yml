@@ -3,7 +3,7 @@ name: Deploy to Droplet
 on:
   push:
     branches:
-      - dev # Change this to main if you are using main as your default branch
+      - main
 
 jobs:
   deploy:
