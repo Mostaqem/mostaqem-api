@@ -20,8 +20,17 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.SERVER_PATH }}
+
+            rm -f .env 
+
+            echo ${{ secrets.ENV_FILE }} > .env
+
             git pull origin main
+
             pnpm install --lockfile
+
             pnpm run build
+
             pm2 restart ${{ secrets.PM2_PROCESS_NAME }} --silent
+
             echo "Deployment successful"
