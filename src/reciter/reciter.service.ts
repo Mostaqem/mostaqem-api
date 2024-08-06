@@ -76,15 +76,15 @@ export class ReciterService {
     const tilawa = await this.tilawaRepository.find({
       where: { reciter_id: reciterId },
     });
-
-    if (!tilawa) throw new NotFoundException('Tilawa not found');
-
+    if (!tilawa.length) throw new NotFoundException('Tilawa not found');
     return tilawa;
   }
 
-  addReciterTilawa(id: number, addTilawaDto: AddTilawaDto) {
-    const tilawa = this.tilawaRepository.create(addTilawaDto);
-    tilawa.reciter_id = id;
+  addReciterTilawa(id: number, addTilawaDto: Omit<AddTilawaDto, 'reciter_id'>) {
+    const tilawa = this.tilawaRepository.create({
+      ...addTilawaDto,
+      reciter_id: id,
+    });
     return this.tilawaRepository.save(tilawa);
   }
 }

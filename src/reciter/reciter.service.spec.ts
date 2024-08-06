@@ -199,10 +199,9 @@ describe('ReciterService', () => {
 
     it('should throw NotFoundException if tilawa not found', async () => {
       jest.spyOn(tilawaRepository, 'findOneBy').mockResolvedValueOnce(null);
+      const result = service.getReciterTilawaId(1);
 
-      await expect(service.getReciterTilawaId(1)).rejects.toThrow(
-        NotFoundException,
-      );
+      expect(result).rejects.toThrow(NotFoundException);
     });
   });
 
@@ -224,10 +223,8 @@ describe('ReciterService', () => {
 
     it('should throw NotFoundException if no tilawas found', async () => {
       jest.spyOn(tilawaRepository, 'find').mockResolvedValue([]);
-
-      await expect(service.getReciterTilawa(1)).rejects.toThrow(
-        NotFoundException,
-      );
+      const result = service.getReciterTilawa(1);
+      await expect(result).rejects.toThrow(NotFoundException);
     });
   });
 
