@@ -21,10 +21,6 @@ jobs:
           script: |
             cd ${{ secrets.SERVER_PATH }}
 
-            rm -f .env 
-
-            echo ${{ secrets.ENV_FILE }} > .env
-
             git pull origin main
 
             pnpm install --lockfile
