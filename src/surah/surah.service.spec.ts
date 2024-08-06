@@ -4,8 +4,8 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { CreateSurahDto } from './dto/create-surah.dto';
-import { NotFoundException, InternalServerErrorException } from '@nestjs/common';
-import { Logger } from '@nestjs/common';
+import { NotFoundException, InternalServerErrorException, Logger } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 jest.mock('../../quran.json', () => [
   {
@@ -16,6 +16,13 @@ jest.mock('../../quran.json', () => [
     type: 'Meccan',
   },
 ]);
+
+const mockCacheManager = {
+  get: jest.fn(),
+  set: jest.fn(),
+  del: jest.fn(),
+  reset: jest.fn(),
+};
 
 describe('SurahService', () => {
   let surahService: SurahService;
@@ -28,6 +35,10 @@ describe('SurahService', () => {
         {
           provide: getRepositoryToken(Surah),
           useClass: Repository,
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: mockCacheManager,
         },
       ],
     }).compile();
@@ -87,7 +98,7 @@ describe('SurahService', () => {
   });
 
   describe('findAll', () => {
-    it('should return all surahs', async () => {
+    it('should return all surahs from cache if available', async () => {
       const surahs: Surah[] = [
         {
           id: 1,
@@ -101,11 +112,36 @@ describe('SurahService', () => {
         },
       ];
 
+      mockCacheManager.get.mockResolvedValue(surahs);
+
+      const result = await surahService.findAll();
+
+      expect(mockCacheManager.get).toHaveBeenCalledWith('surah');
+      expect(result).toEqual(surahs);
+    });
+
+    it('should return all surahs from repository and cache them if not in cache', async () => {
+      const surahs: Surah[] = [
+        {
+          id: 1,
+          name_arabic: 'الفاتحة',
+          name_complex: 'Al-Fatiha',
+          verses_count: 7,
+          revelation_place: 'Meccan',
+          image: null,
+          verses: [],
+          reciterSurah: [],
+        },
+      ];
+
+      mockCacheManager.get.mockResolvedValue(null);
       jest.spyOn(surahRepository, 'find').mockResolvedValueOnce(surahs);
 
       const result = await surahService.findAll();
 
+      expect(mockCacheManager.get).toHaveBeenCalledWith('surah');
       expect(surahRepository.find).toHaveBeenCalled();
+      expect(mockCacheManager.set).toHaveBeenCalledWith('surah', surahs, 12 * 60 * 60 * 1000);
       expect(result).toEqual(surahs);
     });
   });

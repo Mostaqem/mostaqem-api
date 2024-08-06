@@ -3,7 +3,7 @@ import { AudioController } from './audio.controller';
 import { AudioService } from './audio.service';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
-import { ReciterSurah } from 'src/surah/entities/reciter-surah.entity';
+import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 
 describe('AudioController', () => {
   let controller: AudioController;
@@ -35,16 +35,19 @@ describe('AudioController', () => {
     it('should create a new audio', async () => {
       const createAudioDto: CreateAudioDto = {
         surah_id: 1,
-        reciter_id: 1,
+        tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
       };
-      const expectedResult: Partial<ReciterSurah> = {
-        ...createAudioDto,
-        reciter: { id: 1, name: 'Mock Reciter' } as any,
-        surah: { id: 1, name: 'Mock Surah' } as any,
+      const expectedResult: Partial<TilawaSurah> & { reciter_id: number } = {
+        surah_id: 1,
+        tilawa_id: 1,
+        url: 'https://example.com/audio.mp3',
+        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        surah: {} as any,
+        reciter_id: 1,
       };
 
-      jest.spyOn(service, 'create').mockResolvedValue(expectedResult as ReciterSurah);
+      jest.spyOn(service, 'create').mockResolvedValue({ ...expectedResult, reciter_id: 1 } as TilawaSurah & { reciter_id: number });
 
       const result = await controller.create(createAudioDto);
 
@@ -59,15 +62,16 @@ describe('AudioController', () => {
         surah_id: 1,
         reciter_id: 1,
       };
-      const expectedResult: Partial<ReciterSurah> = {
+      const expectedResult: Partial<TilawaSurah> & { reciter_id: number } = {
         surah_id: 1,
-        reciter_id: 1,
+        tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        reciter: { id: 1, name: 'Mock Reciter' } as any,
-        surah: { id: 1, name: 'Mock Surah' } as any,
+        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        surah: {} as any,
+        reciter_id: 1,
       };
 
-      jest.spyOn(service, 'getAudio').mockResolvedValue(expectedResult as ReciterSurah);
+      jest.spyOn(service, 'getAudio').mockResolvedValue({ ...expectedResult, reciter_id: 1 } as TilawaSurah & { reciter_id: number });
 
       const result = await controller.get(filterAudioDto);
 
