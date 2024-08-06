@@ -13,7 +13,7 @@ export class ReciterService {
     private readonly reciterRepository: Repository<Reciter>,
     @InjectRepository(Tilawa)
     private readonly tilawaRepository: Repository<Tilawa>,
-  ) { }
+  ) {}
 
   create(createReciterDto: CreateReciterDto) {
     const reciter = this.reciterRepository.create(createReciterDto);
@@ -87,7 +87,7 @@ export class ReciterService {
   addReciterTilawa(id: number, addTilawaDto: Omit<AddTilawaDto, 'reciter_id'>) {
     const tilawa = this.tilawaRepository.create({
       ...addTilawaDto,
-      reciter_id: id
+      reciter_id: id,
     });
     return this.tilawaRepository.save(tilawa);
   }

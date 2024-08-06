@@ -43,7 +43,9 @@ describe('ReciterController', () => {
       };
       const expectedResult = { id: 1, ...createReciterDto };
 
-      jest.spyOn(service, 'create').mockResolvedValue(expectedResult as Reciter);
+      jest
+        .spyOn(service, 'create')
+        .mockResolvedValue(expectedResult as Reciter);
 
       expect(await controller.create(createReciterDto)).toBe(expectedResult);
       expect(service.create).toHaveBeenCalledWith(createReciterDto);
@@ -52,8 +54,12 @@ describe('ReciterController', () => {
 
   describe('findAll', () => {
     it('should return all reciters', async () => {
-      const expectedResult = [{ id: 1, name_english: 'John Doe', name_arabic: 'جون دو' }];
-      jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult as Reciter[]);
+      const expectedResult = [
+        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
+      ];
+      jest
+        .spyOn(service, 'findAll')
+        .mockResolvedValue(expectedResult as Reciter[]);
 
       expect(await controller.findAll('eng')).toBe(expectedResult);
       expect(service.findAll).toHaveBeenCalledWith('eng');
@@ -62,8 +68,14 @@ describe('ReciterController', () => {
 
   describe('findOne', () => {
     it('should return a single reciter', async () => {
-      const expectedResult = { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' };
-      jest.spyOn(service, 'findOne').mockResolvedValue(expectedResult as Reciter);
+      const expectedResult = {
+        id: 1,
+        name_english: 'John Doe',
+        name_arabic: 'جون دو',
+      };
+      jest
+        .spyOn(service, 'findOne')
+        .mockResolvedValue(expectedResult as Reciter);
 
       expect(await controller.findOne('1')).toBe(expectedResult);
       expect(service.findOne).toHaveBeenCalledWith(1);
@@ -72,12 +84,26 @@ describe('ReciterController', () => {
 
   describe('addSurahImage', () => {
     it('should update reciter image', async () => {
-      const addImageDto: AddImageDto = { image: 'http://example.com/new-image.jpg' };
-      const expectedResult = { id: 1, name_english: 'John Doe', name_arabic: 'جون دو', image: addImageDto.image };
-      jest.spyOn(service, 'updateReciterImage').mockResolvedValue(expectedResult as Reciter);
+      const addImageDto: AddImageDto = {
+        image: 'http://example.com/new-image.jpg',
+      };
+      const expectedResult = {
+        id: 1,
+        name_english: 'John Doe',
+        name_arabic: 'جون دو',
+        image: addImageDto.image,
+      };
+      jest
+        .spyOn(service, 'updateReciterImage')
+        .mockResolvedValue(expectedResult as Reciter);
 
-      expect(await controller.addSurahImage(1, addImageDto)).toBe(expectedResult);
-      expect(service.updateReciterImage).toHaveBeenCalledWith(1, addImageDto.image);
+      expect(await controller.addSurahImage(1, addImageDto)).toBe(
+        expectedResult,
+      );
+      expect(service.updateReciterImage).toHaveBeenCalledWith(
+        1,
+        addImageDto.image,
+      );
     });
   });
 });

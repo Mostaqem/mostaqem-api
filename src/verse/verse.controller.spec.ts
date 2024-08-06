@@ -58,12 +58,28 @@ describe('VerseController', () => {
     it('should call verseService.getSurahVerses with the correct parameters', async () => {
       const getVerseFilterDto: GetVerseFilterDto = { surah_id: 1 };
       const verses: Verse[] = [
-        { id: 1, vers: 'In the name of Allah, the Most Merciful, the Most Compassionate.', verse_number: 1, vers_lang: 'ar', surah_id: 1, surah: null },
-        { id: 2, vers: 'Praise be to Allah, the Lord of all the worlds.', verse_number: 2, vers_lang: 'ar', surah_id: 1, surah: null },
+        {
+          id: 1,
+          vers: 'In the name of Allah, the Most Merciful, the Most Compassionate.',
+          verse_number: 1,
+          vers_lang: 'ar',
+          surah_id: 1,
+          surah: null,
+        },
+        {
+          id: 2,
+          vers: 'Praise be to Allah, the Lord of all the worlds.',
+          verse_number: 2,
+          vers_lang: 'ar',
+          surah_id: 1,
+          surah: null,
+        },
       ];
       const getSurahVersesResult = { verses, totalVerseNumber: verses.length };
 
-      jest.spyOn(verseService, 'getSurahVerses').mockResolvedValueOnce(getSurahVersesResult);
+      jest
+        .spyOn(verseService, 'getSurahVerses')
+        .mockResolvedValueOnce(getSurahVersesResult);
 
       const result = await verseController.getSurahVerses(getVerseFilterDto);
 

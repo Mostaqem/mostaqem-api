@@ -42,12 +42,22 @@ describe('AudioController', () => {
         surah_id: 1,
         tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        tilawa: {
+          id: 1,
+          name: 'Test Tilawa',
+          name_english: 'Test Tilawa',
+          reciter_id: 1,
+          reciter: {},
+          tilawaSurah: [],
+        } as any,
         surah: {} as any,
         reciter_id: 1,
       };
 
-      jest.spyOn(service, 'create').mockResolvedValue({ ...expectedResult, reciter_id: 1 } as TilawaSurah & { reciter_id: number });
+      jest.spyOn(service, 'create').mockResolvedValue({
+        ...expectedResult,
+        reciter_id: 1,
+      } as TilawaSurah & { reciter_id: number });
 
       const result = await controller.create(createAudioDto);
 
@@ -66,12 +76,22 @@ describe('AudioController', () => {
         surah_id: 1,
         tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        tilawa: {
+          id: 1,
+          name: 'Test Tilawa',
+          name_english: 'Test Tilawa',
+          reciter_id: 1,
+          reciter: {},
+          tilawaSurah: [],
+        } as any,
         surah: {} as any,
         reciter_id: 1,
       };
 
-      jest.spyOn(service, 'getAudio').mockResolvedValue({ ...expectedResult, reciter_id: 1 } as TilawaSurah & { reciter_id: number });
+      jest.spyOn(service, 'getAudio').mockResolvedValue({
+        ...expectedResult,
+        reciter_id: 1,
+      } as TilawaSurah & { reciter_id: number });
 
       const result = await controller.get(filterAudioDto);
 

@@ -29,8 +29,12 @@ describe('ReciterService', () => {
     }).compile();
 
     service = module.get<ReciterService>(ReciterService);
-    reciterRepository = module.get<Repository<Reciter>>(getRepositoryToken(Reciter));
-    tilawaRepository = module.get<Repository<Tilawa>>(getRepositoryToken(Tilawa));
+    reciterRepository = module.get<Repository<Reciter>>(
+      getRepositoryToken(Reciter),
+    );
+    tilawaRepository = module.get<Repository<Tilawa>>(
+      getRepositoryToken(Tilawa),
+    );
   });
 
   it('should be defined', () => {
@@ -47,8 +51,12 @@ describe('ReciterService', () => {
       };
       const reciter = { id: 1, ...createReciterDto };
 
-      jest.spyOn(reciterRepository, 'create').mockReturnValue(reciter as Reciter);
-      jest.spyOn(reciterRepository, 'save').mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'create')
+        .mockReturnValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'save')
+        .mockResolvedValue(reciter as Reciter);
 
       expect(await service.create(createReciterDto)).toEqual(reciter);
       expect(reciterRepository.create).toHaveBeenCalledWith(createReciterDto);
@@ -63,10 +71,14 @@ describe('ReciterService', () => {
         { id: 2, name_english: 'Jane Doe', name_arabic: 'جين دو' },
       ];
 
-      jest.spyOn(reciterRepository, 'find').mockResolvedValue(reciters as Reciter[]);
+      jest
+        .spyOn(reciterRepository, 'find')
+        .mockResolvedValue(reciters as Reciter[]);
 
       expect(await service.findAll('eng')).toEqual(reciters);
-      expect(reciterRepository.find).toHaveBeenCalledWith({ order: { name_english: 'ASC' } });
+      expect(reciterRepository.find).toHaveBeenCalledWith({
+        order: { name_english: 'ASC' },
+      });
     });
 
     it('should return all reciters ordered by name_arabic', async () => {
@@ -75,18 +87,28 @@ describe('ReciterService', () => {
         { id: 2, name_english: 'Jane Doe', name_arabic: 'جين دو' },
       ];
 
-      jest.spyOn(reciterRepository, 'find').mockResolvedValue(reciters as Reciter[]);
+      jest
+        .spyOn(reciterRepository, 'find')
+        .mockResolvedValue(reciters as Reciter[]);
 
       expect(await service.findAll('ar')).toEqual(reciters);
-      expect(reciterRepository.find).toHaveBeenCalledWith({ order: { name_arabic: 'ASC' } });
+      expect(reciterRepository.find).toHaveBeenCalledWith({
+        order: { name_arabic: 'ASC' },
+      });
     });
   });
 
   describe('findOne', () => {
     it('should return a single reciter', async () => {
-      const reciter = { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' };
+      const reciter = {
+        id: 1,
+        name_english: 'John Doe',
+        name_arabic: 'جون دو',
+      };
 
-      jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'findOneBy')
+        .mockResolvedValue(reciter as Reciter);
 
       expect(await service.findOne(1)).toEqual(reciter);
       expect(reciterRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
@@ -101,13 +123,24 @@ describe('ReciterService', () => {
 
   describe('updateReciterImage', () => {
     it('should update reciter image', async () => {
-      const reciter = { id: 1, name_english: 'John Doe', name_arabic: 'جون دو', image: 'old-image.jpg' };
+      const reciter = {
+        id: 1,
+        name_english: 'John Doe',
+        name_arabic: 'جون دو',
+        image: 'old-image.jpg',
+      };
       const updatedReciter = { ...reciter, image: 'new-image.jpg' };
 
-      jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(reciter as Reciter);
-      jest.spyOn(reciterRepository, 'save').mockResolvedValue(updatedReciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'findOneBy')
+        .mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'save')
+        .mockResolvedValue(updatedReciter as Reciter);
 
-      expect(await service.updateReciterImage(1, 'new-image.jpg')).toEqual(updatedReciter);
+      expect(await service.updateReciterImage(1, 'new-image.jpg')).toEqual(
+        updatedReciter,
+      );
       expect(reciterRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
       expect(reciterRepository.save).toHaveBeenCalledWith(updatedReciter);
     });
@@ -115,7 +148,9 @@ describe('ReciterService', () => {
     it('should throw NotFoundException if reciter is not found', async () => {
       jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(null);
 
-      await expect(service.updateReciterImage(1, 'new-image.jpg')).rejects.toThrow(NotFoundException);
+      await expect(
+        service.updateReciterImage(1, 'new-image.jpg'),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 
@@ -136,7 +171,9 @@ describe('ReciterService', () => {
     });
 
     it('should not add default tilawa if tilawa already exists', async () => {
-      jest.spyOn(tilawaRepository, 'find').mockResolvedValueOnce([{} as Tilawa]);
+      jest
+        .spyOn(tilawaRepository, 'find')
+        .mockResolvedValueOnce([{} as Tilawa]);
       jest.spyOn(reciterRepository, 'find').mockResolvedValueOnce([]);
 
       await service.addDefaultTilawaToReciters();
@@ -148,36 +185,49 @@ describe('ReciterService', () => {
   describe('getReciterTilawaId', () => {
     it('should return tilawa id for a reciter', async () => {
       const mockTilawa = { id: 1, reciter_id: 1 } as Tilawa;
-      jest.spyOn(tilawaRepository, 'findOneBy').mockResolvedValueOnce(mockTilawa);
+      jest
+        .spyOn(tilawaRepository, 'findOneBy')
+        .mockResolvedValueOnce(mockTilawa);
 
       const result = await service.getReciterTilawaId(1);
 
       expect(result).toBe(1);
-      expect(tilawaRepository.findOneBy).toHaveBeenCalledWith({ reciter_id: 1 });
+      expect(tilawaRepository.findOneBy).toHaveBeenCalledWith({
+        reciter_id: 1,
+      });
     });
 
     it('should throw NotFoundException if tilawa not found', async () => {
       jest.spyOn(tilawaRepository, 'findOneBy').mockResolvedValueOnce(null);
 
-      await expect(service.getReciterTilawaId(1)).rejects.toThrow(NotFoundException);
+      await expect(service.getReciterTilawaId(1)).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
   describe('getReciterTilawa', () => {
     it('should return tilawas for a reciter', async () => {
-      const mockTilawas = [{ id: 1, reciter_id: 1 }, { id: 2, reciter_id: 1 }] as Tilawa[];
+      const mockTilawas = [
+        { id: 1, reciter_id: 1 },
+        { id: 2, reciter_id: 1 },
+      ] as Tilawa[];
       jest.spyOn(tilawaRepository, 'find').mockResolvedValue(mockTilawas);
 
       const result = await service.getReciterTilawa(1);
 
       expect(result).toEqual(mockTilawas);
-      expect(tilawaRepository.find).toHaveBeenCalledWith({ where: { reciter_id: 1 } });
+      expect(tilawaRepository.find).toHaveBeenCalledWith({
+        where: { reciter_id: 1 },
+      });
     });
 
     it('should throw NotFoundException if no tilawas found', async () => {
       jest.spyOn(tilawaRepository, 'find').mockResolvedValue([]);
 
-      await expect(service.getReciterTilawa(1)).rejects.toThrow(NotFoundException);
+      await expect(service.getReciterTilawa(1)).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
@@ -186,7 +236,7 @@ describe('ReciterService', () => {
       const addTilawaDto: AddTilawaDto = {
         name: 'New Tilawa',
         name_english: 'New Tilawa',
-        reciter_id: 1  // Add this line
+        reciter_id: 1, // Add this line
       };
       const mockTilawa = { id: 1, ...addTilawaDto } as Tilawa;
 

@@ -31,7 +31,9 @@ describe('AudioService', () => {
     }).compile();
 
     service = module.get<AudioService>(AudioService);
-    tilawaSurahRepo = module.get<Repository<TilawaSurah>>(getRepositoryToken(TilawaSurah));
+    tilawaSurahRepo = module.get<Repository<TilawaSurah>>(
+      getRepositoryToken(TilawaSurah),
+    );
     reciterService = module.get<ReciterService>(ReciterService);
   });
 
@@ -50,12 +52,23 @@ describe('AudioService', () => {
         surah_id: 1,
         tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        tilawa: {
+          id: 1,
+          name: 'Test Tilawa',
+          name_english: 'Test Tilawa',
+          reciter_id: 1,
+          reciter: {},
+          tilawaSurah: [],
+        } as any,
         surah: {} as any,
       };
 
-      jest.spyOn(tilawaSurahRepo, 'create').mockReturnValue(expectedResult as TilawaSurah);
-      jest.spyOn(tilawaSurahRepo, 'save').mockResolvedValue(expectedResult as TilawaSurah);
+      jest
+        .spyOn(tilawaSurahRepo, 'create')
+        .mockReturnValue(expectedResult as TilawaSurah);
+      jest
+        .spyOn(tilawaSurahRepo, 'save')
+        .mockResolvedValue(expectedResult as TilawaSurah);
 
       const result = await service.create(createAudioDto);
 
@@ -75,7 +88,14 @@ describe('AudioService', () => {
         surah_id: 1,
         tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        tilawa: { id: 1, name: 'Test Tilawa', name_english: 'Test Tilawa', reciter_id: 1, reciter: {}, tilawaSurah: [] } as any,
+        tilawa: {
+          id: 1,
+          name: 'Test Tilawa',
+          name_english: 'Test Tilawa',
+          reciter_id: 1,
+          reciter: {},
+          tilawaSurah: [],
+        } as any,
         surah: {} as any,
         reciter_id: 1,
       };
@@ -87,10 +107,12 @@ describe('AudioService', () => {
           name_english: 'Hafs an Asim - Murattal',
           reciter_id: 1,
           reciter: {} as any,
-          tilawaSurah: [] as any[]
-        }
+          tilawaSurah: [] as any[],
+        },
       ]);
-      jest.spyOn(tilawaSurahRepo, 'findOne').mockResolvedValue(expectedResult as TilawaSurah);
+      jest
+        .spyOn(tilawaSurahRepo, 'findOne')
+        .mockResolvedValue(expectedResult as TilawaSurah);
 
       const result = await service.getAudio(filterAudioDto);
 
@@ -113,14 +135,15 @@ describe('AudioService', () => {
           name_english: 'Hafs an Asim - Murattal',
           reciter_id: 1,
           reciter: {} as any,
-          tilawaSurah: [] as any[]
-        }
+          tilawaSurah: [] as any[],
+        },
       ]);
-
 
       jest.spyOn(tilawaSurahRepo, 'findOne').mockResolvedValue(null);
 
-      await expect(service.getAudio(filterAudioDto)).rejects.toThrow(NotFoundException);
+      await expect(service.getAudio(filterAudioDto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 });

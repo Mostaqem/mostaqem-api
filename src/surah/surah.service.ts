@@ -19,7 +19,6 @@ export class SurahService {
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
-
   async create(createSurahDto: CreateSurahDto) {
     const surah = this.surahRepository.create(createSurahDto);
     try {

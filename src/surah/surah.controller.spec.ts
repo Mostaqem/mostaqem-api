@@ -68,7 +68,9 @@ describe('SurahController', () => {
         revelation_place: 'Meccan',
       };
 
-      jest.spyOn(surahService, 'create').mockRejectedValue(new Error('Creation failed'));
+      jest
+        .spyOn(surahService, 'create')
+        .mockRejectedValue(new Error('Creation failed'));
 
       await expect(surahController.create(createSurahDto)).rejects.toThrow();
     });
@@ -116,15 +118,21 @@ describe('SurahController', () => {
     });
 
     it('should throw NotFoundException if surah is not found', async () => {
-      jest.spyOn(surahService, 'findOne').mockRejectedValue(new NotFoundException());
+      jest
+        .spyOn(surahService, 'findOne')
+        .mockRejectedValue(new NotFoundException());
 
-      await expect(surahController.findOne('1')).rejects.toThrow(NotFoundException);
+      await expect(surahController.findOne('1')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
   describe('addSurahImage', () => {
     it('should call surahService.updateSurahImage with the correct parameters', async () => {
-      const addImageDto: AddImageDto = { image: 'http://example.com/image.jpg' };
+      const addImageDto: AddImageDto = {
+        image: 'http://example.com/image.jpg',
+      };
       const result = {
         id: 1,
         name_arabic: 'الفاتحة',
@@ -138,14 +146,25 @@ describe('SurahController', () => {
 
       jest.spyOn(surahService, 'updateSurahImage').mockResolvedValue(result);
 
-      expect(await surahController.addSurahImage(1, addImageDto)).toEqual(result);
-      expect(surahService.updateSurahImage).toHaveBeenCalledWith(1, addImageDto.image);
+      expect(await surahController.addSurahImage(1, addImageDto)).toEqual(
+        result,
+      );
+      expect(surahService.updateSurahImage).toHaveBeenCalledWith(
+        1,
+        addImageDto.image,
+      );
     });
 
     it('should handle errors while updating image', async () => {
-      jest.spyOn(surahService, 'updateSurahImage').mockRejectedValue(new NotFoundException());
+      jest
+        .spyOn(surahService, 'updateSurahImage')
+        .mockRejectedValue(new NotFoundException());
 
-      await expect(surahController.addSurahImage(1, { image: 'http://example.com/image.jpg' })).rejects.toThrow(NotFoundException);
+      await expect(
+        surahController.addSurahImage(1, {
+          image: 'http://example.com/image.jpg',
+        }),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 });
