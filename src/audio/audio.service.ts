@@ -13,7 +13,7 @@ export class AudioService {
     @InjectRepository(TilawaSurah)
     private readonly tilawaSurahRepo: Repository<TilawaSurah>,
     private readonly reciterService: ReciterService,
-  ) { }
+  ) {}
 
   create(createAudioDto: CreateAudioDto) {
     const audio = this.tilawaSurahRepo.create(createAudioDto);
@@ -21,7 +21,7 @@ export class AudioService {
     return this.tilawaSurahRepo.save(audio);
   }
 
-  async getAudio(paginatedFilter: FilterAudioDto): Promise<TilawaSurah & { reciter_id: number }> {
+  async getAudio(paginatedFilter: FilterAudioDto) {
     const { surah_id, reciter_id } = paginatedFilter;
     let tilawa_id = paginatedFilter.tilawa_id;
 
