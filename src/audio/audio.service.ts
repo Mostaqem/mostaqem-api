@@ -21,7 +21,9 @@ export class AudioService {
     return this.tilawaSurahRepo.save(audio);
   }
 
-  async getAudio(paginatedFilter: FilterAudioDto) {
+  async getAudio(
+    paginatedFilter: FilterAudioDto,
+  ): Promise<TilawaSurah & { reciter_id: number }> {
     const { surah_id, reciter_id } = paginatedFilter;
     let tilawa_id = paginatedFilter.tilawa_id;
 
