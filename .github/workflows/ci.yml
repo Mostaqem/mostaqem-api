@@ -1,9 +1,9 @@
 name: Continuous Integration Workflow
 on:
   push:
-    branches: ['main']
+    branches-ignore: ['main']
   pull_request:
-    branches: ['main']
+    branches: ['*']
 jobs:
   build:
     name: 'build to JS'
