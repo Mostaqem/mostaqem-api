@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 import { Repository } from 'typeorm';
@@ -26,6 +30,10 @@ export class AudioService {
   ): Promise<TilawaSurah & { reciter_id: number }> {
     const { surah_id, reciter_id } = paginatedFilter;
     let tilawa_id = paginatedFilter.tilawa_id;
+    console.log(tilawa_id);
+
+    if (!reciter_id && !tilawa_id)
+      throw new ConflictException('Reciter or Tilawa are required');
 
     if (!tilawa_id) {
       const tilawa = await this.reciterService.getReciterTilawa(reciter_id);

@@ -8,6 +8,7 @@ export class FilterAudioDto {
 
   @IsNumber()
   @Transform(({ value }) => parseInt(value))
+  @IsOptional()
   reciter_id: number;
 
   @IsNumber()
