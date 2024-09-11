@@ -4,6 +4,7 @@
 /build
 data.json
 seed.ts
+data_eng.json
 
 # Logs
 logs

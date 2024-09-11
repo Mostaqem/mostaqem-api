@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 
 export class CreateReciterDto {
-  id: number;
+  id?: number;
 
   @IsString()
   @Length(3, 50)

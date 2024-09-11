@@ -10,7 +10,6 @@ import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { ReciterService } from 'src/reciter/reciter.service';
 
-const DEFAULT_TILAWA = 'حفص عن عاصم - مرتل';
 @Injectable()
 export class AudioService {
   constructor(
@@ -36,8 +35,7 @@ export class AudioService {
 
     if (!tilawa_id) {
       const tilawa = await this.reciterService.getReciterTilawa(reciter_id);
-      const defaultTilawa = tilawa.find((t) => t.name == DEFAULT_TILAWA);
-      tilawa_id = defaultTilawa.id;
+      tilawa_id = tilawa[0].id;
     }
 
     const audio = await this.tilawaSurahRepo.findOne({
@@ -49,21 +47,4 @@ export class AudioService {
     }
     return { ...audio, reciter_id };
   }
-
-  // async createAudioSeeder() {
-  //   const audio = await this.tilawaSurahRepo.find();
-
-  //   if (audio.length) return;
-
-  //   const audioData = await require('../../data/tilawa-surah.json');
-
-  //   for (const audio of audioData) {
-  //     const newAudio = this.tilawaSurahRepo.create({
-  //       surah_id: audio.surah_id,
-  //       tilawa_id: audio.tilawa_id,
-  //       audio_url: audio.audio_url,
-  //     });
-  //     await this.tilawaSurahRepo.save(newAudio);
-  //   }
-  // }
 }
