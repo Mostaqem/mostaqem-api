@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  Query,
+} from '@nestjs/common';
 import { SurahService } from './surah.service';
 import { CreateSurahDto } from './dto/create-surah.dto';
 import { AddImageDto } from './dto/add-image.dto';
+import { SurahFilterDto } from './dto/surah-filter.dto';
 
 @Controller('surah')
 export class SurahController {
@@ -13,8 +22,8 @@ export class SurahController {
   }
 
   @Get()
-  findAll() {
-    return this.surahService.findAll();
+  findAll(@Query() surahFilterDto: SurahFilterDto) {
+    return this.surahService.findAll(surahFilterDto);
   }
 
   @Get(':id')

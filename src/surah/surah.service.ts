@@ -10,6 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
+import { SurahFilterDto } from './dto/surah-filter.dto';
 
 @Injectable()
 export class SurahService {
@@ -28,20 +29,31 @@ export class SurahService {
     }
   }
 
-  async findAll() {
-    const surahCached = await this.cacheManager.get('surah');
+  async findAll(surahFilterDto: SurahFilterDto) {
+    const { name, page, take } = surahFilterDto;
+    const skip = (page - 1) * take;
 
-    if (surahCached) {
-      return surahCached;
+    const query = this.surahRepository
+      .createQueryBuilder('surah')
+      .where('1 = 1');
+
+    if (name) {
+      query.andWhere('surah.name_arabic like :name', { name: `%${name}%` });
+      query.orWhere('surah.name_complex like :name', { name: `%${name}%` });
     }
 
-    const surah = await this.surahRepository.find();
+    const [surah, totalData] = await Promise.all([
+      query.skip(skip).take(take).getMany(),
+      query.getCount(),
+    ]);
 
-    const ttl = 12 * 60 * 60 * 1000; // 12 hours
+    const totalPages = Math.ceil(totalData / take);
 
-    await this.cacheManager.set('surah', surah, ttl);
-
-    return surah;
+    return {
+      surah,
+      totalData,
+      totalPages,
+    };
   }
 
   async findOne(id: number) {
