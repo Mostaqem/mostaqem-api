@@ -14,7 +14,7 @@ export class VerseController {
 
   @Get('/surah')
   getSurahVerses(@Query() getVerseFilterDto: GetVerseFilterDto) {
-    return this.verseService.getSurahVerses(getVerseFilterDto.surah_id);
+    return this.verseService.getVerse(getVerseFilterDto);
   }
 
   @Get('/random')

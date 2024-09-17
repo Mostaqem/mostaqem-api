@@ -8,6 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Verse } from './entities/verse.entity';
 import { Repository } from 'typeorm';
 import { randomInt } from 'node:crypto';
+import { GetVerseFilterDto } from './dto/filter-get-verse.dto';
 
 @Injectable()
 export class VerseService {
@@ -25,15 +26,37 @@ export class VerseService {
     }
   }
 
-  async getSurahVerses(surah_id: number) {
-    const verses = await this.verseRepository.find({
-      where: { surah_id },
-    });
-    const result = {
+  async getVerse(getVerseFilterDto: GetVerseFilterDto) {
+    const { surah_id, name, page, take } = getVerseFilterDto;
+    const skip = (page - 1) * take;
+    const query = this.verseRepository
+      .createQueryBuilder('verse')
+      .leftJoinAndSelect('verse.surah', 'surah')
+      .where(`1 = 1`);
+
+    if (surah_id) {
+      query.andWhere('verse.surah_id = :surah_id', { surah_id });
+    }
+
+    if (name) {
+      query.andWhere(
+        'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name },
+      );
+    }
+
+    const [verses, totalData] = await Promise.all([
+      query.skip(skip).take(take).getMany(),
+      query.getCount(),
+    ]);
+
+    const totalPages = Math.ceil(totalData / take);
+
+    return {
       verses,
-      totalVerseNumber: verses.length,
+      totalData,
+      totalPages,
     };
-    return result;
   }
 
   async initialVerses() {

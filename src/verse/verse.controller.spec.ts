@@ -18,6 +18,7 @@ describe('VerseController', () => {
           useValue: {
             create: jest.fn(),
             getSurahVerses: jest.fn(),
+            getVerse: jest.fn(), // Add this line if `getVerse` is also needed elsewhere
           },
         },
       ],
@@ -55,8 +56,12 @@ describe('VerseController', () => {
   });
 
   describe('getSurahVerses', () => {
-    it('should call verseService.getSurahVerses with the correct parameters', async () => {
-      const getVerseFilterDto: GetVerseFilterDto = { surah_id: 1 };
+    it('should call verseService.getVerse with the correct parameters', async () => {
+      const getVerseFilterDto: GetVerseFilterDto = {
+        surah_id: 1,
+        page: 1,
+        take: 10,
+      };
       const verses: Verse[] = [
         {
           id: 1,
@@ -75,15 +80,18 @@ describe('VerseController', () => {
           surah: null,
         },
       ];
-      const getSurahVersesResult = { verses, totalVerseNumber: verses.length };
+      const getSurahVersesResult = {
+        verses,
+        totalData: 27,
+        totalPages: 2,
+      } as any;
 
       jest
-        .spyOn(verseService, 'getSurahVerses')
+        .spyOn(verseService, 'getVerse')
         .mockResolvedValueOnce(getSurahVersesResult);
 
       const result = await verseController.getSurahVerses(getVerseFilterDto);
-
-      expect(verseService.getSurahVerses).toHaveBeenCalledWith(1);
+      expect(verseService.getVerse).toHaveBeenCalledWith(getVerseFilterDto);
       expect(result).toEqual(getSurahVersesResult);
     });
   });
