@@ -38,8 +38,8 @@ export class SurahService {
       .where('1 = 1');
 
     if (name) {
-      query.andWhere('surah.name_arabic like :name', { name: `%${name}%` });
-      query.orWhere('surah.name_complex like :name', { name: `%${name}%` });
+      query.andWhere('surah.name_arabic like :name', { name: `${name}%` });
+      query.orWhere('surah.name_complex like :name', { name: `${name}%` });
     }
 
     const [surah, totalData] = await Promise.all([

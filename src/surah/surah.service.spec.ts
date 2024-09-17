@@ -10,7 +10,36 @@ import {
   Logger,
 } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { SurahFilterDto } from './dto/surah-filter.dto';
 
+const surahFilterDto: SurahFilterDto = {
+  name: 'الفاتحة',
+  page: 1,
+  take: 10,
+};
+
+const surahs: Surah[] = [
+  {
+    id: 1,
+    name_arabic: 'الفاتحة',
+    name_complex: 'Al-Fatiha',
+    verses_count: 7,
+    revelation_place: 'Meccan',
+    image: null,
+    verses: [],
+    reciterSurah: [],
+  },
+];
+
+const queryBuilderMock = {
+  where: jest.fn().mockReturnThis(),
+  andWhere: jest.fn().mockReturnThis(),
+  orWhere: jest.fn().mockReturnThis(),
+  skip: jest.fn().mockReturnThis(),
+  take: jest.fn().mockReturnThis(),
+  getMany: jest.fn().mockResolvedValue(surahs),
+  getCount: jest.fn().mockResolvedValue(1),
+};
 jest.mock('../../quran.json', () => [
   {
     id: 1,
@@ -110,57 +139,66 @@ describe('SurahService', () => {
       );
     });
   });
-
   describe('findAll', () => {
-    it('should return all surahs from cache if available', async () => {
-      const surahs: Surah[] = [
-        {
-          id: 1,
-          name_arabic: 'الفاتحة',
-          name_complex: 'Al-Fatiha',
-          verses_count: 7,
-          revelation_place: 'Meccan',
-          image: null,
-          verses: [],
-          reciterSurah: [],
-        },
-      ];
+    it('should return paginated surahs based on filter', async () => {
+      jest
+        .spyOn(surahRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
 
-      mockCacheManager.get.mockResolvedValue(surahs);
+      const result = await surahService.findAll(surahFilterDto);
 
-      const result = await surahService.findAll();
-
-      expect(mockCacheManager.get).toHaveBeenCalledWith('surah');
-      expect(result).toEqual(surahs);
+      expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
+      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
+        'surah.name_arabic like :name',
+        { name: 'الفاتحة%' },
+      );
+      expect(queryBuilderMock.orWhere).toHaveBeenCalledWith(
+        'surah.name_complex like :name',
+        { name: 'الفاتحة%' },
+      );
+      expect(queryBuilderMock.skip).toHaveBeenCalledWith(0);
+      expect(queryBuilderMock.take).toHaveBeenCalledWith(10);
+      expect(queryBuilderMock.getMany).toHaveBeenCalled();
+      expect(queryBuilderMock.getCount).toHaveBeenCalled();
+      expect(result).toEqual({
+        surah: surahs,
+        totalData: 1,
+        totalPages: 1,
+      });
     });
 
-    it('should return all surahs from repository and cache them if not in cache', async () => {
-      const surahs: Surah[] = [
-        {
-          id: 1,
-          name_arabic: 'الفاتحة',
-          name_complex: 'Al-Fatiha',
-          verses_count: 7,
-          revelation_place: 'Meccan',
-          image: null,
-          verses: [],
-          reciterSurah: [],
-        },
-      ];
+    it('should return paginated surahs without filter', async () => {
+      const basicSurahFilterDto: SurahFilterDto = {
+        page: 1,
+        take: 10,
+      };
+      const queryBuilderMock = {
+        where: jest.fn().mockReturnThis(),
+        andWhere: jest.fn().mockReturnThis(),
+        orWhere: jest.fn().mockReturnThis(),
+        skip: jest.fn().mockReturnThis(),
+        take: jest.fn().mockReturnThis(),
+        getMany: jest.fn().mockResolvedValue(surahs),
+        getCount: jest.fn().mockResolvedValue(1),
+      };
 
-      mockCacheManager.get.mockResolvedValue(null);
-      jest.spyOn(surahRepository, 'find').mockResolvedValueOnce(surahs);
+      jest
+        .spyOn(surahRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
+      const result = await surahService.findAll(basicSurahFilterDto);
 
-      const result = await surahService.findAll();
-
-      expect(mockCacheManager.get).toHaveBeenCalledWith('surah');
-      expect(surahRepository.find).toHaveBeenCalled();
-      expect(mockCacheManager.set).toHaveBeenCalledWith(
-        'surah',
-        surahs,
-        12 * 60 * 60 * 1000,
-      );
-      expect(result).toEqual(surahs);
+      expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
+      // expect(queryBuilderMock.andWhere).not.toHaveBeenCalled();
+      expect(queryBuilderMock.orWhere).not.toHaveBeenCalled();
+      expect(queryBuilderMock.skip).toHaveBeenCalledWith(0);
+      expect(queryBuilderMock.take).toHaveBeenCalledWith(10);
+      expect(queryBuilderMock.getMany).toHaveBeenCalled();
+      expect(queryBuilderMock.getCount).toHaveBeenCalled();
+      expect(result).toEqual({
+        surah: surahs,
+        totalData: 1,
+        totalPages: 1,
+      });
     });
   });
 

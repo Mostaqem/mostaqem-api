@@ -20,10 +20,16 @@ export class Surah {
   @Column('varchar', {
     length: 100,
   })
+  @Index('IDX_SURAH_NAME_ARABIC', {
+    unique: true,
+  })
   name_arabic: string;
 
   @Column('varchar', {
     length: 100,
+  })
+  @Index('IDX_SURAH_NAME_COMPLEX', {
+    unique: true,
   })
   name_complex: string;
 
