@@ -13,7 +13,5 @@ import { Tilawa } from './entities/tilawa.entity';
 })
 export class ReciterModule {
   constructor(private readonly reciterService: ReciterService) {}
-  onModuleInit() {
-    this.reciterService.addDefaultTilawaToReciters();
-  }
+  onModuleInit() {}
 }

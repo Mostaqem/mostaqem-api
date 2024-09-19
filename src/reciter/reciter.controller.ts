@@ -6,11 +6,13 @@ import {
   Param,
   Patch,
   Headers,
+  Query,
 } from '@nestjs/common';
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
+import { ReciterFilterDto } from './dto/reciter-filter.dto';
 
 @Controller('reciter')
 export class ReciterController {
@@ -22,8 +24,11 @@ export class ReciterController {
   }
 
   @Get()
-  findAll(@Headers('Accept-Language') lang: 'eng' | 'ar') {
-    return this.reciterService.findAll(lang);
+  findAll(
+    @Headers('Accept-Language') lang: 'eng' | 'ar',
+    @Query() reciterFilterDto: ReciterFilterDto,
+  ) {
+    return this.reciterService.findAll(lang, reciterFilterDto);
   }
 
   @Post('/:id/tilawa')

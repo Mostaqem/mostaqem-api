@@ -5,6 +5,7 @@ import { Reciter } from './entities/reciter.entity';
 import { Repository } from 'typeorm';
 import { Tilawa } from './entities/tilawa.entity';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
+import { ReciterFilterDto } from './dto/reciter-filter.dto';
 
 @Injectable()
 export class ReciterService {
@@ -20,7 +21,7 @@ export class ReciterService {
     return this.reciterRepository.save(reciter);
   }
 
-  findAll(orderBy: 'eng' | 'ar') {
+  async findAll(orderBy: 'eng' | 'ar', reciterFilterDto: ReciterFilterDto) {
     const orderOptions: { name_english?: 'ASC'; name_arabic?: 'ASC' } = {};
 
     if (orderBy === 'eng') {
@@ -28,9 +29,37 @@ export class ReciterService {
     } else if (orderBy === 'ar') {
       orderOptions.name_arabic = 'ASC';
     }
-    return this.reciterRepository.find({
-      order: orderOptions,
-    });
+    const { take, page, name } = reciterFilterDto;
+    const skip = take * (page - 1);
+
+    const query = this.reciterRepository
+      .createQueryBuilder('reciter')
+      .where('1 = 1')
+      .orderBy(orderOptions);
+
+    if (name) {
+      query.andWhere(
+        'MATCH(reciter.name_arabic) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name },
+      );
+      query.orWhere(
+        'MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name },
+      );
+    }
+
+    const [reciters, total] = await Promise.all([
+      query.take(take).skip(skip).getMany(),
+      query.getCount(),
+    ]);
+
+    const totalPages = Math.ceil(total / take);
+
+    return {
+      reciters,
+      total,
+      totalPages,
+    };
   }
 
   async findOne(id: number) {
@@ -46,6 +75,10 @@ export class ReciterService {
     return await this.reciterRepository.save(surah);
   }
 
+  /**
+   * @deprecated
+   * @returns void
+   */
   async addDefaultTilawaToReciters(): Promise<void> {
     const tilawa = await this.tilawaRepository.find();
 

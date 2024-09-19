@@ -9,7 +9,7 @@ export class paginatedRequest {
 
   @IsInt({ message: 'Take must be an integer' })
   @IsPositive({ message: 'Take must be a positive integer' })
-  @Max(35, { message: 'Take cannot exceed 20' })
+  @Max(35, { message: 'Take cannot exceed 35' })
   @Transform(({ value }) => parseInt(value))
   take: number;
 }
