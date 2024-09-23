@@ -71,7 +71,7 @@ export class SurahService {
 
   async initializeSurah() {
     const surah = await this.surahRepository.find();
-    if (surah.length !== 114) {
+    if (surah.length != 114) {
       const data = await require('../../quran.json');
       const seedPromises = data.map(async (surah: any) => {
         const newSurah = this.surahRepository.create({

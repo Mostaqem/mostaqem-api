@@ -109,11 +109,7 @@ export class ReciterService {
     const tilawa = await this.tilawaRepository.find({
       where: { reciter_id: reciterId },
     });
-
-    if (tilawa.length === 0) {
-      throw new NotFoundException('No tilawas found for this reciter');
-    }
-
+    if (!tilawa.length) throw new NotFoundException('Tilawa not found');
     return tilawa;
   }
 

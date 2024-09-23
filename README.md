@@ -17,4 +17,5 @@ Once the server is up and running, you can access the API endpoints using the fo
 
 ## License
 
-This project is licensed under the [GNU-V3](LICENSE) © OMAR SABRA - see the LICENSE.md file for details
+This project is licensed under the [Mostaqem Custom License (MCL) v1.1](LICENSE) © OMAR SABRA. 
+Please refer to the LICENSE file for full details. All past and future contributions and modifications are governed by this license.
