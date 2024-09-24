@@ -9,6 +9,7 @@ import { Repository } from 'typeorm';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { ReciterService } from 'src/reciter/reciter.service';
+import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
 
 @Injectable()
 export class AudioService {
@@ -39,6 +40,7 @@ export class AudioService {
     }
 
     const audio = await this.tilawaSurahRepo.findOne({
+      select: ['url', 'surah_id', 'tilawa_id'],
       where: { surah_id, tilawa_id },
     });
 
@@ -46,5 +48,15 @@ export class AudioService {
       throw new NotFoundException('Audio not found');
     }
     return { ...audio, reciter_id };
+  }
+
+  getAudioLrc(filterAudioLrcDto: FilterAudioLrcDto) {
+    return this.tilawaSurahRepo.findOne({
+      select: ['lrc_content'],
+      where: {
+        surah_id: filterAudioLrcDto.surah_id,
+        tilawa_id: filterAudioLrcDto.tilawa_id,
+      },
+    });
   }
 }

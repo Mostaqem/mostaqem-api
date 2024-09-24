@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { AudioService } from './audio.service';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
+import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
 
 @Controller('audio')
 export class AudioController {
@@ -15,5 +16,10 @@ export class AudioController {
   @Get()
   get(@Query() paginatedFilter: FilterAudioDto) {
     return this.audioService.getAudio(paginatedFilter);
+  }
+
+  @Get('lrc')
+  getLrc(@Query() filterAudioLrcDto: FilterAudioLrcDto) {
+    return this.audioService.getAudioLrc(filterAudioLrcDto);
   }
 }

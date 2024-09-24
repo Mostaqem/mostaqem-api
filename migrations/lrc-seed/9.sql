@@ -1,9 +1,5 @@
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Fātiĥah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.02] بِسۡمِ
 [00:00.83] ٱللَّهِ
 [00:01.49] ٱلرَّحۡمَٰنِ
@@ -38,10 +34,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Baqarah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:06.52] ذَٰلِكَ
 [00:07.91] ٱلۡكِتَٰبُ
@@ -6386,10 +6378,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Āli `Imrān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:07.81] ٱللَّهُ
 [00:09.27] لَآ
@@ -10016,10 +10004,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Nisā]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:02.72] ٱلنَّاسُ
 [00:03.88] ٱتَّقُواْ
@@ -13974,10 +13958,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Māidah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.42] ٱلَّذِينَ
 [00:04.62] ءَامَنُوٓاْ
@@ -16978,10 +16958,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-An`ām]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡحَمۡدُ
 [00:01.45] لِلَّهِ
 [00:02.40] ٱلَّذِي
@@ -20116,10 +20092,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-A`rāf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓصٓ
 [00:11.47] كِتَٰبٌ
 [00:12.99] أُنزِلَ
@@ -23528,10 +23500,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Anfāl]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَسۡـَٔلُونَكَ
 [00:01.59] عَنِ
 [00:02.00] ٱلۡأَنفَالِۖ
@@ -24836,10 +24804,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Tawbah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] بَرَآءَةٞ
 [00:02.69] مِّنَ
 [00:03.73] ٱللَّهِ
@@ -27380,10 +27344,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Yūnus]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓرۚ
 [00:04.70] تِلۡكَ
 [00:06.34] ءَايَٰتُ
@@ -29310,10 +29270,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Hūd]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓرۚ
 [00:04.28] كِتَٰبٌ
 [00:06.44] أُحۡكِمَتۡ
@@ -31312,10 +31268,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Yūsuf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓرۚ
 [00:04.85] تِلۡكَ
 [00:06.36] ءَايَٰتُ
@@ -33165,10 +33117,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ar-Ra`d]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓرۚ
 [00:07.48] تِلۡكَ
 [00:09.18] ءَايَٰتُ
@@ -34057,10 +34005,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ibrāhīm]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓرۚ
 [00:04.15] كِتَٰبٌ
 [00:06.23] أَنزَلۡنَٰهُ
@@ -34911,10 +34855,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥijr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓرۚ
 [00:04.63] تِلۡكَ
 [00:06.17] ءَايَٰتُ
@@ -35574,10 +35514,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Naĥl]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] أَتَىٰٓ
 [00:02.19] أَمۡرُ
 [00:02.64] ٱللَّهِ
@@ -37476,10 +37412,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Isrā]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سُبۡحَٰنَ
 [00:01.48] ٱلَّذِيٓ
 [00:03.21] أَسۡرَىٰ
@@ -39083,10 +39015,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Kahf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡحَمۡدُ
 [00:01.60] لِلَّهِ
 [00:02.67] ٱلَّذِيٓ
@@ -40745,10 +40673,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Maryam]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] كٓهيعٓصٓ
 [00:11.68] ذِكۡرُ
 [00:12.95] رَحۡمَتِ
@@ -41729,10 +41653,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ţāhā]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] طه
 [00:01.85] مَآ
 [00:04.22] أَنزَلۡنَا
@@ -43096,10 +43016,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Anbyā]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱقۡتَرَبَ
 [00:01.53] لِلنَّاسِ
 [00:03.11] حِسَابُهُمۡ
@@ -44289,10 +44205,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥajj]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:02.89] ٱلنَّاسُ
 [00:04.21] ٱتَّقُواْ
@@ -45599,10 +45511,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Muminūn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قَدۡ
 [00:00.82] أَفۡلَحَ
 [00:01.72] ٱلۡمُؤۡمِنُونَ
@@ -46679,10 +46587,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Nūr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سُورَةٌ
 [00:01.56] أَنزَلۡنَٰهَا
 [00:03.77] وَفَرَضۡنَٰهَا
@@ -48065,10 +47969,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Furqān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] تَبَارَكَ
 [00:01.27] ٱلَّذِي
 [00:02.10] نَزَّلَ
@@ -48979,10 +48879,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ash-Shu`arā]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] طسٓمٓ
 [00:07.60] تِلۡكَ
 [00:08.35] ءَايَٰتُ
@@ -50306,10 +50202,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Naml]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] طسٓۚ
 [00:03.39] تِلۡكَ
 [00:05.38] ءَايَٰتُ
@@ -51493,10 +51385,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qaşaş]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] طسٓمٓ
 [00:07.00] تِلۡكَ
 [00:07.84] ءَايَٰتُ
@@ -52975,10 +52863,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-`Ankabūt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:07.99] أَحَسِبَ
 [00:09.27] ٱلنَّاسُ
@@ -53973,10 +53857,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ar-Rūm]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:07.37] غُلِبَتِ
 [00:08.68] ٱلرُّومُ
@@ -54814,10 +54694,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Luqmān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:07.55] تِلۡكَ
 [00:08.35] ءَايَٰتُ
@@ -55382,10 +55258,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: As-Sajdah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] الٓمٓ
 [00:07.81] تَنزِيلُ
 [00:09.66] ٱلۡكِتَٰبِ
@@ -55763,10 +55635,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Aĥzāb]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:02.83] ٱلنَّبِيُّ
 [00:04.19] ٱتَّقِ
@@ -57103,10 +56971,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Saba]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡحَمۡدُ
 [00:01.29] لِلَّهِ
 [00:02.32] ٱلَّذِي
@@ -58017,10 +57881,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Fāţir]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡحَمۡدُ
 [00:01.33] لِلَّهِ
 [00:02.28] فَاطِرِ
@@ -58811,10 +58671,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Yā-Sīn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يسٓ
 [00:03.76] وَٱلۡقُرۡءَانِ
 [00:05.53] ٱلۡحَكِيمِ
@@ -59548,10 +59404,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Aş-Şāffāt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلصَّـٰٓفَّـٰتِ
 [00:04.09] صَفّٗا
 [00:05.80] فَٱلزَّـٰجِرَٰتِ
@@ -60417,10 +60269,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Şād]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] صٓۚ
 [00:03.30] وَٱلۡقُرۡءَانِ
 [00:05.57] ذِي
@@ -61162,10 +61010,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Az-Zumar]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] تَنزِيلُ
 [00:01.95] ٱلۡكِتَٰبِ
 [00:03.04] مِنَ
@@ -62376,10 +62220,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ghāfir]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.47] تَنزِيلُ
 [00:06.33] ٱلۡكِتَٰبِ
@@ -63636,10 +63476,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Fuşşilat]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.36] تَنزِيلٞ
 [00:06.79] مِّنَ
@@ -64459,10 +64295,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ash-Shūra�]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.05] عٓسٓقٓ
 [00:14.21] كَذَٰلِكَ
@@ -65343,10 +65175,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Az-Zukhruf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.08] وَٱلۡكِتَٰبِ
 [00:05.69] ٱلۡمُبِينِ
@@ -66194,10 +66022,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ad-Dukhān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:03.84] وَٱلۡكِتَٰبِ
 [00:05.28] ٱلۡمُبِينِ
@@ -66549,10 +66373,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Jāthiyah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.05] تَنزِيلُ
 [00:06.11] ٱلۡكِتَٰبِ
@@ -67068,10 +66888,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Aĥqāf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] حمٓ
 [00:04.05] تَنزِيلُ
 [00:05.92] ٱلۡكِتَٰبِ
@@ -67738,10 +67554,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Muĥammad]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلَّذِينَ
 [00:01.25] كَفَرُواْ
 [00:02.09] وَصَدُّواْ
@@ -68298,10 +68110,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Fatĥ]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِنَّا
 [00:01.65] فَتَحۡنَا
 [00:02.76] لَكَ
@@ -68879,10 +68687,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥujurāt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:02.97] ٱلَّذِينَ
 [00:03.98] ءَامَنُواْ
@@ -69248,10 +69052,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Qāf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قٓۚ
 [00:03.24] وَٱلۡقُرۡءَانِ
 [00:05.40] ٱلۡمَجِيدِ
@@ -69630,10 +69430,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Adh-Dhāriyāt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلذَّـٰرِيَٰتِ
 [00:02.01] ذَرۡوٗا
 [00:03.37] فَٱلۡحَٰمِلَٰتِ
@@ -69999,10 +69795,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Aţ-Ţūr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلطُّورِ
 [00:01.80] وَكِتَٰبٖ
 [00:03.13] مَّسۡطُورٖ
@@ -70320,10 +70112,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Najm]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلنَّجۡمِ
 [00:01.83] إِذَا
 [00:02.30] هَوَىٰ
@@ -70689,10 +70477,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qamar]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱقۡتَرَبَتِ
 [00:01.47] ٱلسَّاعَةُ
 [00:02.58] وَٱنشَقَّ
@@ -71040,10 +70824,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ar-Raĥmān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلرَّحۡمَٰنُ
 [00:02.85] عَلَّمَ
 [00:04.11] ٱلۡقُرۡءَانَ
@@ -71400,10 +71180,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Wāqi`ah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.77] وَقَعَتِ
 [00:01.67] ٱلۡوَاقِعَةُ
@@ -71788,10 +71564,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥadīd]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سَبَّحَ
 [00:01.29] لِلَّهِ
 [00:02.22] مَا
@@ -72411,10 +72183,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Mujādila]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قَدۡ
 [00:00.51] سَمِعَ
 [00:01.15] ٱللَّهُ
@@ -72914,10 +72682,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥashr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سَبَّحَ
 [00:01.20] لِلَّهِ
 [00:02.19] مَا
@@ -73398,10 +73162,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Mumtaĥanah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.07] ٱلَّذِينَ
 [00:04.07] ءَامَنُواْ
@@ -73784,10 +73544,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Aş-Şaf]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سَبَّحَ
 [00:01.07] لِلَّهِ
 [00:02.00] مَا
@@ -74022,10 +73778,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Jumu`ah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يُسَبِّحُ
 [00:01.30] لِلَّهِ
 [00:02.31] مَا
@@ -74216,10 +73968,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Munāfiqūn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.81] جَآءَكَ
 [00:02.84] ٱلۡمُنَٰفِقُونَ
@@ -74413,10 +74161,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Taghābun]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يُسَبِّحُ
 [00:01.15] لِلَّهِ
 [00:02.06] مَا
@@ -74665,10 +74409,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Aţ-Ţalāq]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.12] ٱلنَّبِيُّ
 [00:04.58] إِذَا
@@ -74963,10 +74703,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Taĥrīm]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.56] ٱلنَّبِيُّ
 [00:04.96] لِمَ
@@ -75243,10 +74979,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Mulk]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] تَبَٰرَكَ
 [00:01.40] ٱلَّذِي
 [00:02.28] بِيَدِهِ
@@ -75585,10 +75317,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qalam]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَمَا
 [00:03.72] وَٱلۡقَلَمِ
 [00:06.00] وَمَا
@@ -75894,10 +75622,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ĥāqqah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡحَآقَّةُ
 [00:04.73] مَا
 [00:05.16] ٱلۡحَآقَّةُ
@@ -76161,10 +75885,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ma`ārij]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سَأَلَ
 [00:00.92] سَآئِلُۢ
 [00:04.09] بِعَذَابٖ
@@ -76387,10 +76107,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Nūĥ]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِنَّآ
 [00:03.30] أَرۡسَلۡنَا
 [00:04.72] نُوحًا
@@ -76626,10 +76342,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Jinn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قُلۡ
 [00:00.56] أُوحِيَ
 [00:01.80] إِلَيَّ
@@ -76920,10 +76632,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Muzzammil]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.47] ٱلۡمُزَّمِّلُ
 [00:06.06] قُمِ
@@ -77130,10 +76838,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Muddaththir]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] يَـٰٓأَيُّهَا
 [00:03.42] ٱلۡمُدَّثِّرُ
 [00:05.46] قُمۡ
@@ -77403,10 +77107,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qiyāmah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] لَآ
 [00:02.39] أُقۡسِمُ
 [00:03.38] بِيَوۡمِ
@@ -77576,10 +77276,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Insān]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] هَلۡ
 [00:00.65] أَتَىٰ
 [00:01.36] عَلَى
@@ -77832,10 +77528,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Mursalāt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلۡمُرۡسَلَٰتِ
 [00:02.11] عُرۡفٗا
 [00:03.87] فَٱلۡعَٰصِفَٰتِ
@@ -78022,10 +77714,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Naba]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] عَمَّ
 [00:01.74] يَتَسَآءَلُونَ
 [00:05.75] عَنِ
@@ -78212,10 +77900,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Nāzi`āt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلنَّـٰزِعَٰتِ
 [00:03.09] غَرۡقٗا
 [00:04.70] وَٱلنَّـٰشِطَٰتِ
@@ -78400,10 +78084,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: `Abasa]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] عَبَسَ
 [00:01.40] وَتَوَلَّىٰٓ
 [00:03.71] أَن
@@ -78542,10 +78222,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Takwīr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.75] ٱلشَّمۡسُ
 [00:01.84] كُوِّرَتۡ
@@ -78655,10 +78331,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Infiţār]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.74] ٱلسَّمَآءُ
 [00:03.74] ٱنفَطَرَتۡ
@@ -78744,10 +78416,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Muţaffifīn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَيۡلٞ
 [00:01.42] لِّلۡمُطَفِّفِينَ
 [00:04.41] ٱلَّذِينَ
@@ -78922,10 +78590,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Inshiqāq]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.71] ٱلسَّمَآءُ
 [00:03.61] ٱنشَقَّتۡ
@@ -79038,10 +78702,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Burūj]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلسَّمَآءِ
 [00:03.45] ذَاتِ
 [00:04.37] ٱلۡبُرُوجِ
@@ -79159,10 +78819,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Aţ-Ţāriq]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلسَّمَآءِ
 [00:03.43] وَٱلطَّارِقِ
 [00:05.69] وَمَآ
@@ -79229,10 +78885,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-A`l�]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] سَبِّحِ
 [00:01.25] ٱسۡمَ
 [00:01.78] رَبِّكَ
@@ -79310,10 +78962,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ghāshiyah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] هَلۡ
 [00:00.69] أَتَىٰكَ
 [00:01.73] حَدِيثُ
@@ -79411,10 +79059,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Fajr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلۡفَجۡرِ
 [00:01.80] وَلَيَالٍ
 [00:03.75] عَشۡرٖ
@@ -79557,10 +79201,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Balad]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] لَآ
 [00:02.89] أُقۡسِمُ
 [00:04.04] بِهَٰذَا
@@ -79648,10 +79288,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ash-Shams]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلشَّمۡسِ
 [00:01.74] وَضُحَىٰهَا
 [00:04.21] وَٱلۡقَمَرِ
@@ -79711,10 +79347,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Layl]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلَّيۡلِ
 [00:01.59] إِذَا
 [00:02.43] يَغۡشَىٰ
@@ -79791,10 +79423,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ađ-Đuĥa�]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلضُّحَىٰ
 [00:02.12] وَٱلَّيۡلِ
 [00:03.85] إِذَا
@@ -79840,10 +79468,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Ash-Sharĥ]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] أَلَمۡ
 [00:01.00] نَشۡرَحۡ
 [00:02.17] لَكَ
@@ -79876,10 +79500,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Tīn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلتِّينِ
 [00:01.54] وَٱلزَّيۡتُونِ
 [00:03.79] وَطُورِ
@@ -79919,10 +79539,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-`Alaq]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱقۡرَأۡ
 [00:01.30] بِٱسۡمِ
 [00:02.16] رَبِّكَ
@@ -80000,10 +79616,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qadr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِنَّآ
 [00:03.56] أَنزَلۡنَٰهُ
 [00:06.16] فِي
@@ -80039,10 +79651,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Bayyinah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] لَمۡ
 [00:00.73] يَكُنِ
 [00:01.46] ٱلَّذِينَ
@@ -80147,10 +79755,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Az-Zalzalah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:00.94] زُلۡزِلَتِ
 [00:02.29] ٱلۡأَرۡضُ
@@ -80192,10 +79796,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-`Ādiyāt]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلۡعَٰدِيَٰتِ
 [00:02.51] ضَبۡحٗا
 [00:04.15] فَٱلۡمُورِيَٰتِ
@@ -80241,10 +79841,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Qāri`ah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] ٱلۡقَارِعَةُ
 [00:02.53] مَا
 [00:02.98] ٱلۡقَارِعَةُ
@@ -80286,10 +79882,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: At-Takāthur]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] أَلۡهَىٰكُمُ
 [00:01.88] ٱلتَّكَاثُرُ
 [00:03.87] حَتَّىٰ
@@ -80323,10 +79915,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-`Aşr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَٱلۡعَصۡرِ
 [00:02.06] إِنَّ
 [00:03.63] ٱلۡإِنسَٰنَ
@@ -80346,10 +79934,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Humazah]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] وَيۡلٞ
 [00:01.11] لِّكُلِّ
 [00:02.41] هُمَزَةٖ
@@ -80388,10 +79972,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Fīl]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] أَلَمۡ
 [00:01.01] تَرَ
 [00:01.63] كَيۡفَ
@@ -80420,10 +80000,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Quraysh]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] لِإِيلَٰفِ
 [00:01.71] قُرَيۡشٍ
 [00:03.53] إِۦلَٰفِهِمۡ
@@ -80446,10 +80022,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Mā`ūn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] أَرَءَيۡتَ
 [00:01.43] ٱلَّذِي
 [00:02.52] يُكَذِّبُ
@@ -80480,10 +80052,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Kawthar]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِنَّآ
 [00:03.33] أَعۡطَيۡنَٰكَ
 [00:05.21] ٱلۡكَوۡثَرَ
@@ -80499,10 +80067,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Kāfirūn]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قُلۡ
 [00:00.57] يَـٰٓأَيُّهَا
 [00:03.93] ٱلۡكَٰفِرُونَ
@@ -80534,10 +80098,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Naşr]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] إِذَا
 [00:01.04] جَآءَ
 [00:03.45] نَصۡرُ
@@ -80562,10 +80122,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Masad]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] تَبَّتۡ
 [00:01.35] يَدَآ
 [00:03.78] أَبِي
@@ -80594,10 +80150,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Ikhlāş]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قُلۡ
 [00:00.71] هُوَ
 [00:00.98] ٱللَّهُ
@@ -80618,10 +80170,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: Al-Falaq]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قُلۡ
 [00:00.60] أَعُوذُ
 [00:01.68] بِرَبِّ
@@ -80650,10 +80198,6 @@ UPDATE tilawa_surah
 
 UPDATE tilawa_surah
           SET lrc_content = '
-[ti: An-Nās]
-[ar: Mohamed Siddiq al-Minshawi]
-[au: God(Allah)]
-[by: Mostaqem]
 [00:00.00] قُلۡ
 [00:00.75] أَعُوذُ
 [00:01.79] بِرَبِّ
