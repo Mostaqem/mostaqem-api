@@ -1,5 +1,4 @@
 import {
-  Inject,
   Injectable,
   InternalServerErrorException,
   Logger,
@@ -9,7 +8,6 @@ import { CreateSurahDto } from './dto/create-surah.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
-import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
 import { SurahFilterDto } from './dto/surah-filter.dto';
 
 @Injectable()
@@ -17,7 +15,6 @@ export class SurahService {
   constructor(
     @InjectRepository(Surah)
     private readonly surahRepository: Repository<Surah>,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
   async create(createSurahDto: CreateSurahDto) {
@@ -31,7 +28,6 @@ export class SurahService {
 
   async findAll(surahFilterDto: SurahFilterDto) {
     const { name, page, take } = surahFilterDto;
-    const skip = (page - 1) * take;
 
     const query = this.surahRepository
       .createQueryBuilder('surah')
@@ -42,6 +38,7 @@ export class SurahService {
       query.orWhere('surah.name_complex like :name', { name: `${name}%` });
     }
 
+    const skip = (page - 1) * take;
     const [surah, totalData] = await Promise.all([
       query.skip(skip).take(take).getMany(),
       query.getCount(),

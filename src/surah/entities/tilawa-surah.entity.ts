@@ -18,7 +18,6 @@ export class TilawaSurah {
   @Column({
     type: 'mediumtext',
     nullable: true,
-    charset: 'utf8mb4_unicode_ci',
   })
   lrc_content: string;
 

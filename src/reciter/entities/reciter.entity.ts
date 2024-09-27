@@ -16,7 +16,6 @@ export class Reciter {
     type: 'varchar',
     length: 100,
     nullable: false,
-    charset: 'utf8mb4_unicode_ci',
   })
   @Index('IDX_NAME_ENGLISH', { fulltext: true })
   name_english: string;
@@ -25,7 +24,6 @@ export class Reciter {
     type: 'varchar',
     length: 100,
     nullable: false,
-    charset: 'utf8mb4_unicode_ci',
   })
   @Index('IDX_NAME_ARABIC', { fulltext: true })
   name_arabic: string;

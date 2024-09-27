@@ -7,6 +7,7 @@ import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { NotFoundException } from '@nestjs/common';
 import { ReciterService } from 'src/reciter/reciter.service';
+import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
 
 describe('AudioService', () => {
   let service: AudioService;
@@ -118,6 +119,7 @@ describe('AudioService', () => {
 
       expect(result).toEqual(expectedResult);
       expect(tilawaSurahRepo.findOne).toHaveBeenCalledWith({
+        select: ['url', 'surah_id', 'tilawa_id'],
         where: { surah_id: filterAudioDto.surah_id, tilawa_id: 1 },
       });
     });
@@ -144,6 +146,52 @@ describe('AudioService', () => {
       await expect(service.getAudio(filterAudioDto)).rejects.toThrow(
         NotFoundException,
       );
+    });
+  });
+  describe('getAudioLrc', () => {
+    it('should return lrc content for given surah_id and tilawa_id', async () => {
+      const filterAudioLrcDto: FilterAudioLrcDto = {
+        surah_id: 1,
+        tilawa_id: 1,
+      };
+      const expectedResult = {
+        lrc_content: 'some lrc content',
+      };
+
+      jest
+        .spyOn(tilawaSurahRepo, 'findOne')
+        .mockResolvedValue(expectedResult as TilawaSurah);
+
+      const result = await service.getAudioLrc(filterAudioLrcDto);
+
+      expect(result).toEqual(expectedResult);
+      expect(tilawaSurahRepo.findOne).toHaveBeenCalledWith({
+        select: ['lrc_content'],
+        where: {
+          surah_id: filterAudioLrcDto.surah_id,
+          tilawa_id: filterAudioLrcDto.tilawa_id,
+        },
+      });
+    });
+
+    it('should return null if no lrc content is found', async () => {
+      const filterAudioLrcDto: FilterAudioLrcDto = {
+        surah_id: 1,
+        tilawa_id: 1,
+      };
+
+      jest.spyOn(tilawaSurahRepo, 'findOne').mockResolvedValue(null);
+
+      const result = await service.getAudioLrc(filterAudioLrcDto);
+
+      expect(result).toBeNull();
+      expect(tilawaSurahRepo.findOne).toHaveBeenCalledWith({
+        select: ['lrc_content'],
+        where: {
+          surah_id: filterAudioLrcDto.surah_id,
+          tilawa_id: filterAudioLrcDto.tilawa_id,
+        },
+      });
     });
   });
 });

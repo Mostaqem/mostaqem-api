@@ -17,7 +17,7 @@ export class AddLrcColumn1727101506932 implements MigrationInterface {
       `ALTER TABLE \`tilawa_surah\` ADD \`lrc_content\` mediumtext NULL`,
     );
 
-    const sqlQueries = readSqlFile('/lrc-seed/9.sql');
+    const sqlQueries = readSqlFile('/lrc-seed/lrc-data.sql');
     for (const query of sqlQueries) {
       await queryRunner.query(query);
     }

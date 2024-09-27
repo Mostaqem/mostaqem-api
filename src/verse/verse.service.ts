@@ -28,7 +28,6 @@ export class VerseService {
 
   async getVerse(getVerseFilterDto: GetVerseFilterDto) {
     const { surah_id, name, page, take } = getVerseFilterDto;
-    const skip = (page - 1) * take;
     const query = this.verseRepository
       .createQueryBuilder('verse')
       .leftJoinAndSelect('verse.surah', 'surah')
@@ -45,6 +44,7 @@ export class VerseService {
       );
     }
 
+    const skip = (page - 1) * take;
     const [verses, totalData] = await Promise.all([
       query.skip(skip).take(take).getMany(),
       query.getCount(),

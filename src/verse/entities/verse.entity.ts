@@ -15,7 +15,7 @@ export class Verse {
   id: number;
 
   //for full text search
-  @Column({ type: 'text', charset: 'utf8mb4' })
+  @Column({ type: 'text' })
   @Index('IDX_VERS', { fulltext: true })
   vers: string;
 
