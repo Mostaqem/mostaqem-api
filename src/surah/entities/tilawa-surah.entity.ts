@@ -15,6 +15,12 @@ export class TilawaSurah {
   })
   url: string;
 
+  @Column({
+    type: 'mediumtext',
+    nullable: true,
+  })
+  lrc_content: string;
+
   @ManyToOne(() => Tilawa, (tilawa) => tilawa.tilawaSurah)
   @JoinColumn({ name: 'tilawa_id' })
   tilawa: Tilawa;

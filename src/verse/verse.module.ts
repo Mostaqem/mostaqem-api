@@ -10,4 +10,8 @@ import { Verse } from './entities/verse.entity';
   providers: [VerseService],
   exports: [VerseService],
 })
-export class VerseModule {}
+export class VerseModule {
+  constructor(private readonly verseService: VerseService) {
+    this.verseService.initialVerses();
+  }
+}

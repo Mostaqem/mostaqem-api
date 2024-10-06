@@ -14,7 +14,9 @@ export class Verse {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('text')
+  //for full text search
+  @Column({ type: 'text' })
+  @Index('IDX_VERS', { fulltext: true })
   vers: string;
 
   @Column('int')

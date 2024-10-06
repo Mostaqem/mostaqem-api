@@ -63,38 +63,93 @@ describe('ReciterService', () => {
       expect(reciterRepository.save).toHaveBeenCalledWith(reciter);
     });
   });
-
   describe('findAll', () => {
-    it('should return all reciters ordered by name_english', async () => {
-      const reciters = [
-        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
-        { id: 2, name_english: 'Jane Doe', name_arabic: 'جين دو' },
-      ];
+    const reciters = [
+      { id: 1, name_english: 'reciter test', name_arabic: 'تجربة القاري' },
+      { id: 2, name_english: 'reciter test', name_arabic: 'تجربة القاري' },
+    ];
 
-      jest
-        .spyOn(reciterRepository, 'find')
-        .mockResolvedValue(reciters as Reciter[]);
+    it('should return paginated reciters ordered by name_english', async () => {
+      const reciterFilterDto = { take: 10, page: 1, name: '' };
+      const total = 2;
+      const totalPages = 1;
 
-      expect(await service.findAll('eng')).toEqual(reciters);
-      expect(reciterRepository.find).toHaveBeenCalledWith({
-        order: { name_english: 'ASC' },
-      });
+      jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        where: jest.fn().mockReturnThis(),
+        orderBy: jest.fn().mockReturnThis(),
+        andWhere: jest.fn().mockReturnThis(),
+        take: jest.fn().mockReturnThis(),
+        skip: jest.fn().mockReturnThis(),
+        getMany: jest.fn().mockResolvedValue(reciters),
+        getCount: jest.fn().mockResolvedValue(total),
+      } as any);
+
+      const result = await service.findAll('eng', reciterFilterDto);
+
+      expect(result).toEqual({ reciters, total, totalPages });
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
     });
 
-    it('should return all reciters ordered by name_arabic', async () => {
-      const reciters = [
-        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
-        { id: 2, name_english: 'Jane Doe', name_arabic: 'جين دو' },
-      ];
+    it('should return paginated reciters ordered by name_arabic', async () => {
+      const reciterFilterDto = { take: 10, page: 1, name: '' };
+      const total = 2;
+      const totalPages = 1;
 
-      jest
-        .spyOn(reciterRepository, 'find')
-        .mockResolvedValue(reciters as Reciter[]);
+      jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        where: jest.fn().mockReturnThis(),
+        orderBy: jest.fn().mockReturnThis(),
+        andWhere: jest.fn().mockReturnThis(),
+        take: jest.fn().mockReturnThis(),
+        skip: jest.fn().mockReturnThis(),
+        getMany: jest.fn().mockResolvedValue(reciters),
+        getCount: jest.fn().mockResolvedValue(total),
+      } as any);
 
-      expect(await service.findAll('ar')).toEqual(reciters);
-      expect(reciterRepository.find).toHaveBeenCalledWith({
-        order: { name_arabic: 'ASC' },
-      });
+      const result = await service.findAll('ar', reciterFilterDto);
+
+      expect(result).toEqual({ reciters, total, totalPages });
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
+    });
+
+    it('should filter reciters by name', async () => {
+      const reciterFilterDto = { take: 10, page: 1, name: 'test' };
+      const total = 2;
+      const totalPages = 1;
+
+      jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        where: jest.fn().mockReturnThis(),
+        orderBy: jest.fn().mockReturnThis(),
+        andWhere: jest.fn().mockReturnThis(),
+        take: jest.fn().mockReturnThis(),
+        skip: jest.fn().mockReturnThis(),
+        getMany: jest.fn().mockResolvedValue(reciters),
+        getCount: jest.fn().mockResolvedValue(total),
+        orWhere: jest.fn().mockReturnThis(),
+      } as any);
+
+      const result = await service.findAll('eng', reciterFilterDto);
+
+      expect(result).toEqual({ reciters, total, totalPages });
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
+      expect(
+        reciterRepository.createQueryBuilder().andWhere,
+      ).toHaveBeenCalledWith(
+        'MATCH(reciter.name_arabic) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name: 'test' },
+      );
+
+      expect(
+        reciterRepository.createQueryBuilder().orWhere,
+      ).toHaveBeenCalledWith(
+        'MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name: 'test' },
+      );
     });
   });
 

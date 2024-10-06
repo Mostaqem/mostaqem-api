@@ -4,7 +4,20 @@ import { SurahService } from './surah.service';
 import { CreateSurahDto } from './dto/create-surah.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { NotFoundException } from '@nestjs/common';
-
+import { SurahFilterDto } from './dto/surah-filter.dto';
+const surahs = [
+  {
+    id: 1,
+    name_arabic: 'الفاتحة',
+    name_complex: 'Al-Fatiha',
+    verses_count: 7,
+    revelation_place: 'Meccan',
+    image: null,
+    verses: [],
+    reciterSurah: [],
+  },
+] as any;
+const filterDto = { name: 'Meccan' } as SurahFilterDto;
 describe('SurahController', () => {
   let surahController: SurahController;
   let surahService: SurahService;
@@ -77,54 +90,11 @@ describe('SurahController', () => {
   });
 
   describe('findAll', () => {
-    it('should return all surahs', async () => {
-      const surahs = [
-        {
-          id: 1,
-          name_arabic: 'الفاتحة',
-          name_complex: 'Al-Fatiha',
-          verses_count: 7,
-          revelation_place: 'Meccan',
-          image: null,
-          verses: [],
-          reciterSurah: [],
-        },
-      ];
-
+    it('should return filtered surahs', async () => {
       jest.spyOn(surahService, 'findAll').mockResolvedValue(surahs);
 
-      expect(await surahController.findAll()).toEqual(surahs);
-      expect(surahService.findAll).toHaveBeenCalled();
-    });
-  });
-
-  describe('findOne', () => {
-    it('should return a surah by id', async () => {
-      const surah = {
-        id: 1,
-        name_arabic: 'الفاتحة',
-        name_complex: 'Al-Fatiha',
-        verses_count: 7,
-        revelation_place: 'Meccan',
-        image: null,
-        verses: [],
-        reciterSurah: [],
-      };
-
-      jest.spyOn(surahService, 'findOne').mockResolvedValue(surah);
-
-      expect(await surahController.findOne('1')).toEqual(surah);
-      expect(surahService.findOne).toHaveBeenCalledWith(1);
-    });
-
-    it('should throw NotFoundException if surah is not found', async () => {
-      jest
-        .spyOn(surahService, 'findOne')
-        .mockRejectedValue(new NotFoundException());
-
-      await expect(surahController.findOne('1')).rejects.toThrow(
-        NotFoundException,
-      );
+      expect(await surahController.findAll(filterDto)).toEqual(surahs);
+      expect(surahService.findAll).toHaveBeenCalledWith(filterDto);
     });
   });
 

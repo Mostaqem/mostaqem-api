@@ -5,6 +5,7 @@ import { Verse } from './entities/verse.entity';
 import { CreateVerseDto } from './dto/create-verse.dto';
 import { Repository } from 'typeorm';
 import { InternalServerErrorException, Logger } from '@nestjs/common';
+import { GetVerseFilterDto } from './dto/filter-get-verse.dto';
 
 jest.mock('../../quran.json', () => [
   {
@@ -84,22 +85,103 @@ describe('VerseService', () => {
     });
   });
 
-  describe('getSurahVerses', () => {
-    it('should return verses of a surah', async () => {
-      const surahId = 1;
-      const verses: Verse[] = [];
+  describe('getVerse', () => {
+    const getVerseFilterDto: GetVerseFilterDto = {
+      surah_id: 1,
+      name: 'Allah',
+      page: 1,
+      take: 10,
+    };
 
-      jest.spyOn(verseRepository, 'find').mockResolvedValueOnce(verses);
+    const verses: Verse[] = [
+      {
+        id: 1,
+        vers: 'In the name of Allah, the Most Merciful, the Most Compassionate.',
+        verse_number: 1,
+        vers_lang: 'ar',
+        surah_id: 1,
+      } as Verse,
+    ];
 
-      const result = await verseService.getSurahVerses(surahId);
+    const queryBuilderMock = {
+      where: jest.fn().mockReturnThis(),
+      andWhere: jest.fn().mockReturnThis(),
+      skip: jest.fn().mockReturnThis(),
+      take: jest.fn().mockReturnThis(),
+      getMany: jest.fn().mockResolvedValue(verses),
+      getCount: jest.fn().mockResolvedValue(1),
+      leftJoinAndSelect: jest.fn().mockReturnThis(),
+    };
 
-      expect(verseRepository.find).toHaveBeenCalledWith({
-        where: { surah_id: surahId },
-      });
+    it('should return filtered verses with pagination', async () => {
+      const queryBuilderMock = {
+        where: jest.fn().mockReturnThis(),
+        andWhere: jest.fn().mockReturnThis(),
+        skip: jest.fn().mockReturnThis(),
+        take: jest.fn().mockReturnThis(),
+        getMany: jest.fn().mockResolvedValue(verses),
+        getCount: jest.fn().mockResolvedValue(1),
+        leftJoinAndSelect: jest.fn().mockReturnThis(),
+      };
+
+      jest
+        .spyOn(verseRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
+
+      const result = await verseService.getVerse(getVerseFilterDto);
+
+      expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
+      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
+        'verse.surah_id = :surah_id',
+        { surah_id: 1 },
+      );
+      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
+        'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name: 'Allah' },
+      );
+      expect(queryBuilderMock.skip).toHaveBeenCalledWith(0);
+      expect(queryBuilderMock.take).toHaveBeenCalledWith(10);
+      expect(queryBuilderMock.getMany).toHaveBeenCalled();
+      expect(queryBuilderMock.getCount).toHaveBeenCalled();
 
       expect(result).toEqual({
         verses,
-        totalVerseNumber: verses.length,
+        totalData: 1,
+        totalPages: 1,
+      });
+    });
+
+    it('should return all verses if no filters are provided', async () => {
+      const basicFilterDto: GetVerseFilterDto = {
+        page: 1,
+        take: 10,
+      };
+
+      jest
+        .spyOn(verseRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
+
+      const result = await verseService.getVerse(basicFilterDto);
+
+      expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
+      expect(queryBuilderMock.andWhere).not.toHaveBeenCalledWith(
+        'verse.surah_id = :surah_id',
+        expect.anything(),
+      );
+      expect(queryBuilderMock.andWhere).not.toHaveBeenCalledWith(
+        'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        expect.anything(),
+      );
+
+      expect(queryBuilderMock.skip).toHaveBeenCalledWith(0);
+      expect(queryBuilderMock.take).toHaveBeenCalledWith(10);
+      expect(queryBuilderMock.getMany).toHaveBeenCalled();
+      expect(queryBuilderMock.getCount).toHaveBeenCalled();
+
+      expect(result).toEqual({
+        verses,
+        totalData: 1,
+        totalPages: 1,
       });
     });
   });

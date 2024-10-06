@@ -4,6 +4,7 @@ import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { Reciter } from './entities/reciter.entity';
+import { ReciterFilterDto } from './dto/reciter-filter.dto';
 
 describe('ReciterController', () => {
   let controller: ReciterController;
@@ -53,16 +54,40 @@ describe('ReciterController', () => {
   });
 
   describe('findAll', () => {
-    it('should return all reciters', async () => {
+    it('should return all reciters with English language', async () => {
+      const reciterFilterDto: ReciterFilterDto = {
+        name: 'John',
+        take: 1,
+        page: 1,
+      };
       const expectedResult = [
         { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
-      ];
-      jest
-        .spyOn(service, 'findAll')
-        .mockResolvedValue(expectedResult as Reciter[]);
+      ] as any;
 
-      expect(await controller.findAll('eng')).toBe(expectedResult);
-      expect(service.findAll).toHaveBeenCalledWith('eng');
+      jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult);
+
+      expect(await controller.findAll('eng', reciterFilterDto)).toBe(
+        expectedResult,
+      );
+      expect(service.findAll).toHaveBeenCalledWith('eng', reciterFilterDto);
+    });
+
+    it('should return all reciters with Arabic language', async () => {
+      const reciterFilterDto: ReciterFilterDto = {
+        name: 'جون',
+        take: 1,
+        page: 1,
+      };
+      const expectedResult = [
+        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
+      ] as any;
+
+      jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult);
+
+      expect(await controller.findAll('ar', reciterFilterDto)).toBe(
+        expectedResult,
+      );
+      expect(service.findAll).toHaveBeenCalledWith('ar', reciterFilterDto);
     });
   });
 
