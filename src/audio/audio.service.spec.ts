@@ -85,20 +85,17 @@ describe('AudioService', () => {
         surah_id: 1,
         reciter_id: 1,
       };
-      const expectedResult: Partial<TilawaSurah> & { reciter_id: number } = {
-        surah_id: 1,
+      const expectedResult = {
         tilawa_id: 1,
         url: 'https://example.com/audio.mp3',
-        tilawa: {
-          id: 1,
-          name: 'Test Tilawa',
-          name_english: 'Test Tilawa',
-          reciter_id: 1,
-          reciter: {},
-          tilawaSurah: [],
-        } as any,
-        surah: {} as any,
-        reciter_id: 1,
+        surah: {
+          name_arabic: 'الفاتحة',
+          name_complex: 'Al-Fatihah',
+        },
+        reciter: {
+          name_arabic: 'عبد الباسط عبد الصمد',
+          name_english: 'Abdul Basit Abdul Samad',
+        },
       };
 
       jest.spyOn(reciterService, 'getReciterTilawa').mockResolvedValue([
@@ -111,17 +108,26 @@ describe('AudioService', () => {
           tilawaSurah: [] as any[],
         },
       ]);
-      jest
-        .spyOn(tilawaSurahRepo, 'findOne')
-        .mockResolvedValue(expectedResult as TilawaSurah);
+
+      jest.spyOn(tilawaSurahRepo, 'query').mockResolvedValue([
+        {
+          tilawa_id: 1,
+          surah_id: 1,
+          url: 'https://example.com/audio.mp3',
+          reciter_name_english: 'Abdul Basit Abdul Samad',
+          reciter_name_arabic: 'عبد الباسط عبد الصمد',
+          surah_name_arabic: 'الفاتحة',
+          surah_name_complex: 'Al-Fatihah',
+        },
+      ]);
 
       const result = await service.getAudio(filterAudioDto);
 
       expect(result).toEqual(expectedResult);
-      expect(tilawaSurahRepo.findOne).toHaveBeenCalledWith({
-        select: ['url', 'surah_id', 'tilawa_id'],
-        where: { surah_id: filterAudioDto.surah_id, tilawa_id: 1 },
-      });
+      expect(tilawaSurahRepo.query).toHaveBeenCalledWith(expect.any(String), [
+        filterAudioDto.surah_id,
+        1,
+      ]);
     });
 
     it('should throw NotFoundException when audio is not found', async () => {
@@ -141,7 +147,7 @@ describe('AudioService', () => {
         },
       ]);
 
-      jest.spyOn(tilawaSurahRepo, 'findOne').mockResolvedValue(null);
+      jest.spyOn(tilawaSurahRepo, 'query').mockResolvedValue([]);
 
       await expect(service.getAudio(filterAudioDto)).rejects.toThrow(
         NotFoundException,
