@@ -44,7 +44,8 @@ export class AudioService {
       r.name_english AS reciter_name_english, 
       r.name_arabic AS reciter_name_arabic,  
       s.name_arabic AS surah_name_arabic,  
-      s.name_complex AS surah_name_complex
+      s.name_complex AS surah_name_complex,
+      s.image AS surah_image
       FROM tilawa_surah ts
       LEFT JOIN tilawa t ON t.id = ts.tilawa_id
       INNER JOIN reciter r ON r.id = t.reciter_id
@@ -63,6 +64,7 @@ export class AudioService {
       surah: {
         name_arabic: result[0].surah_name_arabic,
         name_complex: result[0].surah_name_complex,
+        image: result[0].surah_image,
       },
       reciter: {
         name_arabic: result[0].reciter_name_arabic,
