@@ -1,8 +1,4 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 import { Repository } from 'typeorm';
@@ -37,42 +33,21 @@ export class AudioService {
       tilawa_id = tilawa[0].id;
     }
 
-    const result = await this.tilawaSurahRepo.query(
-      `SELECT ts.tilawa_id AS tilawa_id, 
-      ts.surah_id AS surah_id, 
-      ts.url AS url, 
-      r.name_english AS reciter_name_english, 
-      r.name_arabic AS reciter_name_arabic,  
-      s.name_arabic AS surah_name_arabic,  
-      s.name_complex AS surah_name_complex,
-      s.image AS surah_image
-      FROM tilawa_surah ts
-      LEFT JOIN tilawa t ON t.id = ts.tilawa_id
-      INNER JOIN reciter r ON r.id = t.reciter_id
-      LEFT JOIN surah s ON s.id = ts.surah_id
-      WHERE ts.surah_id = ? AND ts.tilawa_id = ?;`,
-      [surah_id, tilawa_id],
-    );
-
-    if (!result.length) {
-      throw new NotFoundException('Audio not found');
-    }
-
-    const audio = {
-      tilawa_id,
-      url: result[0].url,
-      surah: {
-        name_arabic: result[0].surah_name_arabic,
-        name_complex: result[0].surah_name_complex,
-        image: result[0].surah_image,
+    const audio = await this.tilawaSurahRepo.find({
+      select: ['tilawa_id', 'url'],
+      where: {
+        surah_id,
+        tilawa_id,
       },
-      reciter: {
-        name_arabic: result[0].reciter_name_arabic,
-        name_english: result[0].reciter_name_english,
+      relations: {
+        surah: true,
+        tilawa: {
+          reciter: true,
+        },
       },
-    };
+    });
 
-    return audio;
+    return audio[0];
   }
 
   getAudioLrc(filterAudioLrcDto: FilterAudioLrcDto) {
