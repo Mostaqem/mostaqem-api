@@ -1,8 +1,4 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 import { Repository } from 'typeorm';
@@ -25,9 +21,7 @@ export class AudioService {
     return this.tilawaSurahRepo.save(audio);
   }
 
-  async getAudio(
-    paginatedFilter: FilterAudioDto,
-  ): Promise<TilawaSurah & { reciter_id: number }> {
+  async getAudio(paginatedFilter: FilterAudioDto) {
     const { surah_id, reciter_id } = paginatedFilter;
     let tilawa_id = paginatedFilter.tilawa_id;
 
@@ -39,15 +33,21 @@ export class AudioService {
       tilawa_id = tilawa[0].id;
     }
 
-    const audio = await this.tilawaSurahRepo.findOne({
-      select: ['url', 'surah_id', 'tilawa_id'],
-      where: { surah_id, tilawa_id },
+    const audio = await this.tilawaSurahRepo.find({
+      select: ['tilawa_id', 'url'],
+      where: {
+        surah_id,
+        tilawa_id,
+      },
+      relations: {
+        surah: true,
+        tilawa: {
+          reciter: true,
+        },
+      },
     });
 
-    if (!audio) {
-      throw new NotFoundException('Audio not found');
-    }
-    return { ...audio, reciter_id };
+    return audio[0];
   }
 
   getAudioLrc(filterAudioLrcDto: FilterAudioLrcDto) {

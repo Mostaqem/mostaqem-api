@@ -31,6 +31,11 @@ export class ReciterController {
     return this.reciterService.findAll(lang, reciterFilterDto);
   }
 
+  @Get('/search')
+  searchReciter(@Query('name') name: string) {
+    return this.reciterService.searchReciter(name);
+  }
+
   @Post('/:id/tilawa')
   addReciterTilawa(
     @Param('id') id: number,

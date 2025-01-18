@@ -120,4 +120,27 @@ export class ReciterService {
     });
     return this.tilawaRepository.save(tilawa);
   }
+
+  async searchReciter(name: string) {
+    const reciter = await this.reciterRepository.find();
+
+    // escape regex special characters in the search query
+
+    const escapedName = name
+      ? name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      : undefined;
+
+    const filteredReciter = name
+      ? reciter.filter(
+          (reciter) =>
+            reciter.name_arabic.match(new RegExp(escapedName, 'i')) ||
+            reciter.name_english.match(new RegExp(escapedName, 'i')),
+        )
+      : reciter;
+
+    return {
+      reciters: filteredReciter,
+      total: filteredReciter.length,
+    };
+  }
 }

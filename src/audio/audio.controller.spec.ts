@@ -72,26 +72,20 @@ describe('AudioController', () => {
         surah_id: 1,
         reciter_id: 1,
       };
-      const expectedResult: Partial<TilawaSurah> & { reciter_id: number } = {
-        surah_id: 1,
+      const expectedResult = {
         tilawa_id: 1,
-        url: 'https://example.com/audio.mp3',
-        tilawa: {
-          id: 1,
-          name: 'Test Tilawa',
-          name_english: 'Test Tilawa',
-          reciter_id: 1,
-          reciter: {},
-          tilawaSurah: [],
-        } as any,
-        surah: {} as any,
-        reciter_id: 1,
+        url: 'https://example',
+        surah: {
+          name_arabic: 'الفاتحة',
+          name_complex: 'Al-Fatiha',
+        },
+        reciter: {
+          name_arabic: 'عبدالرحمن السديس',
+          name_english: 'Abdur-Rahman as-Sudais',
+        },
       };
 
-      jest.spyOn(service, 'getAudio').mockResolvedValue({
-        ...expectedResult,
-        reciter_id: 1,
-      } as TilawaSurah & { reciter_id: number });
+      jest.spyOn(service, 'getAudio').mockResolvedValue(expectedResult as any);
 
       const result = await controller.get(filterAudioDto);
 
