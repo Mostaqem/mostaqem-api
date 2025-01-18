@@ -133,7 +133,7 @@ export class ReciterService {
       : reciter;
 
     return {
-      reciter: filteredReciter,
+      reciters: filteredReciter,
       total: filteredReciter.length,
     };
   }
