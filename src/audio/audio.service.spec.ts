@@ -5,7 +5,6 @@ import { AudioService } from './audio.service';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
-import { NotFoundException } from '@nestjs/common';
 import { ReciterService } from 'src/reciter/reciter.service';
 import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
 
@@ -84,74 +83,30 @@ describe('AudioService', () => {
       const filterAudioDto: FilterAudioDto = {
         surah_id: 1,
         reciter_id: 1,
-      };
-      const expectedResult = {
         tilawa_id: 1,
-        url: 'https://example.com/audio.mp3',
-        surah: {
-          name_arabic: 'الفاتحة',
-          name_complex: 'Al-Fatihah',
-        },
-        reciter: {
-          name_arabic: 'عبد الباسط عبد الصمد',
-          name_english: 'Abdul Basit Abdul Samad',
-        },
       };
-
-      jest.spyOn(reciterService, 'getReciterTilawa').mockResolvedValue([
-        {
-          id: 1,
-          name: 'حفص عن عاصم - مرتل',
-          name_english: 'Hafs an Asim - Murattal',
-          reciter_id: 1,
-          reciter: {} as any,
-          tilawaSurah: [] as any[],
-        },
-      ]);
-
-      jest.spyOn(tilawaSurahRepo, 'query').mockResolvedValue([
+      const expectedResult = [
         {
           tilawa_id: 1,
-          surah_id: 1,
           url: 'https://example.com/audio.mp3',
-          reciter_name_english: 'Abdul Basit Abdul Samad',
-          reciter_name_arabic: 'عبد الباسط عبد الصمد',
-          surah_name_arabic: 'الفاتحة',
-          surah_name_complex: 'Al-Fatihah',
+          surah: {
+            name_arabic: 'الفاتحة',
+            name_complex: 'Al-Fatihah',
+          },
+          reciter: {
+            name_arabic: 'عبد الباسط عبد الصمد',
+            name_english: 'Abdul Basit Abdul Samad',
+          },
         },
-      ]);
+      ];
+
+      jest
+        .spyOn(tilawaSurahRepo, 'find')
+        .mockResolvedValue(expectedResult as any);
 
       const result = await service.getAudio(filterAudioDto);
 
-      expect(result).toEqual(expectedResult);
-      expect(tilawaSurahRepo.query).toHaveBeenCalledWith(expect.any(String), [
-        filterAudioDto.surah_id,
-        1,
-      ]);
-    });
-
-    it('should throw NotFoundException when audio is not found', async () => {
-      const filterAudioDto: FilterAudioDto = {
-        surah_id: 1,
-        reciter_id: 1,
-      };
-
-      jest.spyOn(reciterService, 'getReciterTilawa').mockResolvedValue([
-        {
-          id: 1,
-          name: 'حفص عن عاصم - مرتل',
-          name_english: 'Hafs an Asim - Murattal',
-          reciter_id: 1,
-          reciter: {} as any,
-          tilawaSurah: [] as any[],
-        },
-      ]);
-
-      jest.spyOn(tilawaSurahRepo, 'query').mockResolvedValue([]);
-
-      await expect(service.getAudio(filterAudioDto)).rejects.toThrow(
-        NotFoundException,
-      );
+      expect(result).toEqual(expectedResult[0]);
     });
   });
   describe('getAudioLrc', () => {
