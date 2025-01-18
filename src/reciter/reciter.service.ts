@@ -124,11 +124,17 @@ export class ReciterService {
   async searchReciter(name: string) {
     const reciter = await this.reciterRepository.find();
 
+    // escape regex special characters in the search query
+
+    const escapedName = name
+      ? name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      : undefined;
+
     const filteredReciter = name
       ? reciter.filter(
           (reciter) =>
-            reciter.name_arabic.match(new RegExp(name, 'i')) ||
-            reciter.name_english.match(new RegExp(name, 'i')),
+            reciter.name_arabic.match(new RegExp(escapedName, 'i')) ||
+            reciter.name_english.match(new RegExp(escapedName, 'i')),
         )
       : reciter;
 
