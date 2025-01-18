@@ -11,7 +11,7 @@ import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
 describe('AudioService', () => {
   let service: AudioService;
   let tilawaSurahRepo: Repository<TilawaSurah>;
-  let reciterService: ReciterService;
+  // let reciterService: ReciterService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -34,7 +34,7 @@ describe('AudioService', () => {
     tilawaSurahRepo = module.get<Repository<TilawaSurah>>(
       getRepositoryToken(TilawaSurah),
     );
-    reciterService = module.get<ReciterService>(ReciterService);
+    // reciterService = module.get<ReciterService>(ReciterService);
   });
 
   it('should be defined', () => {
