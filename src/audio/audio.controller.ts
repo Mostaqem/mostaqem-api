@@ -3,6 +3,7 @@ import { AudioService } from './audio.service';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
+import { RandomDto } from './dto/random.dto';
 
 @Controller('audio')
 export class AudioController {
@@ -21,5 +22,13 @@ export class AudioController {
   @Get('lrc')
   getLrc(@Query() filterAudioLrcDto: FilterAudioLrcDto) {
     return this.audioService.getAudioLrc(filterAudioLrcDto);
+  }
+
+  @Get('/random')
+  getRandom(@Query() randomDto: RandomDto) {
+    return this.audioService.getRandomAudio(
+      randomDto.limit,
+      randomDto.reciter_id,
+    );
   }
 }
