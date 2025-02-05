@@ -2,7 +2,7 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reciter } from './entities/reciter.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Tilawa } from './entities/tilawa.entity';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
 import { ReciterFilterDto } from './dto/reciter-filter.dto';
@@ -111,6 +111,25 @@ export class ReciterService {
     });
     if (!tilawa.length) throw new NotFoundException('Tilawa not found');
     return tilawa;
+  }
+
+  async getRandomTilawa(reciterId: number) {
+    const tilawa = await this.tilawaRepository.find({
+      where: {
+        reciter_id: reciterId || In([1, 2, 3, 4, 14, 6, 13, 15, 18]),
+      },
+    });
+
+    const size = 5;
+    const randomTilawas = [];
+    while (randomTilawas.length < Math.min(size, tilawa.length)) {
+      const randomTilawa = tilawa[Math.floor(Math.random() * tilawa.length)];
+      if (!randomTilawas.includes(randomTilawa)) {
+        randomTilawas.push(randomTilawa);
+      }
+    }
+
+    return randomTilawas;
   }
 
   addReciterTilawa(id: number, addTilawaDto: Omit<AddTilawaDto, 'reciter_id'>) {
