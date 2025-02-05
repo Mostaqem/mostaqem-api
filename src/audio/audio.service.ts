@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { ReciterService } from 'src/reciter/reciter.service';
@@ -65,20 +65,12 @@ export class AudioService {
       throw new Error('Limit must be greater than 0');
     }
 
-    const tilawat = await this.reciterService.getReciterTilawa(reciter_id);
-
-    if (!tilawat?.length) {
-      throw new Error('No tilawat found for this reciter');
-    }
-
-    // Use more efficient random selection for tilawa
-    const randomTilawaIndex = Math.floor(Math.random() * tilawat.length);
-    const randomTilawa = tilawat[randomTilawaIndex];
+    const randomTilawa = await this.reciterService.getRandomTilawa(reciter_id);
 
     const audioRecords = await this.tilawaSurahRepo.find({
       select: ['tilawa_id', 'url'],
       where: {
-        tilawa_id: randomTilawa.id,
+        tilawa_id: In(randomTilawa.map((tilawa) => tilawa.id)),
       },
       relations: {
         surah: true,
