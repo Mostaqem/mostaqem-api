@@ -21,18 +21,16 @@ export class SurahService {
     const surah = this.surahRepository.create(createSurahDto);
     try {
       return await this.surahRepository.save(surah);
-    } catch (err) {
+    } catch {
       throw new InternalServerErrorException();
     }
   }
 
   async findAll(surahFilterDto: SurahFilterDto) {
     const { name, page, take } = surahFilterDto;
-
     const query = this.surahRepository
       .createQueryBuilder('surah')
       .where('1 = 1');
-
     if (name) {
       query.andWhere('surah.name_arabic like :name', { name: `${name}%` });
       query.orWhere('surah.name_complex like :name', { name: `${name}%` });

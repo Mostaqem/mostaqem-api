@@ -7,14 +7,17 @@ import {
   Patch,
   Headers,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
 import { ReciterFilterDto } from './dto/reciter-filter.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('reciter')
+@UseInterceptors(CacheInterceptor)
 export class ReciterController {
   constructor(private readonly reciterService: ReciterService) {}
 

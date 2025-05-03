@@ -21,7 +21,7 @@ export class VerseService {
     const verse = this.verseRepository.create(createVerseDto);
     try {
       return this.verseRepository.save(verse);
-    } catch (error) {
+    } catch {
       throw new InternalServerErrorException();
     }
   }
@@ -61,8 +61,8 @@ export class VerseService {
 
   async initialVerses() {
     const verses = await this.verseRepository.find();
-    const data = await require('../../quran.json');
     if (verses.length === 0) {
+      const data = await require('../../quran.json');
       for (let i = 0; i < data.length; i++) {
         const surah = data[i];
         for (let j = 0; j < surah.verses.length; j++) {

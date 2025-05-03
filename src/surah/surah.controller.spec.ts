@@ -5,6 +5,8 @@ import { CreateSurahDto } from './dto/create-surah.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { NotFoundException } from '@nestjs/common';
 import { SurahFilterDto } from './dto/surah-filter.dto';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+
 const surahs = [
   {
     id: 1,
@@ -33,6 +35,15 @@ describe('SurahController', () => {
             findAll: jest.fn(),
             findOne: jest.fn(),
             updateSurahImage: jest.fn(),
+          },
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: jest.fn(),
+            set: jest.fn(),
+            del: jest.fn(),
+            reset: jest.fn(),
           },
         },
       ],

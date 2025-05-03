@@ -6,13 +6,16 @@ import {
   Param,
   Patch,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { SurahService } from './surah.service';
 import { CreateSurahDto } from './dto/create-surah.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { SurahFilterDto } from './dto/surah-filter.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('surah')
+@UseInterceptors(CacheInterceptor)
 export class SurahController {
   constructor(private readonly surahService: SurahService) {}
 
