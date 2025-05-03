@@ -4,6 +4,7 @@ import { AudioService } from './audio.service';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 describe('AudioController', () => {
   let controller: AudioController;
@@ -18,6 +19,15 @@ describe('AudioController', () => {
           useValue: {
             create: jest.fn(),
             getAudio: jest.fn(),
+          },
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: jest.fn(),
+            set: jest.fn(),
+            del: jest.fn(),
+            reset: jest.fn(),
           },
         },
       ],

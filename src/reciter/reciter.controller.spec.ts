@@ -5,6 +5,7 @@ import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { Reciter } from './entities/reciter.entity';
 import { ReciterFilterDto } from './dto/reciter-filter.dto';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 describe('ReciterController', () => {
   let controller: ReciterController;
@@ -21,6 +22,15 @@ describe('ReciterController', () => {
             findAll: jest.fn(),
             findOne: jest.fn(),
             updateReciterImage: jest.fn(),
+          },
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: jest.fn(),
+            set: jest.fn(),
+            del: jest.fn(),
+            reset: jest.fn(),
           },
         },
       ],

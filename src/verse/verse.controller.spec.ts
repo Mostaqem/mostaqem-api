@@ -4,6 +4,7 @@ import { VerseService } from './verse.service';
 import { CreateVerseDto } from './dto/create-verse.dto';
 import { GetVerseFilterDto } from './dto/filter-get-verse.dto';
 import { Verse } from './entities/verse.entity';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 describe('VerseController', () => {
   let verseController: VerseController;
@@ -19,6 +20,15 @@ describe('VerseController', () => {
             create: jest.fn(),
             getSurahVerses: jest.fn(),
             getVerse: jest.fn(), // Add this line if `getVerse` is also needed elsewhere
+          },
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: jest.fn(),
+            set: jest.fn(),
+            del: jest.fn(),
+            reset: jest.fn(),
           },
         },
       ],
