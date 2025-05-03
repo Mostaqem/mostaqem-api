@@ -44,9 +44,7 @@ describe('ReciterController', () => {
       };
       const expectedResult = { id: 1, ...createReciterDto };
 
-      jest
-        .spyOn(service, 'create')
-        .mockResolvedValue(expectedResult as Reciter);
+      jest.spyOn(service, 'create').mockResolvedValue(expectedResult as Reciter);
 
       expect(await controller.create(createReciterDto)).toBe(expectedResult);
       expect(service.create).toHaveBeenCalledWith(createReciterDto);
@@ -60,15 +58,11 @@ describe('ReciterController', () => {
         take: 1,
         page: 1,
       };
-      const expectedResult = [
-        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
-      ] as any;
+      const expectedResult = [{ id: 1, name_english: 'John Doe', name_arabic: 'جون دو' }] as any;
 
       jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult);
 
-      expect(await controller.findAll('eng', reciterFilterDto)).toBe(
-        expectedResult,
-      );
+      expect(await controller.findAll('eng', reciterFilterDto)).toBe(expectedResult);
       expect(service.findAll).toHaveBeenCalledWith('eng', reciterFilterDto);
     });
 
@@ -78,15 +72,11 @@ describe('ReciterController', () => {
         take: 1,
         page: 1,
       };
-      const expectedResult = [
-        { id: 1, name_english: 'John Doe', name_arabic: 'جون دو' },
-      ] as any;
+      const expectedResult = [{ id: 1, name_english: 'John Doe', name_arabic: 'جون دو' }] as any;
 
       jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult);
 
-      expect(await controller.findAll('ar', reciterFilterDto)).toBe(
-        expectedResult,
-      );
+      expect(await controller.findAll('ar', reciterFilterDto)).toBe(expectedResult);
       expect(service.findAll).toHaveBeenCalledWith('ar', reciterFilterDto);
     });
   });
@@ -98,9 +88,7 @@ describe('ReciterController', () => {
         name_english: 'John Doe',
         name_arabic: 'جون دو',
       };
-      jest
-        .spyOn(service, 'findOne')
-        .mockResolvedValue(expectedResult as Reciter);
+      jest.spyOn(service, 'findOne').mockResolvedValue(expectedResult as Reciter);
 
       expect(await controller.findOne('1')).toBe(expectedResult);
       expect(service.findOne).toHaveBeenCalledWith(1);
@@ -118,17 +106,10 @@ describe('ReciterController', () => {
         name_arabic: 'جون دو',
         image: addImageDto.image,
       };
-      jest
-        .spyOn(service, 'updateReciterImage')
-        .mockResolvedValue(expectedResult as Reciter);
+      jest.spyOn(service, 'updateReciterImage').mockResolvedValue(expectedResult as Reciter);
 
-      expect(await controller.addSurahImage(1, addImageDto)).toBe(
-        expectedResult,
-      );
-      expect(service.updateReciterImage).toHaveBeenCalledWith(
-        1,
-        addImageDto.image,
-      );
+      expect(await controller.addSurahImage(1, addImageDto)).toBe(expectedResult);
+      expect(service.updateReciterImage).toHaveBeenCalledWith(1, addImageDto.image);
     });
   });
 });

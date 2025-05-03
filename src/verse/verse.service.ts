@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-} from '@nestjs/common';
+import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { CreateVerseDto } from './dto/create-verse.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Verse } from './entities/verse.entity';
@@ -38,17 +34,11 @@ export class VerseService {
     }
 
     if (name) {
-      query.andWhere(
-        'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
-        { name },
-      );
+      query.andWhere('MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)', { name });
     }
 
     const skip = (page - 1) * take;
-    const [verses, totalData] = await Promise.all([
-      query.skip(skip).take(take).getMany(),
-      query.getCount(),
-    ]);
+    const [verses, totalData] = await Promise.all([query.skip(skip).take(take).getMany(), query.getCount()]);
 
     const totalPages = Math.ceil(totalData / take);
 

@@ -5,14 +5,7 @@ import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGenerat
 import { TilawaSurah } from './tilawa-surah.entity';
 
 @Entity()
-@Index('IDX_SURAH', [
-  'id',
-  'name_arabic',
-  'name_complex',
-  'verses_count',
-  'revelation_place',
-  'image',
-])
+@Index('IDX_SURAH', ['id', 'name_arabic', 'name_complex', 'verses_count', 'revelation_place', 'image'])
 export class Surah {
   @PrimaryGeneratedColumn()
   id: number;

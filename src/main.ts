@@ -24,10 +24,7 @@ async function bootstrap() {
   });
 
   app.setGlobalPrefix('/api/v1');
-  app.useGlobalInterceptors(
-    new ResponseInterceptor(),
-    new ClassSerializerInterceptor(app.get(Reflector)),
-  );
+  app.useGlobalInterceptors(new ResponseInterceptor(), new ClassSerializerInterceptor(app.get(Reflector)));
 
   await app.listen(port);
 }

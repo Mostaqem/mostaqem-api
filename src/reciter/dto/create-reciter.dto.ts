@@ -1,10 +1,4 @@
-import {
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  IsUrl,
-  Length,
-} from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsUrl, Length } from 'class-validator';
 
 export class CreateReciterDto {
   id?: number;

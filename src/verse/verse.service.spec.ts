@@ -48,13 +48,9 @@ describe('VerseService', () => {
         surah_id: 1,
       };
 
-      const createSpy = jest
-        .spyOn(verseRepository, 'create')
-        .mockReturnValue(createVerseDto as unknown as Verse);
+      const createSpy = jest.spyOn(verseRepository, 'create').mockReturnValue(createVerseDto as unknown as Verse);
 
-      const saveSpy = jest
-        .spyOn(verseRepository, 'save')
-        .mockResolvedValueOnce({} as Verse);
+      const saveSpy = jest.spyOn(verseRepository, 'save').mockResolvedValueOnce({} as Verse);
 
       const result = await verseService.create(createVerseDto);
 
@@ -71,17 +67,11 @@ describe('VerseService', () => {
         surah_id: 1,
       };
 
-      jest
-        .spyOn(verseRepository, 'create')
-        .mockReturnValue(createVerseDto as unknown as Verse);
+      jest.spyOn(verseRepository, 'create').mockReturnValue(createVerseDto as unknown as Verse);
 
-      jest
-        .spyOn(verseRepository, 'save')
-        .mockRejectedValueOnce(new InternalServerErrorException());
+      jest.spyOn(verseRepository, 'save').mockRejectedValueOnce(new InternalServerErrorException());
 
-      await expect(verseService.create(createVerseDto)).rejects.toThrow(
-        InternalServerErrorException,
-      );
+      await expect(verseService.create(createVerseDto)).rejects.toThrow(InternalServerErrorException);
     });
   });
 
@@ -124,17 +114,12 @@ describe('VerseService', () => {
         leftJoinAndSelect: jest.fn().mockReturnThis(),
       };
 
-      jest
-        .spyOn(verseRepository, 'createQueryBuilder')
-        .mockReturnValue(queryBuilderMock as any);
+      jest.spyOn(verseRepository, 'createQueryBuilder').mockReturnValue(queryBuilderMock as any);
 
       const result = await verseService.getVerse(getVerseFilterDto);
 
       expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
-      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
-        'verse.surah_id = :surah_id',
-        { surah_id: 1 },
-      );
+      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith('verse.surah_id = :surah_id', { surah_id: 1 });
       expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
         'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
         { name: 'Allah' },
@@ -157,17 +142,12 @@ describe('VerseService', () => {
         take: 10,
       };
 
-      jest
-        .spyOn(verseRepository, 'createQueryBuilder')
-        .mockReturnValue(queryBuilderMock as any);
+      jest.spyOn(verseRepository, 'createQueryBuilder').mockReturnValue(queryBuilderMock as any);
 
       const result = await verseService.getVerse(basicFilterDto);
 
       expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
-      expect(queryBuilderMock.andWhere).not.toHaveBeenCalledWith(
-        'verse.surah_id = :surah_id',
-        expect.anything(),
-      );
+      expect(queryBuilderMock.andWhere).not.toHaveBeenCalledWith('verse.surah_id = :surah_id', expect.anything());
       expect(queryBuilderMock.andWhere).not.toHaveBeenCalledWith(
         'MATCH(verse.vers) AGAINST(:name IN NATURAL LANGUAGE MODE)',
         expect.anything(),
@@ -189,25 +169,17 @@ describe('VerseService', () => {
   describe('initialVerses', () => {
     it('should seed verses if verses table is empty', async () => {
       const verses: Verse[] = [];
-      const findSpy = jest
-        .spyOn(verseRepository, 'find')
-        .mockResolvedValueOnce(verses);
-      const createSpy = jest
-        .spyOn(verseRepository, 'create')
-        .mockResolvedValue({
-          id: 1,
-          vers: 'verse',
-          verse_number: 1,
-          vers_lang: 'eng',
-          surah_id: 1,
-        } as never);
+      const findSpy = jest.spyOn(verseRepository, 'find').mockResolvedValueOnce(verses);
+      const createSpy = jest.spyOn(verseRepository, 'create').mockResolvedValue({
+        id: 1,
+        vers: 'verse',
+        verse_number: 1,
+        vers_lang: 'eng',
+        surah_id: 1,
+      } as never);
 
-      const saveSpy = jest
-        .spyOn(verseRepository, 'save')
-        .mockResolvedValue({} as never);
-      const logSpy = jest
-        .spyOn(Logger, 'log')
-        .mockResolvedValueOnce('Verse Seeder Completed' as never);
+      const saveSpy = jest.spyOn(verseRepository, 'save').mockResolvedValue({} as never);
+      const logSpy = jest.spyOn(Logger, 'log').mockResolvedValueOnce('Verse Seeder Completed' as never);
 
       await verseService.initialVerses();
 
@@ -231,9 +203,7 @@ describe('VerseService', () => {
       const createSpy = jest.spyOn(verseRepository, 'create');
       const saveSpy = jest.spyOn(verseRepository, 'save');
       // const logSpy = jest.spyOn(Logger, 'log');
-      const findSpy = jest
-        .spyOn(verseRepository, 'find')
-        .mockResolvedValueOnce(verses as any);
+      const findSpy = jest.spyOn(verseRepository, 'find').mockResolvedValueOnce(verses as any);
 
       await verseService.initialVerses();
 

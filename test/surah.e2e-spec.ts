@@ -50,17 +50,11 @@ describe('Surah E2E TESTS', () => {
 
   describe('adding image section', () => {
     it('should add an image to a surah', () => {
-      return request(app.getHttpServer())
-        .patch('/surah/1')
-        .send({ image: 'image-url' })
-        .expect(200);
+      return request(app.getHttpServer()).patch('/surah/1').send({ image: 'image-url' }).expect(200);
     });
 
     it('should return 404 if surah not found by id', () => {
-      return request(app.getHttpServer())
-        .patch('/surah/150')
-        .send({ image: 'image-url' })
-        .expect(404);
+      return request(app.getHttpServer()).patch('/surah/150').send({ image: 'image-url' }).expect(404);
     });
   });
 

@@ -1,12 +1,4 @@
-import {
-  IsString,
-  IsNotEmpty,
-  MaxLength,
-  IsInt,
-  Min,
-  IsUrl,
-  IsOptional,
-} from 'class-validator';
+import { IsString, IsNotEmpty, MaxLength, IsInt, Min, IsUrl, IsOptional } from 'class-validator';
 
 export class CreateSurahDto {
   id: number;

@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Patch,
-  Headers,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Headers, Query } from '@nestjs/common';
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
@@ -24,10 +15,7 @@ export class ReciterController {
   }
 
   @Get()
-  findAll(
-    @Headers('Accept-Language') lang: 'eng' | 'ar',
-    @Query() reciterFilterDto: ReciterFilterDto,
-  ) {
+  findAll(@Headers('Accept-Language') lang: 'eng' | 'ar', @Query() reciterFilterDto: ReciterFilterDto) {
     return this.reciterService.findAll(lang, reciterFilterDto);
   }
 
@@ -37,10 +25,7 @@ export class ReciterController {
   }
 
   @Post('/:id/tilawa')
-  addReciterTilawa(
-    @Param('id') id: number,
-    @Body() addTilawaDto: AddTilawaDto,
-  ) {
+  addReciterTilawa(@Param('id') id: number, @Body() addTilawaDto: AddTilawaDto) {
     return this.reciterService.addReciterTilawa(id, addTilawaDto);
   }
 

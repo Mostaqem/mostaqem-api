@@ -86,9 +86,7 @@ describe('VerseController', () => {
         totalPages: 2,
       } as any;
 
-      jest
-        .spyOn(verseService, 'getVerse')
-        .mockResolvedValueOnce(getSurahVersesResult);
+      jest.spyOn(verseService, 'getVerse').mockResolvedValueOnce(getSurahVersesResult);
 
       const result = await verseController.getSurahVerses(getVerseFilterDto);
       expect(verseService.getVerse).toHaveBeenCalledWith(getVerseFilterDto);

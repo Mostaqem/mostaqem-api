@@ -31,9 +31,7 @@ describe('AudioService', () => {
     }).compile();
 
     service = module.get<AudioService>(AudioService);
-    tilawaSurahRepo = module.get<Repository<TilawaSurah>>(
-      getRepositoryToken(TilawaSurah),
-    );
+    tilawaSurahRepo = module.get<Repository<TilawaSurah>>(getRepositoryToken(TilawaSurah));
     // reciterService = module.get<ReciterService>(ReciterService);
   });
 
@@ -63,12 +61,8 @@ describe('AudioService', () => {
         surah: {} as any,
       };
 
-      jest
-        .spyOn(tilawaSurahRepo, 'create')
-        .mockReturnValue(expectedResult as TilawaSurah);
-      jest
-        .spyOn(tilawaSurahRepo, 'save')
-        .mockResolvedValue(expectedResult as TilawaSurah);
+      jest.spyOn(tilawaSurahRepo, 'create').mockReturnValue(expectedResult as TilawaSurah);
+      jest.spyOn(tilawaSurahRepo, 'save').mockResolvedValue(expectedResult as TilawaSurah);
 
       const result = await service.create(createAudioDto);
 
@@ -100,9 +94,7 @@ describe('AudioService', () => {
         },
       ];
 
-      jest
-        .spyOn(tilawaSurahRepo, 'find')
-        .mockResolvedValue(expectedResult as any);
+      jest.spyOn(tilawaSurahRepo, 'find').mockResolvedValue(expectedResult as any);
 
       const result = await service.getAudio(filterAudioDto);
 
@@ -119,9 +111,7 @@ describe('AudioService', () => {
         lrc_content: 'some lrc content',
       };
 
-      jest
-        .spyOn(tilawaSurahRepo, 'findOne')
-        .mockResolvedValue(expectedResult as TilawaSurah);
+      jest.spyOn(tilawaSurahRepo, 'findOne').mockResolvedValue(expectedResult as TilawaSurah);
 
       const result = await service.getAudioLrc(filterAudioLrcDto);
 

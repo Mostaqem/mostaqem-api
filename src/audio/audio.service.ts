@@ -25,8 +25,7 @@ export class AudioService {
     const { surah_id, reciter_id } = paginatedFilter;
     let tilawa_id = paginatedFilter.tilawa_id;
 
-    if (!reciter_id && !tilawa_id)
-      throw new ConflictException('Reciter or Tilawa are required');
+    if (!reciter_id && !tilawa_id) throw new ConflictException('Reciter or Tilawa are required');
 
     if (!tilawa_id) {
       const tilawa = await this.reciterService.getReciterTilawa(reciter_id);
