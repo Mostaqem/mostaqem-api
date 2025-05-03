@@ -21,7 +21,7 @@ export class VerseService {
     const verse = this.verseRepository.create(createVerseDto);
     try {
       return this.verseRepository.save(verse);
-    } catch (error) {
+    } catch {
       throw new InternalServerErrorException();
     }
   }

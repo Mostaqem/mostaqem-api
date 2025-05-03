@@ -21,7 +21,7 @@ export class SurahService {
     const surah = this.surahRepository.create(createSurahDto);
     try {
       return await this.surahRepository.save(surah);
-    } catch (err) {
+    } catch {
       throw new InternalServerErrorException();
     }
   }
