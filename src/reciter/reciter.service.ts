@@ -32,14 +32,26 @@ export class ReciterService {
     const { take, page, name } = reciterFilterDto;
     const skip = take * (page - 1);
 
-    const query = this.reciterRepository.createQueryBuilder('reciter').where('1 = 1').orderBy(orderOptions);
+    const query = this.reciterRepository
+      .createQueryBuilder('reciter')
+      .where('1 = 1')
+      .orderBy(orderOptions);
 
     if (name) {
-      query.andWhere('MATCH(reciter.name_arabic) AGAINST(:name IN NATURAL LANGUAGE MODE)', { name });
-      query.orWhere('MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)', { name });
+      query.andWhere(
+        'MATCH(reciter.name_arabic) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name },
+      );
+      query.orWhere(
+        'MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)',
+        { name },
+      );
     }
 
-    const [reciters, total] = await Promise.all([query.take(take).skip(skip).getMany(), query.getCount()]);
+    const [reciters, total] = await Promise.all([
+      query.take(take).skip(skip).getMany(),
+      query.getCount(),
+    ]);
 
     const totalPages = Math.ceil(total / take);
 
@@ -133,7 +145,9 @@ export class ReciterService {
 
     // escape regex special characters in the search query
 
-    const escapedName = name ? name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : undefined;
+    const escapedName = name
+      ? name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      : undefined;
 
     const filteredReciter = name
       ? reciter.filter(

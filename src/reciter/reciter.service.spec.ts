@@ -29,8 +29,12 @@ describe('ReciterService', () => {
     }).compile();
 
     service = module.get<ReciterService>(ReciterService);
-    reciterRepository = module.get<Repository<Reciter>>(getRepositoryToken(Reciter));
-    tilawaRepository = module.get<Repository<Tilawa>>(getRepositoryToken(Tilawa));
+    reciterRepository = module.get<Repository<Reciter>>(
+      getRepositoryToken(Reciter),
+    );
+    tilawaRepository = module.get<Repository<Tilawa>>(
+      getRepositoryToken(Tilawa),
+    );
   });
 
   it('should be defined', () => {
@@ -47,8 +51,12 @@ describe('ReciterService', () => {
       };
       const reciter = { id: 1, ...createReciterDto };
 
-      jest.spyOn(reciterRepository, 'create').mockReturnValue(reciter as Reciter);
-      jest.spyOn(reciterRepository, 'save').mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'create')
+        .mockReturnValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'save')
+        .mockResolvedValue(reciter as Reciter);
 
       expect(await service.create(createReciterDto)).toEqual(reciter);
       expect(reciterRepository.create).toHaveBeenCalledWith(createReciterDto);
@@ -79,7 +87,9 @@ describe('ReciterService', () => {
       const result = await service.findAll('eng', reciterFilterDto);
 
       expect(result).toEqual({ reciters, total, totalPages });
-      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith('reciter');
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
     });
 
     it('should return paginated reciters ordered by name_arabic', async () => {
@@ -100,7 +110,9 @@ describe('ReciterService', () => {
       const result = await service.findAll('ar', reciterFilterDto);
 
       expect(result).toEqual({ reciters, total, totalPages });
-      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith('reciter');
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
     });
 
     it('should filter reciters by name', async () => {
@@ -122,13 +134,19 @@ describe('ReciterService', () => {
       const result = await service.findAll('eng', reciterFilterDto);
 
       expect(result).toEqual({ reciters, total, totalPages });
-      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith('reciter');
-      expect(reciterRepository.createQueryBuilder().andWhere).toHaveBeenCalledWith(
+      expect(reciterRepository.createQueryBuilder).toHaveBeenCalledWith(
+        'reciter',
+      );
+      expect(
+        reciterRepository.createQueryBuilder().andWhere,
+      ).toHaveBeenCalledWith(
         'MATCH(reciter.name_arabic) AGAINST(:name IN NATURAL LANGUAGE MODE)',
         { name: 'test' },
       );
 
-      expect(reciterRepository.createQueryBuilder().orWhere).toHaveBeenCalledWith(
+      expect(
+        reciterRepository.createQueryBuilder().orWhere,
+      ).toHaveBeenCalledWith(
         'MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)',
         { name: 'test' },
       );
@@ -143,7 +161,9 @@ describe('ReciterService', () => {
         name_arabic: 'جون دو',
       };
 
-      jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'findOneBy')
+        .mockResolvedValue(reciter as Reciter);
 
       expect(await service.findOne(1)).toEqual(reciter);
       expect(reciterRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
@@ -166,10 +186,16 @@ describe('ReciterService', () => {
       };
       const updatedReciter = { ...reciter, image: 'new-image.jpg' };
 
-      jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(reciter as Reciter);
-      jest.spyOn(reciterRepository, 'save').mockResolvedValue(updatedReciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'findOneBy')
+        .mockResolvedValue(reciter as Reciter);
+      jest
+        .spyOn(reciterRepository, 'save')
+        .mockResolvedValue(updatedReciter as Reciter);
 
-      expect(await service.updateReciterImage(1, 'new-image.jpg')).toEqual(updatedReciter);
+      expect(await service.updateReciterImage(1, 'new-image.jpg')).toEqual(
+        updatedReciter,
+      );
       expect(reciterRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
       expect(reciterRepository.save).toHaveBeenCalledWith(updatedReciter);
     });
@@ -177,7 +203,9 @@ describe('ReciterService', () => {
     it('should throw NotFoundException if reciter is not found', async () => {
       jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(null);
 
-      await expect(service.updateReciterImage(1, 'new-image.jpg')).rejects.toThrow(NotFoundException);
+      await expect(
+        service.updateReciterImage(1, 'new-image.jpg'),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 
@@ -198,7 +226,9 @@ describe('ReciterService', () => {
     });
 
     it('should not add default tilawa if tilawa already exists', async () => {
-      jest.spyOn(tilawaRepository, 'find').mockResolvedValueOnce([{} as Tilawa]);
+      jest
+        .spyOn(tilawaRepository, 'find')
+        .mockResolvedValueOnce([{} as Tilawa]);
       jest.spyOn(reciterRepository, 'find').mockResolvedValueOnce([]);
 
       await service.addDefaultTilawaToReciters();
@@ -210,7 +240,9 @@ describe('ReciterService', () => {
   describe('getReciterTilawaId', () => {
     it('should return tilawa id for a reciter', async () => {
       const mockTilawa = { id: 1, reciter_id: 1 } as Tilawa;
-      jest.spyOn(tilawaRepository, 'findOneBy').mockResolvedValueOnce(mockTilawa);
+      jest
+        .spyOn(tilawaRepository, 'findOneBy')
+        .mockResolvedValueOnce(mockTilawa);
 
       const result = await service.getReciterTilawaId(1);
 

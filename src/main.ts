@@ -1,7 +1,7 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
 import helmet from 'helmet';
@@ -24,7 +24,10 @@ async function bootstrap() {
   });
 
   app.setGlobalPrefix('/api/v1');
-  app.useGlobalInterceptors(new ResponseInterceptor(), new ClassSerializerInterceptor(app.get(Reflector)));
+  app.useGlobalInterceptors(
+    new ResponseInterceptor(),
+    new ClassSerializerInterceptor(app.get(Reflector)),
+  );
 
   await app.listen(port);
 }

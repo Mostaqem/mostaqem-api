@@ -4,7 +4,11 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { CreateSurahDto } from './dto/create-surah.dto';
-import { NotFoundException, InternalServerErrorException, Logger } from '@nestjs/common';
+import {
+  NotFoundException,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { SurahFilterDto } from './dto/surah-filter.dto';
 
@@ -73,7 +77,9 @@ describe('SurahService', () => {
     }).compile();
 
     surahService = moduleRef.get<SurahService>(SurahService);
-    surahRepository = moduleRef.get<Repository<Surah>>(getRepositoryToken(Surah));
+    surahRepository = moduleRef.get<Repository<Surah>>(
+      getRepositoryToken(Surah),
+    );
   });
 
   it('should be defined', () => {
@@ -100,7 +106,9 @@ describe('SurahService', () => {
         reciterSurah: [],
       };
 
-      jest.spyOn(surahRepository, 'create').mockReturnValue(createResult as Surah);
+      jest
+        .spyOn(surahRepository, 'create')
+        .mockReturnValue(createResult as Surah);
       jest.spyOn(surahRepository, 'save').mockResolvedValue(createResult);
 
       const result = await surahService.create(createSurahDto);
@@ -119,21 +127,35 @@ describe('SurahService', () => {
         revelation_place: 'Meccan',
       };
 
-      jest.spyOn(surahRepository, 'create').mockReturnValue(createSurahDto as Surah);
-      jest.spyOn(surahRepository, 'save').mockRejectedValue(new Error('Failed to save surah'));
+      jest
+        .spyOn(surahRepository, 'create')
+        .mockReturnValue(createSurahDto as Surah);
+      jest
+        .spyOn(surahRepository, 'save')
+        .mockRejectedValue(new Error('Failed to save surah'));
 
-      await expect(surahService.create(createSurahDto)).rejects.toThrow(InternalServerErrorException);
+      await expect(surahService.create(createSurahDto)).rejects.toThrow(
+        InternalServerErrorException,
+      );
     });
   });
   describe('findAll', () => {
     it('should return paginated surahs based on filter', async () => {
-      jest.spyOn(surahRepository, 'createQueryBuilder').mockReturnValue(queryBuilderMock as any);
+      jest
+        .spyOn(surahRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
 
       const result = await surahService.findAll(surahFilterDto);
 
       expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
-      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith('surah.name_arabic like :name', { name: 'الفاتحة%' });
-      expect(queryBuilderMock.orWhere).toHaveBeenCalledWith('surah.name_complex like :name', { name: 'الفاتحة%' });
+      expect(queryBuilderMock.andWhere).toHaveBeenCalledWith(
+        'surah.name_arabic like :name',
+        { name: 'الفاتحة%' },
+      );
+      expect(queryBuilderMock.orWhere).toHaveBeenCalledWith(
+        'surah.name_complex like :name',
+        { name: 'الفاتحة%' },
+      );
       expect(queryBuilderMock.skip).toHaveBeenCalledWith(0);
       expect(queryBuilderMock.take).toHaveBeenCalledWith(10);
       expect(queryBuilderMock.getMany).toHaveBeenCalled();
@@ -160,7 +182,9 @@ describe('SurahService', () => {
         getCount: jest.fn().mockResolvedValue(1),
       };
 
-      jest.spyOn(surahRepository, 'createQueryBuilder').mockReturnValue(queryBuilderMock as any);
+      jest
+        .spyOn(surahRepository, 'createQueryBuilder')
+        .mockReturnValue(queryBuilderMock as any);
       const result = await surahService.findAll(basicSurahFilterDto);
 
       expect(queryBuilderMock.where).toHaveBeenCalledWith('1 = 1');
@@ -226,7 +250,10 @@ describe('SurahService', () => {
       jest.spyOn(surahRepository, 'findOneBy').mockResolvedValueOnce(surah);
       jest.spyOn(surahRepository, 'save').mockResolvedValueOnce(updatedSurah);
 
-      const result = await surahService.updateSurahImage(1, 'http://example.com/image.jpg');
+      const result = await surahService.updateSurahImage(
+        1,
+        'http://example.com/image.jpg',
+      );
 
       expect(surahRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
       expect(surah.image).toEqual('http://example.com/image.jpg');
@@ -237,15 +264,21 @@ describe('SurahService', () => {
     it('should throw NotFoundException if surah is not found', async () => {
       jest.spyOn(surahRepository, 'findOneBy').mockResolvedValueOnce(null);
 
-      await expect(surahService.updateSurahImage(1, 'http://example.com/image.jpg')).rejects.toThrow(NotFoundException);
+      await expect(
+        surahService.updateSurahImage(1, 'http://example.com/image.jpg'),
+      ).rejects.toThrow(NotFoundException);
     });
   });
 
   describe('initializeSurah', () => {
     it('should seed surahs if not already seeded', async () => {
       jest.spyOn(surahRepository, 'find').mockResolvedValueOnce([]);
-      jest.spyOn(surahRepository, 'create').mockImplementation((dto) => dto as Surah);
-      jest.spyOn(surahRepository, 'save').mockImplementation(async (surah) => surah as Surah);
+      jest
+        .spyOn(surahRepository, 'create')
+        .mockImplementation((dto) => dto as Surah);
+      jest
+        .spyOn(surahRepository, 'save')
+        .mockImplementation(async (surah) => surah as Surah);
       const logSpy = jest.spyOn(Logger, 'log');
 
       await surahService.initializeSurah();

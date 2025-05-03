@@ -1,5 +1,12 @@
 import { Surah } from 'src/surah/entities/surah.entity';
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @Index('SURAH_VERSE_UNIQUE', ['surah_id', 'verse_number'])

@@ -81,7 +81,9 @@ describe('SurahController', () => {
         revelation_place: 'Meccan',
       };
 
-      jest.spyOn(surahService, 'create').mockRejectedValue(new Error('Creation failed'));
+      jest
+        .spyOn(surahService, 'create')
+        .mockRejectedValue(new Error('Creation failed'));
 
       await expect(surahController.create(createSurahDto)).rejects.toThrow();
     });
@@ -114,12 +116,19 @@ describe('SurahController', () => {
 
       jest.spyOn(surahService, 'updateSurahImage').mockResolvedValue(result);
 
-      expect(await surahController.addSurahImage(1, addImageDto)).toEqual(result);
-      expect(surahService.updateSurahImage).toHaveBeenCalledWith(1, addImageDto.image);
+      expect(await surahController.addSurahImage(1, addImageDto)).toEqual(
+        result,
+      );
+      expect(surahService.updateSurahImage).toHaveBeenCalledWith(
+        1,
+        addImageDto.image,
+      );
     });
 
     it('should handle errors while updating image', async () => {
-      jest.spyOn(surahService, 'updateSurahImage').mockRejectedValue(new NotFoundException());
+      jest
+        .spyOn(surahService, 'updateSurahImage')
+        .mockRejectedValue(new NotFoundException());
 
       await expect(
         surahController.addSurahImage(1, {

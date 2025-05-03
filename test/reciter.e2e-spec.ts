@@ -29,11 +29,17 @@ describe('Reciter E2E TESTS', () => {
 
   describe('adding image section', () => {
     it('should add an image to a reciter', () => {
-      return request(app.getHttpServer()).patch('/reciter/1').send({ image: 'image-url' }).expect(200);
+      return request(app.getHttpServer())
+        .patch('/reciter/1')
+        .send({ image: 'image-url' })
+        .expect(200);
     });
 
     it('should return 404 if reciter not found by id', () => {
-      return request(app.getHttpServer()).patch('/reciter/99999').send({ image: 'image-url' }).expect(404);
+      return request(app.getHttpServer())
+        .patch('/reciter/99999')
+        .send({ image: 'image-url' })
+        .expect(404);
     });
   });
 });

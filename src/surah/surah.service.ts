@@ -1,4 +1,9 @@
-import { Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateSurahDto } from './dto/create-surah.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
@@ -23,16 +28,19 @@ export class SurahService {
 
   async findAll(surahFilterDto: SurahFilterDto) {
     const { name, page, take } = surahFilterDto;
-
-    const query = this.surahRepository.createQueryBuilder('surah').where('1 = 1');
-
+    const query = this.surahRepository
+      .createQueryBuilder('surah')
+      .where('1 = 1');
     if (name) {
       query.andWhere('surah.name_arabic like :name', { name: `${name}%` });
       query.orWhere('surah.name_complex like :name', { name: `${name}%` });
     }
 
     const skip = (page - 1) * take;
-    const [surah, totalData] = await Promise.all([query.skip(skip).take(take).getMany(), query.getCount()]);
+    const [surah, totalData] = await Promise.all([
+      query.skip(skip).take(take).getMany(),
+      query.getCount(),
+    ]);
 
     const totalPages = Math.ceil(totalData / take);
 

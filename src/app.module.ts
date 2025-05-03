@@ -19,6 +19,8 @@ import { CacheModule } from '@nestjs/cache-manager';
     }),
     CacheModule.register({
       isGlobal: true,
+      ttl: 3.6e6, // 1 hour in milliseconds
+      max: 250,
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',

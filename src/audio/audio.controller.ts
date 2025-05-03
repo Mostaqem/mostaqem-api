@@ -26,6 +26,9 @@ export class AudioController {
 
   @Get('/random')
   getRandom(@Query() randomDto: RandomDto) {
-    return this.audioService.getRandomAudio(randomDto.limit, randomDto.reciter_id);
+    return this.audioService.getRandomAudio(
+      randomDto.limit,
+      randomDto.reciter_id,
+    );
   }
 }

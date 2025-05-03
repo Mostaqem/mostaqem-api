@@ -1,11 +1,23 @@
-import { Controller, Get, Post, Body, Param, Patch, Headers, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  Headers,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ReciterService } from './reciter.service';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
 import { ReciterFilterDto } from './dto/reciter-filter.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('reciter')
+@UseInterceptors(CacheInterceptor)
 export class ReciterController {
   constructor(private readonly reciterService: ReciterService) {}
 
@@ -15,7 +27,10 @@ export class ReciterController {
   }
 
   @Get()
-  findAll(@Headers('Accept-Language') lang: 'eng' | 'ar', @Query() reciterFilterDto: ReciterFilterDto) {
+  findAll(
+    @Headers('Accept-Language') lang: 'eng' | 'ar',
+    @Query() reciterFilterDto: ReciterFilterDto,
+  ) {
     return this.reciterService.findAll(lang, reciterFilterDto);
   }
 
@@ -25,7 +40,10 @@ export class ReciterController {
   }
 
   @Post('/:id/tilawa')
-  addReciterTilawa(@Param('id') id: number, @Body() addTilawaDto: AddTilawaDto) {
+  addReciterTilawa(
+    @Param('id') id: number,
+    @Body() addTilawaDto: AddTilawaDto,
+  ) {
     return this.reciterService.addReciterTilawa(id, addTilawaDto);
   }
 
