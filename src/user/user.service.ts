@@ -10,7 +10,7 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: User) {
+  create(createUserDto: Partial<User>) {
     const user = this.userRepository.create(createUserDto);
     return this.userRepository.save(user);
   }
@@ -20,7 +20,7 @@ export class UserService {
   }
 
   findByEmail(email: string) {
-    return this.userRepository.find({ where: { email } });
+    return this.userRepository.findOne({ where: { email } });
   }
 
   async update(id: string, updateUserDto: Partial<User>) {

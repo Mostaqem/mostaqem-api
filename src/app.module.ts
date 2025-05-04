@@ -11,6 +11,7 @@ import { SurahService } from './surah/surah.service';
 import { VerseService } from './verse/verse.service';
 import { CacheModule } from '@nestjs/cache-manager';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { UserModule } from './user/user.module';
     AudioModule,
     ImageModule,
     UserModule,
+    AuthModule,
   ],
 })
 export class AppModule {

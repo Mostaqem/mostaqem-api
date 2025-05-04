@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   BeforeInsert,
   Column,
@@ -25,6 +26,7 @@ export class User {
   @Column('varchar', { length: 100, unique: true })
   email: string;
 
-  @DeleteDateColumn({ select: false })
+  @Exclude()
+  @DeleteDateColumn()
   deleatedAt: Date | null = null;
 }
