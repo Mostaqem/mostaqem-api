@@ -42,6 +42,7 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "typeorm": "^0.3.22",
+    "ulid": "^3.0.0",
     "unsplash-js": "^7.0.19"
   },
   "devDependencies": {
