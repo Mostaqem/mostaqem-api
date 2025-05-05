@@ -1,9 +1,11 @@
 import { Exclude } from 'class-transformer';
+import { Favorite } from 'src/favorites/entities/favorite.entity';
 import {
   BeforeInsert,
   Column,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
 } from 'typeorm';
 import { ulid } from 'ulid';
@@ -29,4 +31,7 @@ export class User {
   @Exclude()
   @DeleteDateColumn()
   deleatedAt: Date | null = null;
+
+  @OneToMany(() => Favorite, (favorite) => favorite.user)
+  favorites: Favorite[];
 }

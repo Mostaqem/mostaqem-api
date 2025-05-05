@@ -13,6 +13,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { createKeyv } from '@keyv/redis';
+import { FavoritesModule } from './favorites/favorites.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { createKeyv } from '@keyv/redis';
     ImageModule,
     UserModule,
     AuthModule,
+    FavoritesModule,
   ],
 })
 export class AppModule {
