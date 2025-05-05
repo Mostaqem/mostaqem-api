@@ -23,6 +23,7 @@
     "typeorm:migrate": "npm run typeorm -- -d ./typeorm.config.ts migration:run"
   },
   "dependencies": {
+    "@keyv/redis": "^4.4.0",
     "@nestjs/cache-manager": "^3.0.1",
     "@nestjs/cli": "^11.0.7",
     "@nestjs/common": "^11.1.0",

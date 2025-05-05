@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SurahModule } from './surah/surah.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
@@ -12,6 +12,7 @@ import { VerseService } from './verse/verse.service';
 import { CacheModule } from '@nestjs/cache-manager';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { createKeyv } from '@keyv/redis';
 
 @Module({
   imports: [
@@ -19,10 +20,17 @@ import { AuthModule } from './auth/auth.module';
       isGlobal: true,
       ignoreEnvFile: false,
     }),
-    CacheModule.register({
+    CacheModule.registerAsync({
       isGlobal: true,
-      ttl: 3.6e6, // 1 hour in milliseconds
-      max: 250,
+      useFactory: (configService: ConfigService) => ({
+        stores: [
+          createKeyv(
+            `redis://${configService.getOrThrow('REDIS_HOST')}:${configService.getOrThrow('REDIS_PORT')}`,
+          ),
+        ],
+        ttl: 3.6e6, // 1 hour in milliseconds
+      }),
+      inject: [ConfigService],
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
