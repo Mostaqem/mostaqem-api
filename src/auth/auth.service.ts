@@ -8,7 +8,7 @@ import { Payload } from './enums/payload.enum';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import type { Cache } from 'cache-manager';
+import { type Cache } from 'cache-manager';
 import { UserService } from 'src/user/user.service';
 
 @Injectable()
