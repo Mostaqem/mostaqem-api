@@ -28,9 +28,15 @@ export class User {
   @Column('varchar', { length: 100, unique: true })
   email: string;
 
+  @Column({ default: 1 })
+  default_reciter_id: number;
+
+  @Column({ default: 178 })
+  default_tilawa_id: number;
+
   @Exclude()
   @DeleteDateColumn()
-  deleatedAt: Date | null = null;
+  deletedAt: Date | null = null;
 
   @OneToMany(() => Favorite, (favorite) => favorite.user)
   favorites: Favorite[];

@@ -7,7 +7,6 @@ export const SigendUser = createParamDecorator(
   (data: keyof User | undefined, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();
     const user = request.user as Payload;
-    console.log(user);
     return data ? user[data] : user;
   },
 );
