@@ -9,6 +9,8 @@ import { Verse } from './entities/verse.entity';
 import { Repository } from 'typeorm';
 import { randomInt } from 'node:crypto';
 import { GetVerseFilterDto } from './dto/filter-get-verse.dto';
+import * as path from 'path';
+import * as fs from 'fs';
 
 @Injectable()
 export class VerseService {
@@ -62,21 +64,38 @@ export class VerseService {
   async initialVerses() {
     const verses = await this.verseRepository.find();
     if (verses.length === 0) {
-      const data = await require('../../quran.json');
-      for (let i = 0; i < data.length; i++) {
-        const surah = data[i];
-        for (let j = 0; j < surah.verses.length; j++) {
-          const verse = surah.verses[j];
-          const newVerse = this.verseRepository.create({
-            surah_id: surah.id,
-            verse_number: verse.id,
-            vers: verse.text,
-            vers_lang: 'ar',
-          });
-          await this.verseRepository.save(newVerse);
+      try {
+        const quranFilePath = path.resolve(process.cwd(), 'quran.json');
+        const data = JSON.parse(fs.readFileSync(quranFilePath, 'utf8'));
+
+        for (let i = 0; i < data.length; i++) {
+          const surah = data[i];
+          Logger.log(`Seeding verses for surah ${surah.id} (${surah.name})`);
+
+          // Process verses in batches to improve performance
+          const verseBatch = [];
+          for (let j = 0; j < surah.verses.length; j++) {
+            const verse = surah.verses[j];
+            const newVerse = this.verseRepository.create({
+              surah_id: surah.id,
+              verse_number: verse.id,
+              vers: verse.text,
+              vers_lang: 'ar',
+            });
+            verseBatch.push(newVerse);
+
+            // Insert in batches of 100 for better performance
+            if (verseBatch.length >= 100 || j === surah.verses.length - 1) {
+              await this.verseRepository.save(verseBatch);
+              verseBatch.length = 0;
+            }
+          }
         }
+        Logger.log('Verse Seeder Completed');
+      } catch (error) {
+        Logger.error('Error seeding verses:', error.message);
+        throw error;
       }
-      Logger.log('Verse Seeder Completed');
     }
     return;
   }

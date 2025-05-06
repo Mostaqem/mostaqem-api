@@ -4,7 +4,20 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": [{ "include": "../../assets", "watchAssets": true }]
+    "assets": [
+      {
+        "include": "../../assets",
+        "watchAssets": true
+      },
+      {
+        "include": "src/**/*.json",
+        "watchAssets": true
+      },
+      {
+        "include": "quran.json",
+        "watchAssets": true
+      }
+    ]
   },
   "generateOptions": {
     "spec": false
