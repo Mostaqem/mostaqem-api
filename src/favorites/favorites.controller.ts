@@ -10,7 +10,7 @@ import {
 import { FavoritesService } from './favorites.service';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { Payload } from 'src/auth/enums/payload.enum';
+import { type Payload } from 'src/auth/enums/payload.enum';
 import { SigendUser } from 'src/shared/decorators/signed-user.decorators';
 
 @Controller('favorites')

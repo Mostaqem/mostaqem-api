@@ -13,7 +13,7 @@ import {
 import { AuthService } from './auth.service';
 import { ConfigService } from '@nestjs/config';
 import { Payload } from './enums/payload.enum';
-import { Response } from 'express';
+import { type Response } from 'express';
 import { GoogleGuard } from './guards/google.guard';
 import { ExchangeDto } from './dto/exchnage.dto';
 import { JwtGuard } from './guards/jwt.guard';
