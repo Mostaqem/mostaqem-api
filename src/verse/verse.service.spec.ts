@@ -7,24 +7,14 @@ import { Repository } from 'typeorm';
 import { InternalServerErrorException, Logger } from '@nestjs/common';
 import { GetVerseFilterDto } from './dto/filter-get-verse.dto';
 
-jest.mock('../../quran.json', () => [
-  {
-    id: 1,
-    verses: [
-      {
-        id: 1,
-        text: 'In the name of Allah, the Most Merciful, the Most Compassionate.',
-      },
-      { id: 2, text: 'Praise be to Allah, the Lord of all the worlds.' },
-    ],
-  },
-]);
-
 describe('VerseService', () => {
   let verseService: VerseService;
   let verseRepository: Repository<Verse>;
 
   beforeEach(async () => {
+    // Reset mocks before each test
+    jest.clearAllMocks();
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         VerseService,
@@ -194,26 +184,20 @@ describe('VerseService', () => {
         .mockResolvedValueOnce(verses);
       const createSpy = jest
         .spyOn(verseRepository, 'create')
-        .mockResolvedValue({
-          id: 1,
-          vers: 'verse',
-          verse_number: 1,
-          vers_lang: 'eng',
-          surah_id: 1,
-        } as never);
+        .mockImplementation((dto) => dto as Verse);
 
       const saveSpy = jest
         .spyOn(verseRepository, 'save')
-        .mockResolvedValue({} as never);
-      const logSpy = jest
-        .spyOn(Logger, 'log')
-        .mockResolvedValueOnce('Verse Seeder Completed' as never);
+        .mockResolvedValue([] as any);
+      const logSpy = jest.spyOn(Logger, 'log');
 
       await verseService.initialVerses();
 
       expect(findSpy).toHaveBeenCalled();
+      // We expect it to be called for each verse in the mocked quran data (2 verses)
       expect(createSpy).toHaveBeenCalledTimes(2);
-      expect(saveSpy).toHaveBeenCalledTimes(2);
+      // We expect it to be called once for each batch (in this case, just once since we only have 2 verses)
+      expect(saveSpy).toHaveBeenCalledTimes(1);
       expect(logSpy).toHaveBeenCalledWith('Verse Seeder Completed');
     });
 

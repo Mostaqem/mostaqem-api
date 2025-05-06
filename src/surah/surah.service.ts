@@ -9,6 +9,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { SurahFilterDto } from './dto/surah-filter.dto';
+import * as path from 'path';
+import * as fs from 'fs';
 
 @Injectable()
 export class SurahService {
@@ -67,7 +69,9 @@ export class SurahService {
   async initializeSurah() {
     const surah = await this.surahRepository.find();
     if (surah.length != 114) {
-      const data = await require('../../quran.json');
+      const quranFilePath = path.resolve(process.cwd(), 'quran.json');
+      const data = JSON.parse(fs.readFileSync(quranFilePath, 'utf8'));
+
       const seedPromises = data.map(async (surah: any) => {
         const newSurah = this.surahRepository.create({
           id: surah.id,

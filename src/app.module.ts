@@ -66,6 +66,10 @@ export class AppModule {
   }
 
   async onModuleInit() {
+    // First initialize surah data
     await this.surahService.initializeSurah();
+
+    // Then initialize verse data after surahs are loaded
+    await this.verseService.initialVerses();
   }
 }
