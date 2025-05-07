@@ -63,6 +63,7 @@ export const UPLOAD_PATH = join(process.cwd(), 'uploads');
     UserModule,
     AuthModule,
     FavoritesModule,
+    BugReportModule,
   ],
 })
 export class AppModule {
