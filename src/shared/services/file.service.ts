@@ -36,7 +36,7 @@ export class FileService {
 
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}${path.extname(file.originalname)}`;
       const filePath = path.join(this.uploadPath, fileName);
-      const photoUrl = `${process.env.PUBLIC_URL}/uploads/${fileName}`;
+      const photoUrl = `${process.env.SERVER_URL}/uploads/${fileName}`;
 
       // Use fs.promises for better error handling
       await fs.promises.writeFile(filePath, file.buffer);
