@@ -14,9 +14,19 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { createKeyv } from '@keyv/redis';
 import { FavoritesModule } from './favorites/favorites.module';
+import { BugReportModule } from './bug-report/bug-report.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
+// Define upload path in one place to keep it consistent
+export const UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: UPLOAD_PATH,
+      serveRoot: '/uploads', // Serve files under the /uploads route
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: false,

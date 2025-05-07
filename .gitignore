@@ -6,6 +6,9 @@ data.json
 seed.ts
 data_eng.json
 
+# upload files
+/uploads
+
 # Logs
 logs
 *.log
