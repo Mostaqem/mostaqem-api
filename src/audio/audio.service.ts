@@ -70,7 +70,6 @@ export class AudioService {
       ? new Date(new Date().toLocaleString('en-US', { timeZone }))
       : new Date();
 
-    console.log('Today:', today);
     const isFriday = today.getDay() === 5;
 
     if (isFriday) {
