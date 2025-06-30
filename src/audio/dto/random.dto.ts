@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsNumber, IsOptional, IsPositive } from 'class-validator';
+import { IsNumber, IsOptional, IsPositive, IsTimeZone } from 'class-validator';
 
 export class RandomDto {
   @IsNumber()
@@ -12,4 +12,8 @@ export class RandomDto {
   @Transform(({ value }) => parseInt(value))
   @IsOptional()
   reciter_id?: number;
+
+  @IsOptional()
+  @IsTimeZone()
+  timeZone?: string;
 }

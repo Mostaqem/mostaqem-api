@@ -29,6 +29,7 @@ export class AudioController {
     return this.audioService.getRandomAudio(
       randomDto.limit,
       randomDto.reciter_id,
+      randomDto.timeZone,
     );
   }
 }
