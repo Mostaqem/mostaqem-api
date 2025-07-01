@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
-import { In, Repository } from 'typeorm';
+import { In, Not, Repository } from 'typeorm';
 import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { ReciterService } from 'src/reciter/reciter.service';
@@ -60,9 +60,66 @@ export class AudioService {
     });
   }
 
-  async getRandomAudio(limit: number, reciter_id: number) {
+  async getRandomAudio(limit: number, reciter_id?: number, timeZone?: string) {
     if (limit < 1) {
       throw new Error('Limit must be greater than 0');
+    }
+
+    // Check if today is Friday (5 in JavaScript Date)
+    const today = timeZone
+      ? new Date(new Date().toLocaleString('en-US', { timeZone }))
+      : new Date();
+
+    const isFriday = today.getDay() === 5;
+
+    if (isFriday) {
+      // On Friday, get Surah Al-Kahf (surah_id: 18) from any reciter
+      const fridayAudio = await this.tilawaSurahRepo.find({
+        select: ['tilawa_id', 'url'],
+        where: {
+          surah_id: 18, // Surah Al-Kahf
+        },
+        relations: {
+          surah: true,
+          tilawa: {
+            reciter: true,
+          },
+        },
+      });
+
+      if (fridayAudio?.length) {
+        // Shuffle Surah Al-Kahf recitations
+        for (let i = fridayAudio.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [fridayAudio[i], fridayAudio[j]] = [fridayAudio[j], fridayAudio[i]];
+        }
+
+        const randomTilawa =
+          await this.reciterService.getRandomTilawa(reciter_id);
+
+        const otherAudio = await this.tilawaSurahRepo.find({
+          select: ['tilawa_id', 'url'],
+          where: {
+            tilawa_id: In(randomTilawa.map((tilawa) => tilawa.id)),
+            surah_id: Not(18),
+          },
+          relations: {
+            surah: true,
+            tilawa: {
+              reciter: true,
+            },
+          },
+        });
+
+        // Shuffle other audio
+        for (let i = otherAudio.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [otherAudio[i], otherAudio[j]] = [otherAudio[j], otherAudio[i]];
+        }
+
+        // Return Surah Al-Kahf first, then other random audio
+        return [fridayAudio[0], ...otherAudio.slice(0, limit - 1)];
+      }
     }
 
     const randomTilawa = await this.reciterService.getRandomTilawa(reciter_id);
@@ -89,7 +146,6 @@ export class AudioService {
       const j = Math.floor(Math.random() * (i + 1));
       [audioRecords[i], audioRecords[j]] = [audioRecords[j], audioRecords[i]];
     }
-
     return audioRecords.slice(0, Math.min(limit, audioRecords.length));
   }
 }

@@ -113,7 +113,7 @@ export class ReciterService {
     return tilawa;
   }
 
-  async getRandomTilawa(reciterId: number) {
+  async getRandomTilawa(reciterId?: number) {
     const tilawa = await this.tilawaRepository.find({
       where: {
         reciter_id: reciterId || In([1, 2, 3, 4, 14, 6, 13, 15, 18]),
