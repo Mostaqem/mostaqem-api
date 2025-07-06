@@ -10,6 +10,8 @@ import { ImageModule } from './image/image.module';
 import { SurahService } from './surah/surah.service';
 import { VerseService } from './verse/verse.service';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ScriptService } from './scripts/script-service.service';
+import { ScriptsModule } from './scripts/scripts.module';
 
 @Module({
   imports: [
@@ -39,12 +41,14 @@ import { CacheModule } from '@nestjs/cache-manager';
     ReciterModule,
     AudioModule,
     ImageModule,
+    ScriptsModule,
   ],
 })
 export class AppModule {
   constructor(
     private readonly surahService: SurahService,
     private readonly verseService: VerseService,
+    private readonly scriptService: ScriptService,
   ) {}
 
   configure(consumer: MiddlewareConsumer) {

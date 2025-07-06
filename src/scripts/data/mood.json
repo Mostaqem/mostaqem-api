@@ -1,0 +1,15 @@
+{
+  "calm": [55, 36, 67],
+  "anxious": [93, 94, 6],
+  "grateful": [14, 16, 76],
+  "guilty": [39, 25, 66],
+  "sad": [12, 19, 28],
+  "afraid": [113, 114, 70],
+  "focused": [61, 57, 47],
+  "reflective": [75, 88, 39],
+  "spiritual": [87, 1, 112],
+  "lost": [1, 24, 2],
+  "resilient": [94, 12, 65],
+  "overwhelmed": [103, 93, 108],
+  "protection": [113, 114, 67]
+}

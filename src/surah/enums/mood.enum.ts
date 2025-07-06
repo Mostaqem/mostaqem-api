@@ -1,0 +1,15 @@
+export enum Mood {
+  CALM = 'calm',
+  ANXIOUS = 'anxious',
+  GRATEFUL = 'grateful',
+  GUILTY = 'guilty',
+  SAD = 'sad',
+  AFRAID = 'afraid',
+  FOCUSED = 'focused',
+  REFLECTIVE = 'reflective',
+  SPIRITUAL = 'spiritual',
+  LOST = 'lost',
+  RESILIENT = 'resilient',
+  OVERWHELMED = 'overwhelmed',
+  PROTECTION = 'protection',
+}

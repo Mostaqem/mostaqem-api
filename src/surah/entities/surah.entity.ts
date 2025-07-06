@@ -3,6 +3,7 @@ import { Entity, Index, OneToMany } from 'typeorm';
 import { Column } from 'typeorm/decorator/columns/Column';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn';
 import { TilawaSurah } from './tilawa-surah.entity';
+import { Mood } from '../enums/mood.enum';
 
 @Entity()
 @Index('IDX_SURAH', [
@@ -46,6 +47,13 @@ export class Surah {
     nullable: true,
   })
   image?: string;
+
+  @Column({
+    type: 'enum',
+    enum: Mood,
+    nullable: true,
+  })
+  mood?: Mood;
 
   @OneToMany(() => Verse, (verse) => verse.surah)
   verses: Verse[];
