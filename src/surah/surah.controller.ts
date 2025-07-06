@@ -13,6 +13,7 @@ import { CreateSurahDto } from './dto/create-surah.dto';
 import { AddImageDto } from './dto/add-image.dto';
 import { SurahFilterDto } from './dto/surah-filter.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
+import { FilterMoodDto } from './dto/filter-mood.dto';
 
 @Controller('surah')
 @UseInterceptors(CacheInterceptor)
@@ -22,6 +23,11 @@ export class SurahController {
   @Post()
   create(@Body() createSurahDto: CreateSurahDto) {
     return this.surahService.create(createSurahDto);
+  }
+
+  @Get('/mood')
+  findByMood(@Query() filterMoodDto: FilterMoodDto) {
+    return this.surahService.findByMood(filterMoodDto);
   }
 
   @Get()

@@ -9,6 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { SurahFilterDto } from './dto/surah-filter.dto';
+import { FilterMoodDto } from './dto/filter-mood.dto';
 
 @Injectable()
 export class SurahService {
@@ -54,6 +55,19 @@ export class SurahService {
   async findOne(id: number) {
     const surah = await this.surahRepository.findOneBy({ id });
     if (!surah) throw new NotFoundException('Surah Not Found');
+    return surah;
+  }
+
+  async findByMood(filterMoodDto: FilterMoodDto) {
+    const surah = await this.surahRepository.find({
+      where: {
+        mood: filterMoodDto.mood,
+      },
+      order: {
+        id: 'ASC',
+      },
+    });
+
     return surah;
   }
 
