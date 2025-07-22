@@ -10,6 +10,8 @@ import { Surah } from './entities/surah.entity';
 import { Repository } from 'typeorm';
 import { SurahFilterDto } from './dto/surah-filter.dto';
 import { FilterMoodDto } from './dto/filter-mood.dto';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class SurahService {
