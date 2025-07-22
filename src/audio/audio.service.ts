@@ -1,4 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TilawaSurah } from 'src/surah/entities/tilawa-surah.entity';
 import { In, Not, Repository } from 'typeorm';
@@ -62,7 +66,7 @@ export class AudioService {
 
   async getRandomAudio(limit: number, reciter_id?: number, timeZone?: string) {
     if (limit < 1) {
-      throw new Error('Limit must be greater than 0');
+      throw new BadRequestException('Limit must be greater than 0');
     }
 
     // Check if today is Friday (5 in JavaScript Date)
@@ -147,5 +151,23 @@ export class AudioService {
       [audioRecords[i], audioRecords[j]] = [audioRecords[j], audioRecords[i]];
     }
     return audioRecords.slice(0, Math.min(limit, audioRecords.length));
+  }
+
+  async getAudioBySurah(surah: number, default_tilawa_id: number) {
+    const audio = await this.tilawaSurahRepo.find({
+      select: ['tilawa_id', 'url'],
+      where: {
+        surah_id: surah,
+        tilawa_id: default_tilawa_id,
+      },
+      relations: {
+        surah: true,
+        tilawa: {
+          reciter: true,
+        },
+      },
+    });
+
+    return audio[0];
   }
 }

@@ -40,15 +40,6 @@ const queryBuilderMock = {
   getMany: jest.fn().mockResolvedValue(surahs),
   getCount: jest.fn().mockResolvedValue(1),
 };
-jest.mock('../../quran.json', () => [
-  {
-    id: 1,
-    name: 'الفاتحة',
-    transliteration: 'Al-Fatiha',
-    total_verses: 7,
-    type: 'Meccan',
-  },
-]);
 
 const mockCacheManager = {
   get: jest.fn(),
@@ -62,6 +53,9 @@ describe('SurahService', () => {
   let surahRepository: Repository<Surah>;
 
   beforeEach(async () => {
+    // Reset mocks before each test
+    jest.clearAllMocks();
+
     const moduleRef: TestingModule = await Test.createTestingModule({
       providers: [
         SurahService,
@@ -284,8 +278,9 @@ describe('SurahService', () => {
       await surahService.initializeSurah();
 
       expect(surahRepository.find).toHaveBeenCalled();
-      expect(surahRepository.create).toHaveBeenCalledTimes(1);
-      expect(surahRepository.save).toHaveBeenCalledTimes(1);
+      // We expect it to be called for each surah in the mocked quran data (2 surahs)
+      expect(surahRepository.create).toHaveBeenCalledTimes(2);
+      expect(surahRepository.save).toHaveBeenCalledTimes(2);
       expect(logSpy).toHaveBeenCalledWith('Surah Seeder Completed');
     });
 

@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SurahModule } from './surah/surah.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
@@ -10,17 +10,38 @@ import { ImageModule } from './image/image.module';
 import { SurahService } from './surah/surah.service';
 import { VerseService } from './verse/verse.service';
 import { CacheModule } from '@nestjs/cache-manager';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { createKeyv } from '@keyv/redis';
+import { FavoritesModule } from './favorites/favorites.module';
+import { BugReportModule } from './bug-report/bug-report.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
+// Define upload path in one place to keep it consistent
+export const UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: UPLOAD_PATH,
+      serveRoot: '/uploads', // Serve files under the /uploads route
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       ignoreEnvFile: false,
     }),
-    CacheModule.register({
+    CacheModule.registerAsync({
       isGlobal: true,
-      ttl: 3.6e6, // 1 hour in milliseconds
-      max: 250,
+      useFactory: (configService: ConfigService) => ({
+        stores: [
+          createKeyv(
+            `redis://${configService.getOrThrow('REDIS_HOST')}:${configService.getOrThrow('REDIS_PORT')}`,
+          ),
+        ],
+        ttl: 3.6e6, // 1 hour in milliseconds
+      }),
+      inject: [ConfigService],
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -39,6 +60,10 @@ import { CacheModule } from '@nestjs/cache-manager';
     ReciterModule,
     AudioModule,
     ImageModule,
+    UserModule,
+    AuthModule,
+    FavoritesModule,
+    BugReportModule,
   ],
 })
 export class AppModule {
@@ -52,6 +77,10 @@ export class AppModule {
   }
 
   async onModuleInit() {
+    // First initialize surah data
     await this.surahService.initializeSurah();
+
+    // Then initialize verse data after surahs are loaded
+    await this.verseService.initialVerses();
   }
 }

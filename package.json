@@ -23,14 +23,19 @@
     "typeorm:migrate": "npm run typeorm -- -d ./typeorm.config.ts migration:run"
   },
   "dependencies": {
+    "@keyv/redis": "^4.4.0",
     "@nestjs/cache-manager": "^3.0.1",
     "@nestjs/cli": "^11.0.7",
     "@nestjs/common": "^11.1.0",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.0",
+    "@nestjs/jwt": "^11.0.0",
     "@nestjs/mapped-types": "^2.1.0",
+    "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.1.0",
+    "@nestjs/serve-static": "^5.0.3",
     "@nestjs/typeorm": "^11.0.0",
+    "@types/multer": "^1.4.12",
     "axios": "^1.9.0",
     "cache-manager": "^6.4.2",
     "class-transformer": "^0.5.1",
@@ -38,10 +43,15 @@
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
     "helmet": "^8.1.0",
+    "multer": "1.4.5-lts.2",
     "mysql2": "^3.14.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "typeorm": "^0.3.22",
+    "ulid": "^3.0.0",
     "unsplash-js": "^7.0.19"
   },
   "devDependencies": {
@@ -88,6 +98,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "../test/setup/jest-setup.js"
+    ]
   }
 }
