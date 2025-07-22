@@ -11,7 +11,7 @@ import { FavoritesService } from './favorites.service';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { type Payload } from 'src/auth/enums/payload.enum';
-import { SigendUser } from 'src/shared/decorators/signed-user.decorators';
+import { SignedUser } from 'src/shared/decorators/signed-user.decorators';
 
 @Controller('favorites')
 @UseGuards(JwtGuard)
@@ -21,7 +21,7 @@ export class FavoritesController {
   @Post()
   create(
     @Body() createFavoriteDto: CreateFavoriteDto,
-    @SigendUser() user: Payload,
+    @SignedUser() user: Payload,
   ) {
     // Override user_id from token
     createFavoriteDto.user_id = user.id;
@@ -29,7 +29,7 @@ export class FavoritesController {
   }
 
   @Get()
-  findAll(@SigendUser() user: Payload) {
+  findAll(@SignedUser() user: Payload) {
     return this.favoritesService.findAll(user.id);
   }
 

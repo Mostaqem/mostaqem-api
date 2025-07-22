@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { SigendUser } from 'src/shared/decorators/signed-user.decorators';
+import { SignedUser } from 'src/shared/decorators/signed-user.decorators';
 import { User } from 'src/user/entities/user.entity';
 import { BugReportService } from './bug-report.service';
 import { CreateBugReportDto } from './dto/create-bug-report.dto';
@@ -23,7 +23,7 @@ export class BugReportController {
   async create(
     @Body() createBugReportDto: CreateBugReportDto,
     @UploadedFile() image: Express.Multer.File,
-    @SigendUser() user: User,
+    @SignedUser() user: User,
   ) {
     // Set the user ID from the authenticated user
     createBugReportDto.user_id = user.id;
