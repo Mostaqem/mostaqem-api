@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { createKeyv } from '@keyv/redis';
 import { FavoritesModule } from './favorites/favorites.module';
 import { BugReportModule } from './bug-report/bug-report.module';
+import { ScriptsModule } from './scripts/scripts.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
@@ -64,6 +65,7 @@ export const UPLOAD_PATH = join(process.cwd(), 'uploads');
     AuthModule,
     FavoritesModule,
     BugReportModule,
+    ScriptsModule,
   ],
 })
 export class AppModule {
