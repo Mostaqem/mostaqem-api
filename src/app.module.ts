@@ -18,6 +18,8 @@ import { BugReportModule } from './bug-report/bug-report.module';
 import { ScriptsModule } from './scripts/scripts.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { Keyv } from 'keyv';
+import { CacheableMemory } from 'cacheable';
 
 // Define upload path in one place to keep it consistent
 export const UPLOAD_PATH = join(process.cwd(), 'uploads');
@@ -34,14 +36,18 @@ export const UPLOAD_PATH = join(process.cwd(), 'uploads');
     }),
     CacheModule.registerAsync({
       isGlobal: true,
-      useFactory: (configService: ConfigService) => ({
-        stores: [
-          createKeyv(
-            `redis://${configService.getOrThrow('REDIS_HOST')}:${configService.getOrThrow('REDIS_PORT')}`,
-          ),
-        ],
-        ttl: 3.6e6, // 1 hour in milliseconds
-      }),
+      useFactory: async (configService: ConfigService) => {
+        return {
+          stores: [
+            new Keyv({
+              store: new CacheableMemory({ ttl: 3.6e6, lruSize: 5000 }),
+            }),
+            createKeyv(
+              `redis://${configService.getOrThrow('REDIS_HOST')}:${configService.getOrThrow('REDIS_PORT')}`,
+            ),
+          ],
+        };
+      },
       inject: [ConfigService],
     }),
     TypeOrmModule.forRoot({

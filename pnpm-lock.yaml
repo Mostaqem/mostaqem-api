@@ -53,6 +53,9 @@ importers:
       cache-manager:
         specifier: ^7.1.1
         version: 7.1.1
+      cacheable:
+        specifier: ^1.10.3
+        version: 1.10.3
       class-transformer:
         specifier: ^0.5.1
         version: 0.5.1
@@ -68,6 +71,9 @@ importers:
       helmet:
         specifier: ^8.1.0
         version: 8.1.0
+      keyv:
+        specifier: ^5.5.0
+        version: 5.5.0
       multer:
         specifier: 2.0.2
         version: 2.0.2
@@ -1709,6 +1715,9 @@ packages:
   cacheable-request@10.2.14:
     resolution: {integrity: sha512-zkDT5WAF4hSSoUgyfg5tFIxz8XQK+25W/TLVojJTMKBaxevLBBtLxgqguAuVQB8PVW79FVjHcU+GJ9tVbDZ9mQ==}
     engines: {node: '>=14.16'}
+
+  cacheable@1.10.3:
+    resolution: {integrity: sha512-M6p10iJ/VT0wT7TLIGUnm958oVrU2cUK8pQAVU21Zu7h8rbk/PeRtRWrvHJBql97Bhzk3g1N6+2VKC+Rjxna9Q==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -5712,6 +5721,11 @@ snapshots:
       normalize-url: 8.0.2
       responselike: 3.0.0
     optional: true
+
+  cacheable@1.10.3:
+    dependencies:
+      hookified: 1.11.0
+      keyv: 5.5.0
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
