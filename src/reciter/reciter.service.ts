@@ -29,7 +29,8 @@ export class ReciterService {
     } else if (orderBy === 'ar') {
       orderOptions.name_arabic = 'ASC';
     }
-    const { take, page, name } = reciterFilterDto;
+    const { take, page, name, category, region, is_featured } =
+      reciterFilterDto;
     const skip = take * (page - 1);
 
     const query = this.reciterRepository
@@ -46,6 +47,18 @@ export class ReciterService {
         'MATCH(reciter.name_english) AGAINST(:name IN NATURAL LANGUAGE MODE)',
         { name },
       );
+    }
+
+    if (category) {
+      query.andWhere('reciter.category = :category', { category });
+    }
+
+    if (region) {
+      query.andWhere('reciter.region = :region', { region });
+    }
+
+    if (is_featured !== undefined) {
+      query.andWhere('reciter.is_featured = :is_featured', { is_featured });
     }
 
     const [reciters, total] = await Promise.all([

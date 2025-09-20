@@ -1,0 +1,1193 @@
+{
+  "reciters": [
+    {
+      "id": 1,
+      "name_arabic": "عبدالباسط عبدالصمد",
+      "name_english": "AbdulBaset AbdulSamad",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 2,
+      "name_arabic": "محمد الطبلاوي",
+      "name_english": "Mohamed al-Tablawi",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 3,
+      "name_arabic": "عبدالرحمن السديس",
+      "name_english": "Abdur-Rahman as-Sudais",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 4,
+      "name_arabic": "مشاري العفاسي",
+      "name_english": "Mishari Rashid al-`Afasy",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": true
+    },
+    {
+      "id": 5,
+      "name_arabic": "محمود خليل الحصري",
+      "name_english": "Mahmoud Khalil Al-Husary",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 6,
+      "name_arabic": "سعود الشريم",
+      "name_english": "Sa`ud ash-Shuraym",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 7,
+      "name_arabic": "هاني الرفاعي",
+      "name_english": "Hani ar-Rifai",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": true
+    },
+    {
+      "id": 9,
+      "name_arabic": "محمد صديق المنشاوي",
+      "name_english": "Mohamed Siddiq al-Minshawi",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 12,
+      "name_arabic": "أبو بكر الشاطرى",
+      "name_english": "Abu Bakr al-Shatri",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 13,
+      "name_arabic": "ماهر المعيقلي",
+      "name_english": "Maher Al Meaqli",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 14,
+      "name_arabic": "أحمد بن علي العجمي",
+      "name_english": "Ahmad Al-Ajmy",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 15,
+      "name_arabic": "ياسر الدوسري",
+      "name_english": "Yasser Al-Dosari",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 16,
+      "name_arabic": "صلاح البدير",
+      "name_english": "Salah Albudair",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 17,
+      "name_arabic": "عبدالبارئ الثبيتي",
+      "name_english": "Abdelbari Al-Toubayti",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 18,
+      "name_arabic": "علي جابر",
+      "name_english": "Ali Jaber",
+      "category": "classic",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 19,
+      "name_arabic": "عبدالله كامل",
+      "name_english": "Abdullah Kamel",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 20,
+      "name_arabic": "ياسر القرشي",
+      "name_english": "Yasser Al-Qurashi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 21,
+      "name_arabic": "سعد الغامدي",
+      "name_english": "Saad Al-Ghamdi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 22,
+      "name_arabic": "عبدالله البعيجان",
+      "name_english": "Abdullah Albuajan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 23,
+      "name_arabic": "فارس عباد",
+      "name_english": "Fares Abbad",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": true
+    },
+    {
+      "id": 24,
+      "name_arabic": "بندر بليله",
+      "name_english": "Bandar Balilah",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 25,
+      "name_arabic": "بدر التركي",
+      "name_english": "Bader Alturki",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 26,
+      "name_arabic": "خالد الجليل",
+      "name_english": "Khalid Al-Jileel",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 27,
+      "name_arabic": "عبدالله عواد الجهني",
+      "name_english": "Abdullah Al-Johany",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": true
+    },
+    {
+      "id": 28,
+      "name_arabic": "محمد اللحيدان",
+      "name_english": "Mohammed Al-Lohaidan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 29,
+      "name_arabic": "ناصر القطامي",
+      "name_english": "Nasser Alqatami",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": true
+    },
+    {
+      "id": 30,
+      "name_arabic": "علي بن عبدالرحمن الحذيفي",
+      "name_english": "Ali Alhuthaifi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 42,
+      "name_arabic": "إبراهيم الأخضر",
+      "name_english": "Ibrahim Al-Akdar",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 43,
+      "name_arabic": "أكرم العلاقمي",
+      "name_english": "Akram Alalaqmi",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 44,
+      "name_arabic": "محمد أيوب",
+      "name_english": "Mohammed Ayyub",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 45,
+      "name_arabic": "عبدالهادي أحمد كناكري",
+      "name_english": "Abdulhadi Kanakeri",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 46,
+      "name_arabic": "محمد جبريل",
+      "name_english": "Mohammed Jibreel",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 47,
+      "name_arabic": "محمد صالح عالم شاه",
+      "name_english": "Mohammad Saleh Alim Shah",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 48,
+      "name_arabic": "توفيق الصايغ",
+      "name_english": "Tawfeeq As-Sayegh",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 49,
+      "name_arabic": "محمود الرفاعي",
+      "name_english": "Mahmood Al rifai",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 50,
+      "name_arabic": "إبراهيم الجرمي",
+      "name_english": "Ibrahim Aljormy",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 51,
+      "name_arabic": "حاتم فريد الواعر",
+      "name_english": "Hatem Fareed Alwaer",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 52,
+      "name_arabic": "موسى بلال",
+      "name_english": "Mousa Bilal",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 53,
+      "name_arabic": "عادل الكلباني",
+      "name_english": "Adel Al-Khalbany",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 54,
+      "name_arabic": "العيون الكوشي",
+      "name_english": "Aloyoon Al-Koshi",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 55,
+      "name_arabic": "خالد المهنا",
+      "name_english": "Khalid Almohana",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 56,
+      "name_arabic": "ياسر سلامة",
+      "name_english": "Yasser Salamah",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 57,
+      "name_arabic": "محمود الشيمي",
+      "name_english": "Mahmood AlSheimy",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 58,
+      "name_arabic": "ماهر شخاشيرو",
+      "name_english": "Maher Shakhashero",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 59,
+      "name_arabic": "القارئ ياسين",
+      "name_english": "Al-Qaria Yassen",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 60,
+      "name_arabic": "ماجد الزامل",
+      "name_english": "Majed Al-Zamil",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 61,
+      "name_arabic": "نورين محمد صديق",
+      "name_english": "Noreen Mohammad Siddiq",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 62,
+      "name_arabic": "عبدالإله بن عون",
+      "name_english": "Abdulelah bin Aoun",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 63,
+      "name_arabic": "محمد سايد",
+      "name_english": "Mohammad Saayed",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 64,
+      "name_arabic": "الزين محمد أحمد",
+      "name_english": "Alzain Mohammad Ahmad",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 65,
+      "name_arabic": "مفتاح السلطني",
+      "name_english": "Muftah Alsaltany",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 66,
+      "name_arabic": "مصطفى رعد العزاوي",
+      "name_english": "Mustafa raad Alazawy",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 67,
+      "name_arabic": "مصطفى اللاهوني",
+      "name_english": "Mustafa Al-Lahoni",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 68,
+      "name_arabic": "مصطفى إسماعيل",
+      "name_english": "Mustafa Ismail",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 69,
+      "name_arabic": "محمود علي البنا",
+      "name_english": "Mahmoud Ali  Albanna",
+      "category": "classic",
+      "region": "egypt",
+      "is_featured": true
+    },
+    {
+      "id": 70,
+      "name_arabic": "محمد عبدالحكيم سعيد العبدالله",
+      "name_english": "Mohammad Al-Abdullah",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 71,
+      "name_arabic": "محمد عبدالكريم",
+      "name_english": "Mohammad Abdullkarem",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 72,
+      "name_arabic": "عبدالمحسن العبيكان",
+      "name_english": "Abdulmohsin Al-Obaikan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 73,
+      "name_arabic": "عبدالمحسن القاسم",
+      "name_english": "Abdulmohsen Al-Qasim",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 74,
+      "name_arabic": "عبدالمحسن الحارثي",
+      "name_english": "Abdulmohsin Al-Harthy",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 75,
+      "name_arabic": "عبدالرشيد صوفي",
+      "name_english": "Abdulrasheed Soufi",
+      "category": "classic",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 76,
+      "name_arabic": "عبدالله غيلان",
+      "name_english": "Abdullah Qaulan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 77,
+      "name_arabic": "عبدالله خياط",
+      "name_english": "Abdullah Khayyat",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 78,
+      "name_arabic": "عبدالله بصفر",
+      "name_english": "Abdullah Basfer",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 79,
+      "name_arabic": "أحمد الحواشي",
+      "name_english": "Ahmad Al-Hawashi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 80,
+      "name_arabic": "عبدالله المطرود",
+      "name_english": "Abdullah Al-Mattrod",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 81,
+      "name_arabic": "عبدالعزيز الزهراني",
+      "name_english": "Abdulaziz Az-Zahrani",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 82,
+      "name_arabic": "عبدالعزيز الأحمد",
+      "name_english": "Abdul Aziz Al-Ahmad",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 83,
+      "name_arabic": "عبدالبارئ محمد",
+      "name_english": "Abdulbari Mohammad",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 84,
+      "name_arabic": "عادل ريان",
+      "name_english": "Adel Ryyan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 85,
+      "name_arabic": "صلاح بو خاطر",
+      "name_english": "Slaah Bukhatir",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 86,
+      "name_arabic": "صلاح الهاشم",
+      "name_english": "Salah Alhashim",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 87,
+      "name_arabic": "صالح الهبدان",
+      "name_english": "Saleh Al-Habdan",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 88,
+      "name_arabic": "أبو بكر الشاطري",
+      "name_english": "Shaik Abu Bakr Al Shatri",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 89,
+      "name_arabic": "صابر عبدالحكم",
+      "name_english": "Saber Abdulhakm",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 90,
+      "name_arabic": "شيرزاد عبدالرحمن طاهر",
+      "name_english": "Shirazad Taher",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 91,
+      "name_arabic": "سيد رمضان",
+      "name_english": "Sayeed Ramadan",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 92,
+      "name_arabic": "زكي داغستاني",
+      "name_english": "Zaki Daghistani",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 93,
+      "name_arabic": "سهل ياسين",
+      "name_english": "Sahl Yassin",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 94,
+      "name_arabic": "هشام الهراز",
+      "name_english": "Hicham Lharraz",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 95,
+      "name_arabic": "عبدالكريم الحازمي",
+      "name_english": "Abdulkareem Alhazmi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 96,
+      "name_arabic": "أنس العمادي",
+      "name_english": "Anas Alemadi",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 97,
+      "name_arabic": "فيصل الهاجري",
+      "name_english": "Faisal Al-Hajry",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 98,
+      "name_arabic": "صالح الشمراني",
+      "name_english": "Saleh Alshamrani",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 99,
+      "name_arabic": "صالح القريشي",
+      "name_english": "Saleh Alquraishi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 100,
+      "name_arabic": "عبدالرحمن الشحات",
+      "name_english": "Abdulrahman Alshahhat",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 101,
+      "name_arabic": "حسن صالح",
+      "name_english": "Hasan Saleh",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 102,
+      "name_arabic": "سلمان الصديق",
+      "name_english": "Salman Alsadeiq",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 103,
+      "name_arabic": "مال الله عبدالرحمن الجابر",
+      "name_english": "Mal-Allah Abdulrhman Aljaber",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 104,
+      "name_arabic": "خالد كريم محمدي",
+      "name_english": "Khalid Mohammadi",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 105,
+      "name_arabic": "سيد أحمد هاشمي",
+      "name_english": "Sayed Ahmad Hashemi",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 106,
+      "name_arabic": "فؤاد الخامري",
+      "name_english": "Fouad Alkhamery",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 107,
+      "name_arabic": "هاشم أبو دلال",
+      "name_english": "Hashim Abu Dalal",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 108,
+      "name_arabic": "إبراهيم كشيدان",
+      "name_english": "Ibrahim Kshidan",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 109,
+      "name_arabic": "أحمد عيسى المعصراوي",
+      "name_english": "Ahmad Issa Al Maasaraawi",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 110,
+      "name_arabic": "محمد الأمين قنيوة",
+      "name_english": "Mohammed Al-Amin Qeniwa",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 111,
+      "name_arabic": "محمد أبو سنينة",
+      "name_english": "Muhammad Abu Sneina",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 112,
+      "name_arabic": "هيثم الدخين",
+      "name_english": "Haitham Aldukhain",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 113,
+      "name_arabic": "عكاشة كميني",
+      "name_english": "Okasha Kameny",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 114,
+      "name_arabic": "نذير المالكي",
+      "name_english": "Nathier Almalki",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 115,
+      "name_arabic": "رشيد بلعالية",
+      "name_english": "Rachid Belalya",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 116,
+      "name_arabic": "بيشه وا قادر الكردي",
+      "name_english": "Peshawa Qadr Al-Kurdi",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 117,
+      "name_arabic": "أحمد ديبان",
+      "name_english": "Ahmad Deban",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 118,
+      "name_arabic": "أحمد النفيس",
+      "name_english": "Ahmad Al Nufais",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 119,
+      "name_arabic": "سعد المقرن",
+      "name_english": "Saad Almqren",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 120,
+      "name_arabic": "أحمد خليل شاهين",
+      "name_english": "Ahmad Shaheen",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 121,
+      "name_arabic": "أحمد السويلم",
+      "name_english": "Ahmed Al-Swailem",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 122,
+      "name_arabic": "ناصر الماجد",
+      "name_english": "Nasser Almajed",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 123,
+      "name_arabic": "منصور السالمي",
+      "name_english": "Mansour Al-Salemi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 124,
+      "name_arabic": "عبدالله الخلف",
+      "name_english": "Abdullah Al-Khalaf",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 125,
+      "name_arabic": "خليفة الطنيجي",
+      "name_english": "Khalifa Altunaiji",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 126,
+      "name_arabic": "مروان العكري",
+      "name_english": "Marwan Alakri",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 127,
+      "name_arabic": "عبدالرحمن الماجد",
+      "name_english": "Abdulrahman Al-Majed",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 128,
+      "name_arabic": "رامي الدعيس",
+      "name_english": "Rami Aldeais",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 129,
+      "name_arabic": "عبدالرحمن العوسي",
+      "name_english": "Abdulrahman Aloosi",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 130,
+      "name_arabic": "خالد عبدالكافي",
+      "name_english": "Khalid Abdulkafi",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 131,
+      "name_arabic": "وديع اليمني",
+      "name_english": "Wadeea Al-Yamani",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 132,
+      "name_arabic": "طارق عبدالغني دعوب",
+      "name_english": "Tareq Abdulgani daawob",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 133,
+      "name_arabic": "محمد برهجي",
+      "name_english": "Muhammad Burhaji",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 134,
+      "name_arabic": "الفاتح محمد الزبير",
+      "name_english": "Alfateh Alzubair",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 135,
+      "name_arabic": "خالد القحطاني",
+      "name_english": "Khaled Al-Qahtani",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 136,
+      "name_arabic": "الدوكالي محمد العالم",
+      "name_english": "Addokali Mohammad Alalim",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 137,
+      "name_arabic": "محمد عثمان خان",
+      "name_english": "Mohammed Osman Khan",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 138,
+      "name_arabic": "أحمد عامر",
+      "name_english": "Ahmed Amer",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 139,
+      "name_arabic": "عبدالله الكندري",
+      "name_english": "Abdullah Al-Kandari",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 140,
+      "name_arabic": "أحمد الطرابلسي",
+      "name_english": "Ahmed Al-trabulsi",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 141,
+      "name_arabic": "محمد رشاد الشريف",
+      "name_english": "Mohammad Rashad Alshareef",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 142,
+      "name_arabic": "معيض الحارثي",
+      "name_english": "Moeedh Alharthi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 143,
+      "name_arabic": "يوسف بن نوح أحمد",
+      "name_english": "Yousef Bin Noah Ahmad",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 144,
+      "name_arabic": "جمعان العصيمي",
+      "name_english": "Jamaan Alosaimi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 145,
+      "name_arabic": "جمال شاكر عبدالله",
+      "name_english": "Jamal Shaker Abdullah",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 146,
+      "name_arabic": "إبراهيم الدوسري",
+      "name_english": "Ibrahim Aldosari",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 147,
+      "name_arabic": "عبدالله عبدل",
+      "name_english": "Abdullah Abdal",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 148,
+      "name_arabic": "يوسف الشويعي",
+      "name_english": "Yousef Alshoaey",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 149,
+      "name_arabic": "يحيى حوا",
+      "name_english": "Yahya Hawwa",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 150,
+      "name_arabic": "ياسر المزروعي",
+      "name_english": "Yasser Al-Mazroyee",
+      "category": "modern",
+      "region": "gulf",
+      "is_featured": false
+    },
+    {
+      "id": 151,
+      "name_arabic": "وليد النائحي",
+      "name_english": "Waleed Alnaehi",
+      "category": "modern",
+      "region": "saudi",
+      "is_featured": false
+    },
+    {
+      "id": 152,
+      "name_arabic": "أحمد نعينع",
+      "name_english": "Ahmad Nauina",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 153,
+      "name_arabic": "نعمة الحسان",
+      "name_english": "Neamah Al-Hassan",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 154,
+      "name_arabic": "نبيل الرفاعي",
+      "name_english": "Nabil Al Rifay",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 155,
+      "name_arabic": "عمر القزابري",
+      "name_english": "Omar Al-Qazabri",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 156,
+      "name_arabic": "أحمد صابر",
+      "name_english": "Ahmad Saber",
+      "category": "modern",
+      "region": "egypt",
+      "is_featured": false
+    },
+    {
+      "id": 157,
+      "name_arabic": "عماد زهير حافظ",
+      "name_english": "Emad Hafez",
+      "category": "modern",
+      "region": "levant",
+      "is_featured": false
+    },
+    {
+      "id": 158,
+      "name_arabic": "علي حجاج السويسي",
+      "name_english": "Ali Hajjaj Alsouasi",
+      "category": "modern",
+      "region": "maghreb",
+      "is_featured": false
+    },
+    {
+      "id": 159,
+      "name_arabic": "عبدالولي الأركاني",
+      "name_english": "Abdulwali Al-Arkani",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    },
+    {
+      "id": 160,
+      "name_arabic": "عبدالودود حنيف",
+      "name_english": "Abdulwadood Haneef",
+      "category": "modern",
+      "region": "other",
+      "is_featured": false
+    }
+  ],
+  "statistics": {
+    "total": 160,
+    "byCategory": {
+      "modern": 153,
+      "classic": 7
+    },
+    "byRegion": {
+      "egypt": 23,
+      "saudi": 68,
+      "gulf": 12,
+      "maghreb": 13,
+      "levant": 24,
+      "other": 20
+    },
+    "featured": 25
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "createdAt": "2025-01-20",
+    "description": "Categorization of Quran reciters by style (modern/classic) and region"
+  }
+}
