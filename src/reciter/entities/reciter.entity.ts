@@ -2,10 +2,13 @@ import {
   Column,
   Entity,
   Index,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Tilawa } from './tilawa.entity';
+import { Tag } from './tag.entity';
 
 export enum ReciterCategory {
   MODERN = 'modern',
@@ -72,4 +75,18 @@ export class Reciter {
     onDelete: 'CASCADE',
   })
   tilawa: Tilawa[];
+
+  @ManyToMany(() => Tag, (tag) => tag.reciters)
+  @JoinTable({
+    name: 'reciter_tags',
+    joinColumn: {
+      name: 'reciter_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'tag_id',
+      referencedColumnName: 'id',
+    },
+  })
+  tags: Tag[];
 }
