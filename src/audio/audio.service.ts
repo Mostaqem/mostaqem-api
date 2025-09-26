@@ -10,6 +10,7 @@ import { CreateAudioDto } from './dto/create-audio.dto';
 import { FilterAudioDto } from './dto/filter-audio.dto';
 import { ReciterService } from 'src/reciter/reciter.service';
 import { FilterAudioLrcDto } from './dto/filter-lrc.dto';
+import { generateAudioPreview } from 'src/utils/audio-previews.generator';
 
 @Injectable()
 export class AudioService {
@@ -51,7 +52,14 @@ export class AudioService {
       },
     });
 
-    return audio[0];
+    return {
+      ...audio[0],
+      previewURL: await generateAudioPreview(
+        audio[0].url,
+        tilawa_id.toString(),
+        surah_id.toString(),
+      ),
+    };
   }
 
   getAudioLrc(filterAudioLrcDto: FilterAudioLrcDto) {
@@ -168,6 +176,13 @@ export class AudioService {
       },
     });
 
-    return audio[0];
+    return {
+      ...audio[0],
+      previewURL: await generateAudioPreview(
+        audio[0].url,
+        default_tilawa_id.toString(),
+        surah.toString(),
+      ),
+    };
   }
 }
