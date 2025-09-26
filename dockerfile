@@ -15,10 +15,16 @@ FROM base AS dokploy
 WORKDIR /app
 ENV NODE_ENV=production
 
+# Install FFmpeg
+RUN apk add --no-cache ffmpeg
+
 # Copy only the necessary files
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/node_modules ./node_modules
+
+# Define volume for audio previews to persist data
+VOLUME ["/app/uploads/previews"]
 
 EXPOSE 3000
 CMD ["node", "dist/src/main.js"]

@@ -7,8 +7,7 @@ seed.ts
 data_eng.json
 
 # upload files
-/uploads
-
+!/uploads/**/.gitKeep
 # Logs
 logs
 *.log

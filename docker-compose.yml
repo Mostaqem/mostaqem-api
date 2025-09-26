@@ -10,7 +10,7 @@ services:
   api_v1:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     ports:
       - '3000:3000'
     expose:
@@ -19,5 +19,6 @@ services:
       - .env.docker
     volumes:
       - ./src:/app/src
+      - ./uploads/previews:/app/uploads/previews
     links:
       - db
