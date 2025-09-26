@@ -14,7 +14,7 @@ export class ImageService {
       topicIds: ['6sMVjTLSkeQ', 'mqgMJzgvG_U'],
       contentFilter: 'low',
     });
-    const image = (result.response as any)[0].urls.full;
+    const image = (result.response as any)[0].urls.raw;
     return image;
   }
 }

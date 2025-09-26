@@ -4,16 +4,20 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Reciter } from './entities/reciter.entity';
 import { In, Repository } from 'typeorm';
 import { Tilawa } from './entities/tilawa.entity';
+import { Tag } from './entities/tag.entity';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
 import { ReciterFilterDto } from './dto/reciter-filter.dto';
 
 @Injectable()
 export class ReciterService {
+  private readonly logger = new Logger(ReciterService.name);
   constructor(
     @InjectRepository(Reciter)
     private readonly reciterRepository: Repository<Reciter>,
     @InjectRepository(Tilawa)
     private readonly tilawaRepository: Repository<Tilawa>,
+    @InjectRepository(Tag)
+    private readonly tagRepository: Repository<Tag>,
   ) {}
 
   create(createReciterDto: CreateReciterDto) {
@@ -22,20 +26,20 @@ export class ReciterService {
   }
 
   async findAll(orderBy: 'eng' | 'ar', reciterFilterDto: ReciterFilterDto) {
-    const orderOptions: { name_english?: 'ASC'; name_arabic?: 'ASC' } = {};
-
-    if (orderBy === 'eng') {
-      orderOptions.name_english = 'ASC';
-    } else if (orderBy === 'ar') {
-      orderOptions.name_arabic = 'ASC';
-    }
-    const { take, page, name } = reciterFilterDto;
+    const { take, page, name, category, region, is_featured, tags } =
+      reciterFilterDto;
     const skip = take * (page - 1);
 
     const query = this.reciterRepository
       .createQueryBuilder('reciter')
-      .where('1 = 1')
-      .orderBy(orderOptions);
+      .leftJoinAndSelect('reciter.tags', 'tag')
+      .where('1 = 1');
+
+    if (orderBy === 'eng') {
+      query.orderBy('reciter.name_english', 'ASC');
+    } else if (orderBy === 'ar') {
+      query.orderBy('reciter.name_arabic', 'ASC');
+    }
 
     if (name) {
       query.andWhere(
@@ -48,6 +52,29 @@ export class ReciterService {
       );
     }
 
+    if (category) {
+      query.andWhere('reciter.category = :category', { category });
+    }
+
+    if (region) {
+      query.andWhere('reciter.region = :region', { region });
+    }
+
+    if (is_featured !== undefined) {
+      query.andWhere('reciter.is_featured = :is_featured', { is_featured });
+    }
+
+    if (tags && tags.length > 0) {
+      query.andWhere(
+        'tag.name_arabic IN (:...tags) OR tag.name_english IN (:...tags)',
+        { tags },
+      );
+      query.groupBy('reciter.id');
+      query.having('COUNT(DISTINCT tag.id) >= :tagCount', {
+        tagCount: tags.length,
+      });
+    }
+
     const [reciters, total] = await Promise.all([
       query.take(take).skip(skip).getMany(),
       query.getCount(),
@@ -56,16 +83,27 @@ export class ReciterService {
     const totalPages = Math.ceil(total / take);
 
     return {
-      reciters,
+      reciters: reciters,
       total,
       totalPages,
     };
   }
 
   async findOne(id: number) {
-    const reciter = await this.reciterRepository.findOneBy({ id });
+    const reciter = await this.reciterRepository.findOne({
+      where: { id },
+      relations: ['tags'],
+    });
     if (!reciter) throw new NotFoundException('Reciter not found');
-    return reciter;
+
+    // Transform tags to string array
+    return {
+      ...reciter,
+      tags: reciter.tags.map((tag) => ({
+        name_arabic: tag.name_arabic,
+        name_english: tag.name_english,
+      })),
+    };
   }
 
   async updateReciterImage(id: number, image: string) {

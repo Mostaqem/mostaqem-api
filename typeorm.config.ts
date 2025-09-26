@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { config } from 'dotenv';
-config({ path: '.env.docker' });
+config({ path: '.env' });
 
 export default new DataSource({
   type: 'mysql',

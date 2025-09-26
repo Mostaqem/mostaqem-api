@@ -20,7 +20,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { Keyv } from 'keyv';
 import { CacheableMemory } from 'cacheable';
-import { config } from 'dotenv';
 
 // Define upload path in one place to keep it consistent
 export const UPLOAD_PATH = join(process.cwd(), 'uploads');

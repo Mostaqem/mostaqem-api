@@ -4,9 +4,10 @@ import { ReciterController } from './reciter.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reciter } from './entities/reciter.entity';
 import { Tilawa } from './entities/tilawa.entity';
+import { Tag } from './entities/tag.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Reciter, Tilawa])],
+  imports: [TypeOrmModule.forFeature([Reciter, Tilawa, Tag])],
   controllers: [ReciterController],
   providers: [ReciterService],
   exports: [ReciterService],
