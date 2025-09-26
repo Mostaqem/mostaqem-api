@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { ReciterService } from './reciter.service';
 import { Reciter } from './entities/reciter.entity';
 import { Tilawa } from './entities/tilawa.entity';
+import { Tag } from './entities/tag.entity';
 import { CreateReciterDto } from './dto/create-reciter.dto';
 import { NotFoundException } from '@nestjs/common';
 import { AddTilawaDto } from './dto/add-tilawa.dto';
@@ -19,11 +20,30 @@ describe('ReciterService', () => {
         ReciterService,
         {
           provide: getRepositoryToken(Reciter),
-          useClass: Repository,
+          useValue: {
+            create: jest.fn(),
+            save: jest.fn(),
+            find: jest.fn(),
+            findOne: jest.fn(),
+            findOneBy: jest.fn(),
+            createQueryBuilder: jest.fn(),
+          },
         },
         {
           provide: getRepositoryToken(Tilawa),
-          useClass: Repository,
+          useValue: {
+            create: jest.fn(),
+            save: jest.fn(),
+            find: jest.fn(),
+            findOneBy: jest.fn(),
+          },
+        },
+        {
+          provide: getRepositoryToken(Tag),
+          useValue: {
+            find: jest.fn(),
+            findOne: jest.fn(),
+          },
         },
       ],
     }).compile();
@@ -75,6 +95,7 @@ describe('ReciterService', () => {
       const totalPages = 1;
 
       jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        leftJoinAndSelect: jest.fn().mockReturnThis(),
         where: jest.fn().mockReturnThis(),
         orderBy: jest.fn().mockReturnThis(),
         andWhere: jest.fn().mockReturnThis(),
@@ -98,6 +119,7 @@ describe('ReciterService', () => {
       const totalPages = 1;
 
       jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        leftJoinAndSelect: jest.fn().mockReturnThis(),
         where: jest.fn().mockReturnThis(),
         orderBy: jest.fn().mockReturnThis(),
         andWhere: jest.fn().mockReturnThis(),
@@ -121,14 +143,15 @@ describe('ReciterService', () => {
       const totalPages = 1;
 
       jest.spyOn(reciterRepository, 'createQueryBuilder').mockReturnValue({
+        leftJoinAndSelect: jest.fn().mockReturnThis(),
         where: jest.fn().mockReturnThis(),
         orderBy: jest.fn().mockReturnThis(),
         andWhere: jest.fn().mockReturnThis(),
+        orWhere: jest.fn().mockReturnThis(),
         take: jest.fn().mockReturnThis(),
         skip: jest.fn().mockReturnThis(),
         getMany: jest.fn().mockResolvedValue(reciters),
         getCount: jest.fn().mockResolvedValue(total),
-        orWhere: jest.fn().mockReturnThis(),
       } as any);
 
       const result = await service.findAll('eng', reciterFilterDto);
@@ -159,18 +182,28 @@ describe('ReciterService', () => {
         id: 1,
         name_english: 'John Doe',
         name_arabic: 'جون دو',
+        tags: [
+          { name_arabic: 'تلاوة', name_english: 'Recitation' },
+        ],
       };
 
       jest
-        .spyOn(reciterRepository, 'findOneBy')
+        .spyOn(reciterRepository, 'findOne')
         .mockResolvedValue(reciter as Reciter);
 
-      expect(await service.findOne(1)).toEqual(reciter);
-      expect(reciterRepository.findOneBy).toHaveBeenCalledWith({ id: 1 });
+      const result = await service.findOne(1);
+      expect(result).toEqual({
+        ...reciter,
+        tags: [{ name_arabic: 'تلاوة', name_english: 'Recitation' }],
+      });
+      expect(reciterRepository.findOne).toHaveBeenCalledWith({
+        where: { id: 1 },
+        relations: ['tags'],
+      });
     });
 
     it('should throw NotFoundException if reciter is not found', async () => {
-      jest.spyOn(reciterRepository, 'findOneBy').mockResolvedValue(null);
+      jest.spyOn(reciterRepository, 'findOne').mockResolvedValue(null);
 
       await expect(service.findOne(1)).rejects.toThrow(NotFoundException);
     });
